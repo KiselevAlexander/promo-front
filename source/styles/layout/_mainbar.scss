@@ -1,0 +1,16 @@
+.mainbar {
+	max-width: 40rem;
+
+	.fieldset {
+
+		&:only-child {
+			margin-bottom: 0;
+		}
+
+		&.no-border {
+			padding: 1.3em $p-30;
+		}
+
+	}
+
+}

@@ -1,0 +1,715 @@
+$path: '../images/';
+$path2: '../img/';
+
+$color-blue-light:     #0089ff;
+$color-blue:           #1177ff; // old #1f69ee
+$color-blue-dark:      #0f56d7;
+$color-blue-darken:    #2244cc;
+
+$color-gray-lighten:   #f4f6f9; // old #f8fafc
+$color-gray-light:     #eef2f7; // old #f2f6f9
+$color-gray:           #d8dde4; // old #e2e9f2
+$color-gray-dark:      #94a1b4;
+$color-gray-darken:    #8090a6;
+
+$color-green-light:    #22dc98;
+$color-green:          #20ce8e;
+$color-green-dark:     #34bc92;
+$color-red:            #ff5056;
+$color-modal-bg:       rgba($color-gray-light, .8);
+
+$color-text:           #000;        	// Цвет основного текста
+$color-white:          #fff;
+$color-bg:             $color-white;	// Цвет фона
+$color-marker:         $color-gray; 	// Цвет маркеров списков <ul>, <ol> и <blockquote>, <cite>
+
+$color-class-light:    #71c5e4;
+$color-class-standard: #39aeff;
+$color-class-flexible: #166fdf;
+$color-class-business: #d8a860;
+
+$color-tariff-basic:   $color-blue-dark;
+$color-tariff-bronze:  #ba8371;
+$color-tariff-silver:  $color-gray-darken;
+$color-tariff-gold:    #e5b253;
+
+$color-facebook:       #3B5998;
+$color-vkontakte:      #6383A8;
+$color-odnoklassniki:  #F4731C;
+$color-youtube:        #CD201F;
+$color-instagram:      #E4405F;
+
+$p-1:  .06em;    // 1px
+$p-2:  .13rem;   // 2px
+$p-3:  .19rem;   // 3px
+$p-4:  .25rem;   // 4px
+$p-5:  .31rem;   // 5px
+$p-6:  .38rem;   // 6px
+$p-7:  .44rem;   // 7px
+$p-8:  .5rem;    // 8px
+$p-9:  .56em;    // 9px
+$p-10: .625rem;  // 10px
+$p-11: .688rem;  // 11px
+$p-12: .75rem;   // 12px
+$p-13: .813rem;  // 13px
+$p-14: .875rem;  // 14px
+$p-15: .938rem;  // 15px
+$p-16: 1rem;     // 16px
+$p-17: 1.063rem; // 17px
+$p-18: 1.125rem; // 18px
+$p-19: 1.188rem; // 19px
+$p-20: 1.25rem;  // 20px
+$p-21: 1.313rem; // 21px
+$p-22: 1.375rem; // 22px
+$p-23: 1.44rem;  // 23px
+$p-24: 1.5rem;   // 24px
+$p-25: 1.563rem; // 25px
+$p-26: 1.63rem;  // 26px
+
+$p-30: 1.875rem; // 30px
+
+$p-35: 2.19rem;  // 35px
+
+$p-40: 2.5rem;   // 40px
+
+$p-45: 2.813rem;  // 45px
+
+$p-50: 3.12rem;  // 50px
+
+$p-55: 3.12rem;  // 55px
+
+$p-60: 3.75rem;   // 60px
+
+$p-65: 4.063rem;  // 65px
+
+$p-70: 4.375rem;  // 70px
+
+$p-80: 5rem;      // 80px
+
+$p-100: 6.25rem; // 100px
+
+
+
+
+$p-ul-ol-margin: .7rem 0; // Отступы у тегов <p>, <ul>, <ol>
+$hr-margin: 2em 0; // Отступ у тега <hr>
+
+$width-full: 100%;
+
+$h1: (
+        font-size: 2em,     // 32px // old 1.875em
+        line-height: 1.3,
+        margin: 4.3rem 0 2.15rem
+);
+
+$h2: (
+        font-size: 1.75em,  // 28px
+        line-height: 1.3,
+        margin: 3rem 0 1.5rem
+);
+
+$h3: (
+        font-size: 1.625em, // 26px
+        line-height: map-get($h2, line-height),
+        margin: 2.5rem 0 1rem
+);
+
+$h4: (
+        font-size: 1.125em, // 18px
+        line-height: map-get($h2, line-height),
+        margin: 2rem 0 1rem
+);
+
+$h5: (
+        font-size: 1em,     // 16px
+        line-height: map-get($h2, line-height),
+        margin: 2rem 0 1.1rem
+);
+
+$h6: (
+        font-size: 0.75em,  // 12px
+        line-height: 1.22222222,
+        margin: 1rem 0 .5rem
+);
+
+
+// Responsive device width
+$desktop-width: 960px;
+$tablet-width:  768px;
+$phablet-width: 480px;
+$phone-width:   320px;
+
+
+// Forms
+$fieldBottomBorderColor : #e2e8f1;
+$inputHeight : 2.375rem;
+$inputColor : #000;
+$placeholderColor : #92a2b5;
+$labelColor : #2581f2;
+
+// layout
+$contentWidth : 1160px;
+
+//menu
+$menuHeight : 4.5em;
+
+
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+
+sub {
+  bottom: -0.25em;
+}
+
+
+sup {
+  top: -0.5em;
+}
+
+
+
+fieldset {
+  border: 1px solid $color-marker;
+  padding: .35em .625em .75em;
+}
+
+
+legend {
+  padding: 0 .5em;
+}
+
+
+main {
+
+  & > *:first-child {
+    margin-top: 0 !important;
+  }
+
+  & > *:last-child {
+    margin-bottom: 0 !important;
+  }
+
+}
+
+.clr {
+  display: block;
+  clear: both;
+  height: 0;
+  font-size: 0;
+  line-height :0;
+}
+
+
+.clear {
+  clear: both;
+
+  &-left {
+    clear: left;
+  }
+
+  &-right {
+    clear: right;
+  }
+
+}
+
+
+.relative {
+  position: relative;
+}
+
+
+%text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.text {
+
+  &-left {
+    text-align: left !important;
+  }
+
+  &-right {
+    text-align: right !important;
+  }
+
+  &-center {
+    text-align: center !important;
+  }
+
+  &-regular {
+    font-weight: 400 !important;
+  }
+
+  &-overflow {
+    @extend %text-overflow;
+  }
+
+}
+
+
+.block {
+  display: block;
+
+  &-left {
+    float: left;
+  }
+
+  &-right {
+    float: right;
+  }
+
+}
+
+
+.ov {
+
+  &-hidd,
+  &Hidd {
+    overflow: hidden;
+  }
+
+  &-autoX {
+    overflow-x: auto;
+  }
+
+}
+
+
+.nowrap {
+  white-space: nowrap;
+}
+
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+
+.nouppercase {
+  text-transform: none !important;
+}
+
+
+.inline {
+  display: inline;
+}
+
+
+.color {
+
+  &-text {
+    color: $color-text !important;
+  }
+
+  &-blue {
+    color: $color-blue;
+  }
+
+  &-blueDark {
+    color: $color-blue-dark;
+  }
+
+  &-blueDarken {
+    color: $color-blue-darken;
+  }
+
+  &-green {
+    color: $color-green;
+  }
+
+  &-gray {
+    color: $color-gray;
+  }
+
+  &-grayDark {
+    color: $color-gray-dark;
+  }
+
+  &-grayDarken {
+    color: $color-gray-darken;
+  }
+
+  &-red {
+    color: $color-red;
+  }
+
+  &-tariffBasic {
+    color: $color-tariff-basic;
+  }
+
+  &-tariffBronze {
+    color: $color-tariff-bronze;
+  }
+
+  &-tariffSilver {
+    color: $color-tariff-silver;
+  }
+
+  &-tariffGold {
+    color: $color-tariff-gold;
+  }
+
+}
+
+
+.ml {
+
+  &-0 {
+    margin-left: 0 !important;
+  }
+
+  &-5 {
+    margin-left: $p-5 !important;
+  }
+
+  &-10 {
+    margin-left: $p-10 !important;
+  }
+
+  &-15 {
+    margin-left: $p-15 !important;
+  }
+
+  &-20 {
+    margin-left: $p-20 !important;
+  }
+
+  &-25 {
+    margin-left: $p-25 !important;
+  }
+
+  &-30 {
+    margin-left: $p-30 !important;
+  }
+
+  &-35 {
+    margin-left: $p-35 !important;
+  }
+
+  &-40 {
+    margin-left: $p-40 !important;
+  }
+
+  &-45 {
+    margin-left: $p-45 !important;
+  }
+
+  &-50 {
+    margin-left: $p-50 !important;
+  }
+
+  &-55 {
+    margin-left: $p-55 !important;
+  }
+
+  &-60 {
+    margin-left: $p-60 !important;
+  }
+
+  &-100 {
+    margin-left: $p-100 !important;
+  }
+}
+
+.mr {
+
+  &-0 {
+    margin-right: 0 !important;
+  }
+
+  &-5 {
+    margin-right: $p-5 !important;
+  }
+
+  &-10 {
+    margin-right: $p-10 !important;
+  }
+
+  &-15 {
+    margin-right: $p-15 !important;
+  }
+
+  &-20 {
+    margin-right: $p-20 !important;
+  }
+
+  &-25 {
+    margin-right: $p-25 !important;
+  }
+
+  &-30 {
+    margin-right: $p-30 !important;
+  }
+
+  &-35 {
+    margin-right: $p-35 !important;
+  }
+
+  &-40 {
+    margin-right: $p-40 !important;
+  }
+
+  &-45 {
+    margin-right: $p-45 !important;
+  }
+
+  &-50 {
+    margin-right: $p-50 !important;
+  }
+
+  &-55 {
+    margin-right: $p-55 !important;
+  }
+
+  &-60 {
+    margin-right: $p-60 !important;
+  }
+
+  &-100 {
+    margin-right: $p-100 !important;
+  }
+
+}
+
+
+.mt {
+
+  &-0 {
+    margin-top: 0 !important;
+  }
+
+  &-5 {
+    margin-top: $p-5 !important;
+  }
+
+  &-10 {
+    margin-top: $p-10 !important;
+  }
+
+  &-15 {
+    margin-top: $p-15 !important;
+  }
+
+  &-20 {
+    margin-top: $p-20 !important;
+  }
+
+  &-25 {
+    margin-top: $p-25 !important;
+  }
+
+  &-30 {
+    margin-top: $p-30 !important;
+  }
+
+  &-35 {
+    margin-top: $p-35 !important;
+  }
+
+  &-40 {
+    margin-top: $p-40 !important;
+  }
+
+  &-45 {
+    margin-top: $p-45 !important;
+  }
+
+  &-50 {
+    margin-top: $p-50 !important;
+  }
+
+  &-55 {
+    margin-top: $p-55 !important;
+  }
+
+  &-60 {
+    margin-top: $p-60 !important;
+  }
+
+  &-100 {
+    margin-top: $p-100 !important;
+  }
+
+}
+
+
+.mb {
+
+  &-0 {
+    margin-bottom: 0 !important;
+  }
+
+  &-5 {
+    margin-bottom: $p-5 !important;
+  }
+
+  &-10 {
+    margin-bottom: $p-10 !important;
+  }
+
+  &-15 {
+    margin-bottom: $p-15 !important;
+  }
+
+  &-20 {
+    margin-bottom: $p-20 !important;
+  }
+
+  &-25 {
+    margin-bottom: $p-25 !important;
+  }
+
+  &-30 {
+    margin-bottom: $p-30 !important;
+  }
+
+  &-35 {
+    margin-bottom: $p-35 !important;
+  }
+
+  &-40 {
+    margin-bottom: $p-40 !important;
+  }
+
+  &-45 {
+    margin-bottom: $p-45 !important;
+  }
+
+  &-50 {
+    margin-bottom: $p-50 !important;
+  }
+
+  &-55 {
+    margin-bottom: $p-55 !important;
+  }
+
+  &-60 {
+    margin-bottom: $p-60 !important;
+  }
+
+  &-65 {
+    margin-bottom: $p-65 !important;
+  }
+
+  &-80 {
+    margin-bottom: $p-80 !important;
+  }
+
+  &-100 {
+    margin-bottom: $p-100 !important;
+  }
+
+}
+
+
+.pl {
+
+  &-0 {
+    padding-left: 0 !important;
+  }
+
+}
+
+.pr {
+
+  &-0 {
+    padding-right: 0 !important;
+  }
+
+  &-25 {
+    padding-right: $p-25 !important;
+  }
+
+  &-30 {
+    padding-right: $p-30 !important;
+  }
+
+  &-10 {
+    padding-right: $p-10 !important;
+  }
+
+}
+
+.pt {
+
+  &-0 {
+    padding-top: 0 !important;
+  }
+
+  &-5 {
+    padding-top: $p-5 !important;
+  }
+
+  &-10 {
+    padding-top: $p-10 !important;
+  }
+
+  &-15 {
+    padding-top: $p-15 !important;
+  }
+
+  &-20 {
+    padding-top: $p-20 !important;
+  }
+
+  &-25 {
+    padding-top: $p-25 !important;
+  }
+
+  &-30 {
+    padding-top: $p-30 !important;
+  }
+
+}
+
+.pb {
+
+  &-40 {
+    padding-bottom: $p-40 !important;
+  }
+
+}
+
+.fs {
+
+  &-9 {
+    font-size: $p-9 !important;
+  }
+
+  &-12 {
+    font-size: $p-12 !important;
+  }
+
+  &-14 {
+    font-size: $p-14 !important;
+  }
+
+  &-16 {
+    font-size: $p-16 !important;
+  }
+
+  &-20 {
+    font-size: $p-20 !important;
+  }
+
+}
+
+
+.lh {
+
+  &-normal {
+    line-height: 1.5;
+  }
+
+}

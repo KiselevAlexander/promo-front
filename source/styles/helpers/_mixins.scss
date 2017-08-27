@@ -1,0 +1,202 @@
+@mixin inline-block($prop) {
+	display: inline-block;
+	vertical-align: $prop;
+}
+
+
+// Генерируем отступы и размер для заголовков <h1>, <h2>, <h3>, <h4>, <h5>, <h6>, сохраняя соотношение между ними
+$h1-h6: $h1, $h2, $h3, $h4, $h5, $h6;
+
+@mixin h1-h6($ratio-font-size: 1, $ratio-line-height: 1, $ratio-margin: 1) {
+
+	@for $i from 1 through length($h1-h6) {
+
+		h#{$i}, .h#{$i} {
+
+			@each $prop, $value in nth($h1-h6, $i) {
+
+				@if $prop == font-size {
+					#{$prop}: $value * $ratio-font-size;
+				}
+
+				@if $prop == line-height {
+					#{$prop}: $value * $ratio-line-height;
+				}
+
+				@if $prop == margin {
+
+					$length: length($value);
+
+					@if $length == 1 {
+						#{$prop}: nth($value, 1) * $ratio-margin;
+					}
+
+					@if $length == 2 {
+						#{$prop}: nth($value, 1) * $ratio-margin
+								  nth($value, 2) * $ratio-margin;
+					}
+
+					@if $length == 3 {
+						#{$prop}: nth($value, 1) * $ratio-margin
+								  nth($value, 2) * $ratio-margin
+								  nth($value, 3) * $ratio-margin;
+					}
+
+					@if $length == 4 {
+						#{$prop}: nth($value, 1) * $ratio-margin
+								  nth($value, 2) * $ratio-margin
+								  nth($value, 3) * $ratio-margin
+								  nth($value, 4) * $ratio-margin;
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+	@for $i from 1 through 6 {
+
+		h#{$i}, .h#{$i} {
+			font-weight: 600;
+
+			&:first-child {
+				margin-top: 0;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+		}
+
+	}
+
+}
+
+
+// Отступы для типографических тегов <p>, <ul>, <ol>, <blockquote>
+@mixin p($ratio: 1) {
+
+    p:not([class]),
+    ul:not([class]),
+    ol:not([class]),
+    blockquote:not([class]) {
+
+		$i: length($p-ul-ol-margin);
+
+		@if $i == 1 {
+			margin: nth($p-ul-ol-margin, 1) * $ratio;
+		}
+
+		@if $i == 2 {
+			margin: nth($p-ul-ol-margin, 1) * $ratio
+					nth($p-ul-ol-margin, 2) * $ratio;
+		}
+
+		@if $i == 3 {
+			margin: nth($p-ul-ol-margin, 1) * $ratio
+					nth($p-ul-ol-margin, 2) * $ratio
+					nth($p-ul-ol-margin, 3) * $ratio;
+		}
+
+		@if $i == 4 {
+			margin: nth($p-ul-ol-margin, 1) * $ratio
+					nth($p-ul-ol-margin, 2) * $ratio
+					nth($p-ul-ol-margin, 3) * $ratio
+					nth($p-ul-ol-margin, 4) * $ratio;
+		}
+
+    }
+
+}
+
+
+// Генерируем иконку
+@mixin icon($size-width) {
+
+	left: $size-width;
+	margin-left: -$size-width;
+
+	& + span {
+		padding-left: $size-width + .5;
+	}
+
+}
+
+
+// Вставляем иконку туда, где она используется
+@mixin icon-paste($name) {
+
+	.icon-#{$name} {
+		@extend %icon-#{$name};
+	}
+
+}
+
+
+// svg в css через data-base64 с поддержкой браузеров не понимающих svg
+@mixin background-svg($src) {
+	display: inline-block;
+	vertical-align: middle;
+	background-image: inline-image($src + '.svg');
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: 100% auto;
+
+	.no-svg & {
+		background-image: url($path + $src + '.png');
+	}
+}
+
+
+// media
+@mixin desktop {
+	@media (min-width: #{$desktop-width}) {
+		.responsive {
+			@content;
+		}
+	}
+}
+
+@mixin tablet {
+	@media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+		.responsive {
+			@content;
+		}
+	}
+}
+
+@mixin phablet {
+	@media (min-width: #{$phablet-width}) and (max-width: #{$tablet-width - 1px}) {
+		.responsive {
+			@content;
+		}
+	}
+}
+
+@mixin phone {
+	@media (max-width: #{$phablet-width - 1px}) {
+		.responsive {
+			@content;
+		}
+	}
+}
+
+@mixin phonablet {
+	@media (max-width: #{$tablet-width - 1px}) {
+		.responsive {
+			@content;
+		}
+	}
+}
+
+@mixin device-all {
+	@media (max-width: #{$desktop-width - 1px}) {
+		.responsive {
+			@content;
+		}
+	}
+}

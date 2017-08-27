@@ -1,0 +1,13 @@
+/node_modules/*
+/logs
+/.idea
+~*
+.directory
+*.orig
+.DS_Store
+fabfile.pyc
+*.zip
+Dockerfile
+docker-compose.yml
+tasks.sh
+package-lock.json

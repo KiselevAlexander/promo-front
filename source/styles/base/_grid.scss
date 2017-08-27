@@ -1,0 +1,280 @@
+// Количество колонок
+$column-count: 16;
+
+// Расстояние между колонками по горизонтали
+$column-gapH-gen: 1.25rem;
+$column-gapH: (
+    desktop: $column-gapH-gen,
+    tablet:  $column-gapH-gen,
+    phablet: $column-gapH-gen,
+    phone:   $column-gapH-gen
+);
+
+// Расстояние между колонками по вертикали
+$column-gapV-gen: 1.25rem;
+$column-gapV: (
+    desktop: $column-gapV-gen,
+    tablet:  $column-gapV-gen,
+    phablet: $column-gapV-gen,
+    phone:   $column-gapV-gen
+);
+
+// Вертикальный margin у колонок
+$column-marginV-gen: 0;
+$column-marginV: (
+    desktop: $column-marginV-gen,
+    tablet:  $column-marginV-gen,
+    phablet: $column-marginV-gen,
+    phone:   $column-marginV-gen
+);
+
+// Вертикальный margin у контейнера
+$grid-marginV-gen: 0;
+$grid-marginV: (
+    desktop: $grid-marginV-gen,
+    tablet:  $grid-marginV-gen,
+    phablet: $grid-marginV-gen,
+    phone:   $grid-marginV-gen
+);
+
+// Имена классов для сетки
+$class-name-grid:      ".grid";
+$class-name-col:       ".col";
+$class-name-tablet:    ".tablet";
+$class-name-phablet:   ".phablet";
+$class-name-phone:     ".phone";
+$class-name-flex:      ".flex";
+$class-name-float:     ".float";
+$class-name-baseline:  ".baseline";
+$class-name-middle:    ".middle";
+$class-name-bottom:    ".bottom";
+$class-name-noPaddingV: ".no-paddingV";
+
+$class-name-grid-slice: str-slice($class-name-grid, 2);
+$class-name-col-slice: str-slice($class-name-col, 2);
+
+@mixin math-margin-grid($device){
+    $gapH: map-get($column-gapH, $device);
+    $marginV: map-get($column-marginV, $device);
+    margin-left: ($gapH / -2);
+	margin-right: ($gapH / -2);
+
+	@if $marginV != 0 {
+		margin-top: $marginV;
+		margin-bottom: $marginV;
+	}
+}
+
+@mixin math-margin-padding-column($device){
+    $gapH: map-get($column-gapH, $device);
+    $gapV: map-get($column-gapV, $device);
+    $marginV: map-get($column-marginV, $device);
+    margin: $marginV 0;               // Вычисляем margin у .col
+    padding: ($gapV / 2) ($gapH / 2); // Вычисляем padding у .col
+}
+
+@mixin grid-generator($selector) {
+
+    @for $i from 1 through $column-count {
+
+      #{$selector}-#{$i} {
+          & > #{$class-name-col} {
+              width: (100% / $i);
+          }
+      }
+
+    }
+
+}
+
+@mixin column-gap($device) {
+
+    [class*="#{$class-name-grid-slice}-"] {
+        @include math-margin-grid($device);
+    }
+
+    [class*="#{$class-name-col-slice}-"],
+    #{$class-name-col} {
+        @include math-margin-padding-column($device);
+    }
+
+}
+
+@mixin col-generator($selector1, $selector2) {
+
+    @for $index from 1 through $column-count {
+
+        @for $i from 1 through $index {
+
+			@if $selector1 == $class-name-grid {
+
+				#{$class-name-grid}-#{$index} {
+					& > #{$selector2}-#{$i} {
+						width: (100% / $index) * $i;
+					}
+				}
+
+			} @else {
+
+				#{$class-name-grid}-#{$index},
+				#{$selector1}-#{$index}[class*="#{$class-name-grid-slice}"] {
+					& > #{$selector2}-#{$i} {
+						width: (100% / $index) * $i;
+					}
+				}
+
+			}
+
+        }
+
+    }
+}
+
+@mixin grid-generator-desktop($exp: null) {
+
+    [class*="#{$class-name-grid-slice}-"] {
+        list-style: none;
+        @include math-margin-grid(desktop);
+
+        &#{$class-name-flex} {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        &#{$class-name-float} {
+
+			&:before,
+			&:after {
+				content: " ";
+				display: table;
+			}
+
+			&:after {
+				clear: both;
+			}
+
+            & > [class*="#{$class-name-col-slice}-"],
+            & > #{$class-name-col} {
+                float: left;
+
+                &#{$class-name-float}-left {
+                    float: left;
+                }
+
+                &#{$class-name-float}-right {
+                    float: right;
+                }
+
+                &#{$class-name-float}-none {
+                    float: none;
+                }
+
+            }
+
+        }
+
+		&#{$class-name-middle} {
+
+			& > [class*="#{$class-name-col-slice}-"],
+			& > #{$class-name-col} {
+				vertical-align: middle;
+			}
+
+		}
+
+		&#{$class-name-baseline} {
+
+			& > [class*="#{$class-name-col-slice}-"],
+			& > #{$class-name-col} {
+				vertical-align: baseline;
+			}
+
+		}
+
+		&#{$class-name-bottom} {
+
+			& > [class*="#{$class-name-col-slice}-"],
+			& > #{$class-name-col} {
+				vertical-align: bottom;
+			}
+
+		}
+
+		&#{$class-name-noPaddingV} {
+
+			& > [class*="#{$class-name-col-slice}-"],
+			& > #{$class-name-col} {
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+
+		}
+
+    }
+
+    [class*="#{$class-name-col-slice}-"],
+    #{$class-name-col} {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        @include math-margin-padding-column(desktop);
+
+		&#{$class-name-noPaddingV} {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+    }
+
+    @include grid-generator($class-name-grid);
+    @if $exp == expanded {
+        @include col-generator($class-name-grid, $class-name-col);
+    }
+
+}
+
+@mixin grid-generator-tablet($exp: null) {
+    @include column-gap(tablet);
+    @include grid-generator($class-name-tablet);
+    @if $exp == expanded {
+        @include col-generator($class-name-tablet, $class-name-tablet);
+    }
+}
+
+@mixin grid-generator-phablet($exp: null) {
+    @include column-gap(phablet);
+    @include grid-generator($class-name-phablet);
+    @if $exp == expanded {
+        @include col-generator($class-name-phablet, $class-name-phablet);
+    }
+}
+
+@mixin grid-generator-phone($exp: null) {
+    @include column-gap(phone);
+    @include grid-generator($class-name-phone);
+    @if $exp == expanded {
+        @include col-generator($class-name-phone, $class-name-phone);
+    }
+}
+
+
+@include grid-generator-desktop(expanded);
+
+
+@include tablet {
+
+	@include grid-generator-tablet(expanded);
+
+}
+
+@include phablet {
+
+	@include grid-generator-phablet(expanded);
+
+}
+
+@include phone {
+
+	@include grid-generator-phone(expanded);
+
+}

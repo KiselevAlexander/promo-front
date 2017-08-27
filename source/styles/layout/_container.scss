@@ -1,0 +1,102 @@
+.main-block {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	min-width: 60.63em;
+	min-height: 100vh;
+
+	.responsive & {
+		min-width: 20em;
+	}
+
+}
+
+
+.content {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	//justify-content: center; // .wrapper внутри контента начинает центрироваться по вертикали,
+							   // если мало контента
+	flex-grow: 1;
+	padding-top: $menuHeight + 2.5em;
+	padding-bottom: 6em;
+	transition: opacity .4s;
+
+	.open-menu & {
+		opacity: .3;
+	}
+
+	&-bg {
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		right: 0;
+		top: $menuHeight;
+		bottom: 0;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+}
+
+
+.wrapper {
+	@extend .border-box;
+	width: 100%;
+	max-width: 71em;
+	min-width: 58.75em;
+	margin: 0 auto;
+	padding: 0 1em;
+
+	&-border {
+		padding: 2em;
+		border: 1px solid $color-gray;
+	}
+
+	.responsive & {
+		min-width: inherit;
+	}
+
+}
+
+
+.page-places {
+	margin-top: -6.5em;
+	margin-bottom: -7.5em;
+}
+
+
+.narrow {
+	max-width: 27em;
+	margin: 2em auto;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+}
+
+
+@include phonablet {
+
+	.content {
+		padding-bottom: 3em;
+	}
+
+}
+
+@include desktop {
+
+	.content,
+	.footer {
+		opacity: 1 !important;
+	}
+
+}

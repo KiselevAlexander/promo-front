@@ -1,0 +1,47 @@
+@import 'helpers/variables';
+        //'base/index';
+
+
+@import 'components/filepicker',
+        'components/dropzone',
+        'components/buttons',
+        'components/modal',
+        'components/main';
+
+
+@import 'components/player';
+
+
+.case {
+        position: relative;
+
+
+        video {
+                position: relative;
+                z-index: 1;
+                width: 100%;
+        }
+
+        button {
+                position: relative;
+                z-index: 9;
+        }
+}
+
+.layer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 3;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity .4s;
+        background-size: cover;
+        background-position: 50%;
+        background-repeat: no-repeat;
+
+        &.is-visible {
+                opacity: 1;
+        }
+}

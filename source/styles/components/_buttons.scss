@@ -1,0 +1,18 @@
+.button {
+
+  &-icon {
+    cursor: pointer;
+    transition: color .4s, background .4s;
+    border-radius: 50%;
+    padding: 1px;
+    box-sizing: border-box;
+    font-size: 1.45em;
+
+    &:hover {
+      color:#a2a2a2;
+      background-color: #efefef;
+    }
+
+  }
+
+}

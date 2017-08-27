@@ -1,0 +1,46 @@
+$color-gray: #6B6B6B;
+
+.upload-file {
+  margin-bottom: 4em;
+}
+
+
+.dropzone {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border: #a2a2a2;
+  padding: 2.5em -0px;
+  cursor: pointer;
+  transition: border-color .4s, box-shadow .4s;
+  color: $color-gray;
+  margin-bottom: 1em;
+
+  &:hover {
+    box-shadow: 0 0 .6em 0 rgba(15, 86, 215, .15),
+    0 1.07em .75em -1em rgba(15, 86, 215, .15);
+    border-color: #9f9f9f;
+  }
+
+  i {
+    display: inline-block;
+    margin-right: 1em;
+  }
+  p {
+    margin-left: 2em;
+  }
+
+  ol {
+    margin: .5em 0px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.files {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  color: $color-gray
+}

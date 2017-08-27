@@ -1,0 +1,18 @@
+.l-container {
+	max-width: $contentWidth;
+	margin: 0 auto;
+	padding: 0 8px;
+}
+.l-row {
+	@include clearFix();
+}
+//.page {
+//	min-width: $contentWidth;
+//	// padding-bottom: 65px;
+//	height: 100%;
+//	@include clearFix();
+//	&__content {
+//		padding-top: $menuHeight;
+//		height: 100%;
+//	}
+//}

@@ -1,0 +1,265 @@
+.footer {
+	overflow: hidden;
+	padding: 2.15em 0 1.56em;
+	color: $color-white;
+	background-color: $color-blue-darken;
+	transition: opacity .4s;
+
+	.open-menu & {
+		opacity: .3;
+	}
+
+	a {
+		color: currentColor;
+	}
+
+	&-social {
+		@extend .clearfix;
+
+		a {
+			float: left;
+			width: 2.63em;
+			height: 2.63em;
+			margin-right: 1em;
+			margin-top: .5em;
+			margin-bottom: .5em;
+			border: 1px solid;
+			border-radius: 50%;
+
+			svg {
+				vertical-align: top;
+				margin: -1px;
+			}
+
+			&:hover {
+				background-color: $color-white;
+			}
+
+		}
+
+		&Fb:hover {
+			color: $color-facebook;
+		}
+
+		&Vk:hover {
+			color: $color-vkontakte;
+		}
+
+		&Od:hover {
+			color: $color-odnoklassniki;
+		}
+
+		&Yt:hover {
+			color: $color-youtube;
+		}
+
+		&Inst:hover {
+			color: $color-instagram;
+		}
+
+	}
+
+	&-phone {
+		font-size: 1.5em;
+		font-weight: 600;
+		margin-bottom: .08em;
+
+		& + span {
+			font-size: .88em;
+		}
+
+		a {
+			color: inherit;
+		}
+
+	}
+
+	&-menu {
+		list-style: none;
+
+		li {
+			float: left;
+			margin: .3em 2.5em .3em 0;
+		}
+
+		a {
+
+			&:hover {
+				text-decoration: underline;
+			}
+
+		}
+
+	}
+
+	&-copyright {
+		color: rgba($color-white, .6);
+	}
+
+	&-app {
+
+		a {
+			float: left;
+			margin-right: 2.19em;
+			margin-top: .5em;
+			margin-bottom: .5em;
+			border: 1px solid;
+			border-radius: .13em;
+
+			svg {
+				margin: -1px;
+				vertical-align: top;
+			}
+
+			&:hover {
+				color: $color-text;
+				background-color: $color-white;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+		}
+
+	}
+
+	[class*="col-"], .col {
+
+		&:nth-child(3),
+		&:nth-child(4) {
+			margin-bottom: 2.1em;
+		}
+
+	}
+
+	&.gray {
+		color: $color-gray-darken;
+		background-color: $color-gray-lighten;
+
+		.footer-menu {
+
+			a {
+				color: $color-blue;
+
+				&:hover {
+					color: $color-blue-darken;
+					text-decoration: none;
+				}
+
+			}
+
+		}
+
+		.footer-phone {
+			color: lighten($color-text, 30%);
+		}
+
+		.footer-copyright {
+			color: rgba($color-gray-darken, .6);
+		}
+
+	}
+
+}
+
+
+@include tablet {
+
+	.footer {
+		padding: 1em 0 1.5em;
+
+		&-social,
+		&-app {
+			font-size: .8em;
+		}
+
+		&-phone {
+			font-size: 1.3em;
+
+			& + span {
+				font-size: .75em;
+			}
+
+		}
+
+		[class*="col-"], .col {
+
+			&:nth-child(3),
+			&:nth-child(4) {
+				margin-bottom: 1em;
+			}
+
+
+		}
+
+	}
+
+}
+
+@include phonablet {
+
+	.footer {
+		padding: 1em 0;
+		line-height: 1.2;
+
+		.grid-16 > [class*="col-"],
+		.grid-16 > .col {
+			padding-top: .4rem;
+			padding-bottom: .4rem;
+
+			&:nth-child(2),
+			&:nth-child(4) {
+				margin-bottom: .2rem;
+			}
+
+			[class*="col-"], .col {
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+
+
+		}
+
+		&-phone {
+			font-size: 1em;
+			margin-bottom: 0;
+
+			& + span {
+				font-size: .63em;
+			}
+
+		}
+
+		&-social {
+			font-size: .9em;
+		}
+
+		&-app {
+			font-size: .8em;
+		}
+
+	}
+
+}
+
+@include phone {
+
+	.footer {
+
+		.grid-16 > [class*="col-"],
+		.grid-16 > .col {
+
+			&:nth-child(2) {
+				margin-bottom: 0;
+			}
+
+			&:nth-child(4) {
+				margin-bottom: .5rem;
+			}
+
+		}
+
+	}
+
+}

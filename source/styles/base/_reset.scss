@@ -1,0 +1,173 @@
+body,
+p,
+figure,
+table,
+tr,
+td,
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    height: 100%;
+}
+
+body {
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	//-webkit-backface-visibility: visible;
+    word-wrap: break-word;
+    height: 100%;
+}
+
+button,
+input {
+    overflow: visible;
+}
+
+.touchevents {
+    input,
+    select {
+        -webkit-border-radius: 0;
+    }
+}
+
+input,
+select,
+textarea,
+optgroup,
+button {
+    font-family: inherit;
+	margin: 0;
+    vertical-align: middle;
+    font-size: 100%;
+    line-height: 1.42;
+    transition: background-color .4s, border-color .4s, color .4s, box-shadow .4s;
+}
+
+textarea {
+    overflow: auto;
+}
+
+input::-ms-clear,
+textarea::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+[type="checkbox"],
+[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+}
+
+button::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="button"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+	cursor: pointer;
+	-webkit-appearance: button;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+    outline: 1px dotted ButtonText;
+}
+
+:disabled,
+[disabled],
+[aria-disabled="true"] {
+    cursor: not-allowed;
+}
+
+a {
+    -webkit-text-decoration-skip: objects;
+    &:hover,
+    &:active {
+        outline-width: 0;
+    }
+}
+
+img {
+	vertical-align: top;
+    max-width: 100%;
+	height: auto;
+	padding: 0;
+	border: 0;
+	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+small,
+.small {
+    font-size: .75em;
+}
+
+legend {
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal;
+}
+
+section,
+header,
+footer,
+menu,
+nav,
+aside,
+article,
+details,
+summary,
+figure,
+figcaption,
+hgroup,
+time,
+main {
+    display:block;
+}

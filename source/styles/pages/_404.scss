@@ -1,0 +1,16 @@
+@import '../helpers/variables';
+
+.page-404,
+.page404 {
+	display: flex;
+	height: 100vh;
+	line-height: 1;
+	margin-bottom: -7rem;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-size: 30vmin;
+	font-weight: 700;
+	color: #fff;
+	background-color: $color-blue;
+}

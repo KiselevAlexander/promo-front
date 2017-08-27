@@ -1,0 +1,11 @@
+ {
+	"presets": ["stage-0", "es2015", "react"],
+	"plugins": [
+		["module-resolver", {
+			"root": ["source/js"]
+		}],
+		["transform-class-properties", {
+			"spec": true
+		}]
+	]
+}
