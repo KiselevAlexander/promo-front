@@ -1,10 +1,6 @@
 .main-block {
 	position: relative;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
 	min-width: 60.63em;
-	min-height: 100vh;
 
 	.responsive & {
 		min-width: 20em;

@@ -116,7 +116,7 @@ button:-moz-focusring,
 :disabled,
 [disabled],
 [aria-disabled="true"] {
-    cursor: not-allowed;
+    cursor: not-allowed !important;
 }
 
 a {

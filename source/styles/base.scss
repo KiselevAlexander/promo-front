@@ -1,5 +1,6 @@
-@import 'helpers/variables';
-        //'base/index';
+@import 'helpers/index',
+        'base/index',
+        'layout/_container.scss';
 
 
 @import 'components/filepicker',
@@ -44,4 +45,37 @@
         &.is-visible {
                 opacity: 1;
         }
+}
+
+
+html,
+body {
+    min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  align-items: center;
+    width: 100%;
+  min-height: 100vh;
+  background-image: url('/static/img/bg013.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50%;
+
+  &>.container {
+    padding-top: 3em;
+  }
+}
+
+.site-header {
+  position: absolute;
+  top: 3em;
+}
+
+.patterns {
+    .right {
+        width: 50%;
+        float: right;
+    }
 }

@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const image = require('gulp-image');
-const svg2png = require('gulp-svg2png');
 const {distImgs, distFonts, distIcons} = require('./common');
 
 
@@ -21,13 +20,6 @@ gulp.task('images', () => gulp
     .on('error', (e) => console.error('optimizeImages', e))
     .pipe(gulp.dest(distImgs))
     .on('error', (e) => console.error('copyImages', e)));
-
-
-// SVG to PNG
-gulp.task('svg', () => gulp
-    .src('source/images/**/*.svg')
-    .pipe(svg2png())
-    .pipe(gulp.dest('source/images/')));
 
 
 // Copy fonts

@@ -30,20 +30,20 @@ class Patterns extends React.Component {
 
         const {currentPatternId} = this.state;
 
-        console.log(currentPatternId)
-
         return (
-            <div className="patterns">
-                ptterns
-                <ul className="list">
-                    <li><button onClick={() => { this.patternClickHandler(1); }}>Pattern 1</button></li>
-                    <li><button onClick={() => { this.patternClickHandler(2); }}>Pattern 2</button></li>
-                    <li><button onClick={() => { this.patternClickHandler(3); }}>Pattern 3</button></li>
-                </ul>
+            <div className="patterns grid-2 tablet-1 phablet-1 phone-1">
+                <div className="col">
+                    <ul className="list">
+                        <li><button onClick={() => { this.patternClickHandler(1); }}>Pattern 1</button></li>
+                        <li><button onClick={() => { this.patternClickHandler(2); }}>Pattern 2</button></li>
+                        <li><button onClick={() => { this.patternClickHandler(3); }}>Pattern 3</button></li>
+                    </ul>
 
-                <button onClick={this.doneClickHandler}>Продолжить</button>
+                    <button onClick={this.doneClickHandler}>Продолжить</button>
+                </div>
 
-                {currentPatternId === 1 &&
+                <div className="col">
+                    {currentPatternId === 1 &&
                     <Video
                         autoPlay={false}
                         controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
@@ -54,9 +54,9 @@ class Patterns extends React.Component {
                     >
                         <source src={`/patterns/pattern-1.mp4`} type="video/mp4"/>
                     </Video>
-                }
+                    }
 
-                {currentPatternId === 2 &&
+                    {currentPatternId === 2 &&
                     <Video
                         autoPlay={false}
                         controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
@@ -67,8 +67,8 @@ class Patterns extends React.Component {
                     >
                         <source src={`/patterns/pattern-2.mp4`} type="video/mp4"/>
                     </Video>
-                }
-                {currentPatternId === 3 &&
+                    }
+                    {currentPatternId === 3 &&
                     <Video
                         autoPlay={false}
                         controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
@@ -79,7 +79,8 @@ class Patterns extends React.Component {
                     >
                         <source src={`/patterns/pattern-3.mp4`} type="video/mp4"/>
                     </Video>
-                }
+                    }
+                </div>
 
             </div>
         );
