@@ -1,6 +1,6 @@
 import React from 'react';
 import {request} from 'managers/request';
-
+import {API_BASE_URL} from 'consts';
 import Patterns from './steps/patterns';
 import ImagePicker from './steps/imagePicker';
 import Progress from './steps/progess';
@@ -34,7 +34,7 @@ class Main extends React.Component {
             image: this.state.image
         };
 
-        request.post('http://localhost:9000/createsession', getSessionParams)
+        request.post(API_BASE_URL + '/createsession', getSessionParams)
             .then((res) => res.json())
             .then((data) => {
 
@@ -49,7 +49,7 @@ class Main extends React.Component {
                 return data.session;
 
             })
-            .then((session) => request.put('http://localhost:9000/start', {session, pattern}))
+            .then((session) => request.put(API_BASE_URL + '/start', {session, pattern}))
             .then((res) => res.json())
             .then((data) => {
 
@@ -71,7 +71,7 @@ class Main extends React.Component {
     };
 
     getProggressStatus = (session) => {
-        request.post('http://localhost:9000/getstatus', {session})
+        request.post(API_BASE_URL + '/getstatus', {session})
             .then((res) => res.json())
             .then((data) => {
 

@@ -7,7 +7,7 @@ class Patterns extends React.Component {
         super(props);
 
         this.state = {
-            currentPatternId: 1
+            currentPatternId: 0
         };
 
     }
@@ -31,18 +31,27 @@ class Patterns extends React.Component {
         const {currentPatternId} = this.state;
 
         return (
-            <div className="patterns grid-2 tablet-1 phablet-1 phone-1">
+            <div className="patterns grid-2 tablet-2 phablet-1 phone-1">
                 <div className="col">
                     <ul className="list">
-                        <li><button onClick={() => { this.patternClickHandler(1); }}>Pattern 1</button></li>
-                        <li><button onClick={() => { this.patternClickHandler(2); }}>Pattern 2</button></li>
-                        <li><button onClick={() => { this.patternClickHandler(3); }}>Pattern 3</button></li>
+                        <li><button className="btn" onClick={() => { this.patternClickHandler(1); }}>Pattern 1</button></li>
+                        <li><button className="btn" onClick={() => { this.patternClickHandler(2); }}>Pattern 2</button></li>
+                        <li><button className="btn" onClick={() => { this.patternClickHandler(3); }}>Pattern 3</button></li>
                     </ul>
 
-                    <button onClick={this.doneClickHandler}>Продолжить</button>
+                    <button
+                        className="btn"
+                        onClick={this.doneClickHandler}
+                        disabled={(currentPatternId === 0)}
+                    >
+                        {(currentPatternId === 0) ? 'Выберите стиль видео' : 'Продолжить'}
+                    </button>
                 </div>
 
-                <div className="col">
+                <div className="col videoHolder">
+                    {currentPatternId === 0 &&
+                        <img src="/static/img/pic011.jpg" alt="" />
+                    }
                     {currentPatternId === 1 &&
                     <Video
                         autoPlay={false}

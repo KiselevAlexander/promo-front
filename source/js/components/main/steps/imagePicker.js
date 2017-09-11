@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import {readAsDataURL} from 'promise-file-reader';
+import AvatarEditor from 'react-avatar-editor';
 
 class ImagePicker extends React.Component {
     constructor(props) {
@@ -44,42 +45,46 @@ class ImagePicker extends React.Component {
         const {imageSrc, status} = this.state;
 
         return (
-            <table style={{width: '100%'}}>
-                <tr>
-
-                    <td style={{verticalAlign: 'top'}}>
-
-                        <Dropzone
-                            onDrop={this.onImagePick}
-                            disabled={status === 'Pending'}
-                        >
-                            Выберите изображение или перетаците его сюда
-                        </Dropzone>
+            <div className="grid-2">
+                <div className="col">
+                    <Dropzone
+                        onDrop={this.onImagePick}
+                        disabled={status === 'Pending'}
+                    >
+                        Выберите изображение или перетаците его сюда
+                    </Dropzone>
 
 
-                        {imageSrc &&
-                        <button
-                            onClick={this.nextStep}
-                            disabled={status === 'Pending'}
-                        >
-                            Продолжить
-                        </button>
-                        }
+                    {imageSrc &&
+                    <button
+                        className="btn"
+                        onClick={this.nextStep}
+                        disabled={status === 'Pending'}
+                    >
+                        Продолжить
+                    </button>
+                    }
 
-                        {status &&
-                        <div>Status: {status}</div>
-                        }
+                    {status &&
+                    <div>Status: {status}</div>
+                    }
+                </div>
+                <div className="col">
 
-                    </td>
-                    <td style={{verticalAlign: 'top'}}>
+                    {imageSrc &&
+                        <AvatarEditor
+                            image={imageSrc}
+                            width={250}
+                            height={250}
+                            border={50}
+                            color={[255, 255, 255, 0.6]} // RGBA
+                            scale={1.2}
+                            rotate={0}
+                        />
+                    }
 
-                        {imageSrc &&
-                            <img src={imageSrc} alt="" style={{maxWidth: '100%'}}/>
-                        }
-
-                    </td>
-                </tr>
-            </table>
+                </div>
+            </div>
         );
     }
 }

@@ -1,18 +1,28 @@
-.button {
+.btn {
+  display: inline-block;
+  font-size: 1vw;
+  color: #fff;
+  padding: 0.7vw 4vw 0.7vw 1.5vw;
+  border-radius: 2vw;
+  border: 1px solid #fff;
+  margin: 3vw 4vw 0 0;
+  position: relative;
+  background-color: transparent;
+  transition: 0.15s;
+  outline: 0;
 
-  &-icon {
-    cursor: pointer;
-    transition: color .4s, background .4s;
-    border-radius: 50%;
-    padding: 1px;
-    box-sizing: border-box;
-    font-size: 1.45em;
-
-    &:hover {
-      color:#a2a2a2;
-      background-color: #efefef;
-    }
-
+  &:hover {
+    background: #034ea2;
   }
 
+  .is-disabled,
+  [disabled] {
+    color: #efefef;
+    border-color: #efefef;
+    cursor: default;
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
 }

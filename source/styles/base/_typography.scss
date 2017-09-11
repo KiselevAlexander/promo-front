@@ -144,6 +144,11 @@ h6, .h6 {
 
 @include p;
 
+ul {
+	li {
+		list-style: none;
+	}
+}
 
 ul:not([class]), ol:not([class]) {
     list-style: none;

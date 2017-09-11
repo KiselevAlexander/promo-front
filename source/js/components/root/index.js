@@ -2,7 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import $ from 'react-radial-list'
 
 
 
@@ -29,11 +28,10 @@ class Root extends React.Component {
                 <header className="site-header">
                     <div className="logo">
                         <a href="#">
-                            <img src="/static/img/logo.png" alt=""/>
+                            <img src="/static/img/logo.png" alt="" />
                         </a>
                     </div>
                 </header>
-                <Link to="/player">Player</Link>
                 <div className="main-block">
                     {this.props.children}
                 </div>
