@@ -2,13 +2,13 @@ import React from 'react';
 import { DefaultPlayer as Video } from 'react-html5video';
 
 const PATTERNS = [
+    {id: 1, image: '/static/img/photo001.jpg'},
     {id: 2, image: '/static/img/photo001.jpg'},
     {id: 3, image: '/static/img/photo001.jpg'},
-    {id: 4, image: '/static/img/photo001.jpg'},
-    {id: 5, image: '/static/img/photo001.jpg'},
-    {id: 6, image: '/static/img/photo001.jpg'},
-    {id: 7, image: '/static/img/photo001.jpg'},
-    {id: 8, image: '/static/img/photo001.jpg'}
+    {id: 1, image: '/static/img/photo001.jpg'},
+    {id: 2, image: '/static/img/photo001.jpg'},
+    {id: 3, image: '/static/img/photo001.jpg'},
+    {id: 1, image: '/static/img/photo001.jpg'}
 ];
 
 class Patterns extends React.Component {
@@ -47,7 +47,7 @@ class Patterns extends React.Component {
                         {PATTERNS.map((item, key) => (
                             <li
                                 key={key}
-                                className={`circle circle${item.id}`}
+                                className={`circle circle${key + 2}`}
                                 style={{backgroundImage: `url('${item.image}')`}}
                                 onClick={() => { this.patternClickHandler(item.id); }}
                             >
