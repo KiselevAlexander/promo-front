@@ -1,50 +1,11 @@
 $path: '../images/';
 $path2: '../img/';
 
-$color-blue-light:     #0089ff;
-$color-blue:           #1177ff; // old #1f69ee
-$color-blue-dark:      #0f56d7;
-$color-blue-darken:    #2244cc;
-
-$color-gray-lighten:   #f4f6f9; // old #f8fafc
-$color-gray-light:     #eef2f7; // old #f2f6f9
-$color-gray:           #d8dde4; // old #e2e9f2
-$color-gray-dark:      #94a1b4;
-$color-gray-darken:    #8090a6;
-
-$color-green-light:    #22dc98;
-$color-green:          #20ce8e;
-$color-green-dark:     #34bc92;
-$color-red:            #ff5056;
-$color-modal-bg:       rgba($color-gray-light, .8);
-
 $color-text:           #000;        	// Цвет основного текста
 $color-white:          #fff;
-$color-bg:             $color-white;	// Цвет фона
-$color-marker:         $color-gray; 	// Цвет маркеров списков <ul>, <ol> и <blockquote>, <cite>
 
-$color-class-light:    #71c5e4;
-$color-class-standard: #39aeff;
-$color-class-flexible: #166fdf;
-$color-class-business: #d8a860;
-
-$color-tariff-basic:   $color-blue-dark;
-$color-tariff-bronze:  #ba8371;
-$color-tariff-silver:  $color-gray-darken;
-$color-tariff-gold:    #e5b253;
-
-$color-facebook:       #3B5998;
-$color-vkontakte:      #6383A8;
-$color-odnoklassniki:  #F4731C;
-$color-youtube:        #CD201F;
-$color-instagram:      #E4405F;
-
-$v2-color-lightGray: #e6ecf7;
-$v2-color-gray: #737576;
-$v2-color-text: #111820;
-$v2-color-lightGray: #E5ECF7;
-$v2-color-blue: #003594;
-$v2-color-lightBlue: #b4c8e7;
+$color-blue: #034ea2;
+$color-red: #fb0000;
 
 
 $p-1:  .06em;    // 1px
@@ -122,7 +83,8 @@ $h2: (
 $h3: (
         font-size: 1.625em, // 26px
         line-height: map-get($h2, line-height),
-        margin: 2.5rem 0 1rem
+        margin: 2.5rem 0 1rem,
+        color: $color-white
 );
 
 $h4: (

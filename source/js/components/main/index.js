@@ -125,23 +125,18 @@ class Main extends React.Component {
 
     };
 
+    stepBackClickHandler = () => {
+        this.setState((state, props) => ({
+            step: state.step - 1
+        }));
+    };
+
     render() {
 
         const {step, percent, sessionLinkID} = this.state;
 
         return (
             <main>
-                {step !== 0 &&
-                    <button
-                        onClick={() => {
-                            this.setState((state, props) => ({
-                                step: step - 1
-                            }));
-                        }}
-                    >
-                        Назад
-                    </button>
-                }
                 {step === 0 &&
                     <Patterns
                         onChange={(patternID) => {
@@ -156,6 +151,7 @@ class Main extends React.Component {
                 {step === 1 &&
                     <ImagePicker
                         onSelect={this.onImageSelect}
+                        onStepBackClick={this.stepBackClickHandler}
                     />
                 }
 

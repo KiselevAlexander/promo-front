@@ -31,7 +31,6 @@ a {
 	transition: color .4s, background-color .4s, border-color .4s;
 
     &:hover {
-		color: $color-blue-darken;
         text-decoration: none;
     }
 
@@ -99,7 +98,6 @@ h1, .h1 {
 
 
 h2, .h2 {
-	color: $color-blue-darken;
 
 	& + .fs-14 {
 
@@ -119,7 +117,9 @@ h2, .h2 {
 
 
 h3, .h3 {
+	font-size: 36px;
 	font-weight: 400;
+	color: $color-white;
 }
 
 
@@ -130,13 +130,13 @@ h4, .h4 {
 
 h5, .h5 {
 	text-transform: uppercase;
-	color: $color-gray-dark;
+	color: $color-white;
 	letter-spacing: .04em;
 }
 
 
 h6, .h6 {
-	color: $color-gray-dark;
+	color: $color-white;
 	text-transform: uppercase;
 	letter-spacing: .1em;
 }
@@ -172,7 +172,6 @@ ul:not([class]) {
             width: .5em;
             height: .5em;
             left: -1.3em; top: .55em;
-            background: $color-marker;
             border-radius: 50%;
         }
 
@@ -198,7 +197,6 @@ ol:not([class]) {
 			line-height: 1.8;
             text-align: center;
 			border-radius: 50%;
-			background-color: $color-gray;
         }
 
     }
@@ -210,7 +208,7 @@ blockquote:not([class]) {
     color: lighten($color-text, 20%);
     font-size: .8em;
     padding-top: .8rem;
-    background: linear-gradient(90deg, $color-marker 100%, transparent 0) 0 0 no-repeat;
+    background: linear-gradient(90deg, $color-white 100%, transparent 0) 0 0 no-repeat;
     background-size: 5em 0.3em;
 
     cite {
@@ -243,7 +241,7 @@ hr {
     clear: both;
     height: 1px;
     border: 0;
-    color: $color-marker;
+    color: $color-white;
     background: currentColor;
 }
 
@@ -273,7 +271,7 @@ sup {
 
 
 fieldset {
-    border: 1px solid $color-marker;
+    border: 1px solid $color-white;
     padding: .35em .625em .75em;
 }
 
@@ -458,82 +456,8 @@ main {
 
 .color {
 
-	&-text {
-		color: $color-text !important;
-	}
-
-	&-blue {
-		color: $color-blue;
-	}
-
-	&-blueDark {
-		color: $color-blue-dark;
-	}
-
-	&-blueDarken {
-		color: $color-blue-darken;
-	}
-
-	&-green {
-		color: $color-green;
-	}
-
-	&-greenDark {
-		color: $color-green-dark;
-	}
-
-	&-gray {
-		color: $color-gray;
-	}
-
-	&-grayDark {
-		color: $color-gray-dark;
-	}
-
-	&-grayDarken {
-		color: $color-gray-darken;
-	}
-
-	&-red {
-		color: $color-red;
-	}
-
-	&-tariffBasic {
-		color: $color-tariff-basic;
-	}
-
-	&-tariffBronze {
-		color: $color-tariff-bronze;
-	}
-
-	&-tariffSilver {
-		color: $color-tariff-silver;
-	}
-
-	&-tariffGold {
-		color: $color-tariff-gold;
-	}
-
 	&-white {
 		color: $color-white;
-	}
-
-
-	&-v2-gray {
-		color: $v2-color-gray !important;
-	}
-
-	&-v2-text,
-	&-v2-dark {
-		color: $v2-color-text !important;
-	}
-
-	&-v2-blue {
-		color: $v2-color-blue !important;
-	}
-
-	&-v2-lightBlue {
-		color: $v2-color-lightBlue !important;
 	}
 
 }
@@ -637,7 +561,7 @@ main {
 	}
 
 	small {
-		color: $color-gray-dark;
+
 	}
 
 	&-buttonCover {
@@ -802,7 +726,7 @@ hr {
 %shadow-box {
 	border-radius: .5em;
 	background-color: $color-white;
-	box-shadow: 0 0 0 1px $color-gray-light inset,
+	box-shadow: 0 0 0 1px $color-white inset,
 				0 0 .3em 0 rgba(15, 86, 215, 0),
 				0 0 .75em 0 rgba(15, 86, 215, 0);
 	transition: box-shadow .3s, color .3s, border-color .3s;
@@ -814,50 +738,12 @@ hr {
 }
 
 
-%border-box {
-	padding: $p-20 $p-30;
-	border: 1px solid $color-gray;
-}
-
-
 .bg {
-
-	&-grayLighten {
-		background-color: $color-gray-lighten;
-	}
-
-	&-grayLight {
-		background-color: #fcfcfc;
-	}
-
-	&-classLight {
-		background-color: $color-class-light;
-	}
-
-	&-classStandard {
-		background-color: $color-class-standard;
-	}
-
-	&-classFlexible {
-		background-color: $color-class-flexible;
-	}
-
-	&-classBusiness {
-		background-color: $color-class-business;
-	}
 
 	&-image {
 		background-position: 50% 50%;
 		background-repeat: no-repeat;
 		background-size: cover;
-	}
-
-	&-v2-lightGray {
-		background-color: $v2-color-lightGray;
-	}
-
-	&-v2-blue {
-		background-color: $v2-color-blue;
 	}
 
 }
@@ -1403,27 +1289,6 @@ hr {
 }
 
 
-.tableHead {
-	position: relative;
-	margin-bottom: .6em;
-	padding-bottom: .8em;
-
-	&:before {
-		content: '';
-		display: block !important;
-		position: absolute;
-		left: $column-gapH-gen/2;
-		right: $column-gapH-gen/2;
-		bottom: 0;
-		height: 2px;
-		background-repeat: repeat-x;
-		background-image: linear-gradient(90deg, $color-gray 2px, transparent 0);
-		background-size: 6px 2px;
-	}
-
-}
-
-
 .icon-detail {
 	position: relative;
 	top: .06em;
@@ -1847,4 +1712,8 @@ hr {
 
 	}
 
+}
+
+.right {
+	float: right !important;
 }

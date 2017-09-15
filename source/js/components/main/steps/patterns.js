@@ -1,6 +1,16 @@
 import React from 'react';
 import { DefaultPlayer as Video } from 'react-html5video';
 
+const PATTERNS = [
+    {id: 2, image: '/static/img/photo001.jpg'},
+    {id: 3, image: '/static/img/photo001.jpg'},
+    {id: 4, image: '/static/img/photo001.jpg'},
+    {id: 5, image: '/static/img/photo001.jpg'},
+    {id: 6, image: '/static/img/photo001.jpg'},
+    {id: 7, image: '/static/img/photo001.jpg'},
+    {id: 8, image: '/static/img/photo001.jpg'}
+];
+
 class Patterns extends React.Component {
 
     constructor(props) {
@@ -34,9 +44,27 @@ class Patterns extends React.Component {
             <div className="patterns grid-2 tablet-2 phablet-1 phone-1">
                 <div className="col">
                     <ul className="list">
-                        <li><button className="btn" onClick={() => { this.patternClickHandler(1); }}>Pattern 1</button></li>
-                        <li><button className="btn" onClick={() => { this.patternClickHandler(2); }}>Pattern 2</button></li>
-                        <li><button className="btn" onClick={() => { this.patternClickHandler(3); }}>Pattern 3</button></li>
+                        {PATTERNS.map((item, key) => (
+                            <li
+                                key={key}
+                                className={`circle circle${item.id}`}
+                                style={{backgroundImage: `url('${item.image}')`}}
+                                onClick={() => { this.patternClickHandler(item.id); }}
+                            >
+                            </li>
+                        ))}
+                        <li
+                            className="circle circle9"
+                        />
+                        <li
+                            className="circle circle10"
+                        />
+                        <li
+                            className="circle circle11"
+                        />
+                        <li
+                            className="circle circle12"
+                        />
                     </ul>
 
                     <button

@@ -1,15 +1,18 @@
 .btn {
   display: inline-block;
-  font-size: 1vw;
+  font-size: 1.125em;
   color: #fff;
-  padding: 0.7vw 4vw 0.7vw 1.5vw;
-  border-radius: 2vw;
+  padding: .9em 2em;
+  border-radius: 2em;
   border: 1px solid #fff;
-  margin: 3vw 4vw 0 0;
   position: relative;
   background-color: transparent;
   transition: 0.15s;
   outline: 0;
+  min-width: 12.25em;
+  cursor: pointer;
+  line-height: 1;
+  text-align: left;
 
   &:hover {
     background: #034ea2;
