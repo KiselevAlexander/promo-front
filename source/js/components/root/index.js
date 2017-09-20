@@ -28,7 +28,7 @@ class Root extends React.Component {
                         </div>
                     </div>
                 </header>
-                <div className="main-block">
+                <div className="main-block flex-middle-content">
                     <div className="wrapper">
                         {this.props.children}
                     </div>

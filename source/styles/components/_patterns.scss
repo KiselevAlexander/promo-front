@@ -1,0 +1,223 @@
+.patterns {
+
+    .right {
+        width: 50%;
+        float: right;
+    }
+
+    .left-side {
+
+        button.action {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-5%) translateX(-15%);
+        }
+    }
+
+    .list {
+        position: relative;
+        left: 5vw;
+        &:before {
+            display: block;
+            content: '';
+            padding-top: 100%;
+        }
+    }
+
+    .circle {
+        border-radius: 50%;
+        position: absolute;
+        z-index: 400;
+        cursor: pointer;
+        transition: box-shadow .4s;
+        background-size: cover;
+        background-position: 50%;
+        background-repeat: no-repeat;
+
+        &:hover {
+            box-shadow: 0 0 15px #fff;
+        }
+
+        &.active {
+            box-shadow: 0 0 25px #fff;
+        }
+
+        &.circle1 {
+            width: 3.25em;
+            height: 3.25em;
+            left: 0;
+            top: 29.375em;
+            background: #fff;
+        }
+        &.circle1:hover {
+            box-shadow: none;
+        }
+        &.circle2 {
+            width: 3.188em;
+            height: 3.188em;
+            left: 19.188em;
+            top: 29.375em;
+
+            span {
+                bottom: -3vw;
+                left: -4vw
+            }
+
+        }
+
+        &.circle3 {
+            width: 4.063em;
+            height: 4.063em;
+            left: 12.688em;
+            top: 29.75em;
+        }
+        &.circle4 {
+            width: 4.875em;
+            height: 4.875em;
+            left: 5.5em;
+            top: 27.313em;
+        }
+        &.circle5 {
+            width: 5.625em;
+            height: 5.625em;
+            left: .688em;
+            top: 20.500em;
+        }
+        &.circle5 span {
+            left: -8vw;
+        }
+        &.circle6 {
+            width: 6.25em;
+            height: 6.25em;
+            left: 0;
+            top: 11.75em;
+        }
+        &.circle6 span {
+        }
+        &.circle7 {
+            width: 7.5em;
+            height: 7.5em;
+            left: 4.875em;
+            top: 3.813em;
+        }
+        &.circle8 {
+            width: 8.625em;
+            height: 8.625em;
+            left: 14.125em;
+            top: .813em;
+        }
+        &.circle9  {
+            width: 3.125em;
+            height: 3.125em;
+            left: 23.5em;
+            top: 25.938em;
+            background: #0ba1de;
+        }
+        &.circle10 {
+            width: 2.625em;
+            height: 2.625em;
+            left: 26em;
+            top: 21.875em;
+            background: #0ba1de;
+        }
+        &.circle11 {
+            width: 2.125em;
+            height: 2.125em;
+            left: 26.75em;
+            top: 17em;
+            background: #0ba1de;
+        }
+        &.circle12 {
+            width: 1.313em;
+            height: 1.313em;
+            left: 25.625em;
+            top: 13.438em;
+            background: #0ba1de;
+        }
+    }
+}
+
+@include phablet {
+
+    .patterns {
+
+        .list {
+            text-align: center;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        .left-side {
+            text-align: center;
+
+            button.action {
+                position: relative;
+                transform: none;
+                left: 0;
+                top: 0;
+                margin-top: 2em;
+                margin-bottom: 2em;
+            }
+
+        }
+        .circle {
+            position: relative !important;
+            left: 0 !important;
+            top: 0 !important;
+            display: inline-block;
+            width: 5.625em;
+            height: 5.625em;
+            margin: 0 1em;
+
+            &.phablet-hide {
+                display: none;
+            }
+        }
+    }
+
+}
+
+@include phone {
+
+    .patterns {
+        .list {
+            text-align: center;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        .left-side {
+            text-align: center;
+
+            button.action {
+                position: relative;
+                transform: none;
+                left: 0;
+                top: 0;
+                margin-top: 2em;
+                margin-bottom: 2em;
+            }
+
+        }
+
+        .circle {
+            position: relative !important;
+            left: 0 !important;
+            top: 0 !important;
+            display: inline-block;
+            width: 5.625em;
+            height: 5.625em;
+            margin: 0 1em;
+
+            &.phablet-hide {
+                display: none;
+            }
+        }
+    }
+
+}

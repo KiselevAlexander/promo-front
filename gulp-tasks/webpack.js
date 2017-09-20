@@ -11,7 +11,7 @@ const compiler = webpack(webpackConfig);
 gulp.task('browser-sync-webpack', () => {
     browserSyncWebpack.init({
         ui: false,
-        open: true,
+        open: false,
         server: {
             baseDir: 'public',
             middleware: [

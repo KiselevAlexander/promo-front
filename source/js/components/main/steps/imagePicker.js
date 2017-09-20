@@ -6,6 +6,8 @@ import {readAsDataURL} from 'promise-file-reader';
 import AvatarEditor from 'react-avatar-editor';
 import Nouislider from 'react-nouislider';
 
+var AvatarCropper = require("react-avatar-cropper");
+
 import {Layer, Rect, Stage, Group, Text, Image} from 'react-konva';
 
 class ImagePicker extends React.Component {
@@ -85,8 +87,9 @@ class ImagePicker extends React.Component {
 
                     this.setState({
                         image,
+                        imageSrc: imageData,
                         width: imageCroper.width() * 2,
-                        height: 1080 / (1920 / imageCroper.width()) * 2,
+                        height: image.height / (image.width / imageCroper.width()) * 2,
                         iX: 0,
                         iY: 0,
                         scale: 100
@@ -107,15 +110,10 @@ class ImagePicker extends React.Component {
         const canvas = $('canvas')[0];
 
         const dataURL = canvas.toDataURL('image/jpeg');
-        console.log(dataURL);
-
 
         const w = window.open(dataURL);
 
-
-
-
-        //this.props.onSelect(this.state.imageSrc);
+        this.props.onSelect(dataURL);
 
         // const canvas = this.editor.getImage();
 
@@ -177,6 +175,9 @@ class ImagePicker extends React.Component {
 
         const _this = this;
 
+
+        const calcHeight = width
+
         return (
             <div className="grid-2 tablet-1 phablet-1 phone-1 float">
 
@@ -190,9 +191,6 @@ class ImagePicker extends React.Component {
                         Загрузить фото
                     </Dropzone>
 
-
-
-
                     {status &&
                     <div>Status: {status}</div>
                     }
@@ -200,6 +198,7 @@ class ImagePicker extends React.Component {
                 <div className="col right">
                     <div className={classNames('imageCroper', 'mt-30', {'is-visible': (image)})}>
                         <div className="canvas" style={{height: height / 2}}>
+
                             <Stage
                                 width={width}
                                 height={height}
@@ -286,7 +285,7 @@ class ImagePicker extends React.Component {
                         onClick={this.props.onStepBackClick}
                     >Вернуться</button>
                     <button
-                        className="btn"
+                        className="btn ml-15"
                         onClick={this.nextStep}
                         disabled={status === 'Pending'}
                     >

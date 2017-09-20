@@ -10,6 +10,8 @@
         'components/range-slider',
         'components/videoHolder',
         'components/imageCroper',
+        'components/patterns',
+        'components/footer',
         'components/main';
 
 @import 'components/player';
@@ -82,130 +84,11 @@ body {
   flex: 1;
 }
 
-footer {
-  width: 100%;
-  min-height: 3.75em;
-  background: #034ea2;
-
-  .share {
-    float: right;
-
-    ul {
-
-      li {
-        list-style: none;
-        display: inline-block;
-        margin: 0 0.5vw 0 0;
-        a {
-          display: block;
-          width: 2.5vw;
-          height: 2.5vw;
-          text-indent: -9999px;
-          overflow: hidden;
-          background: url(/static/img/icon_sprite.png);
-          background-size: cover;
-          cursor: pointer;
-          border-radius: 5px;
-          transition: 0.25s;
-        }
-      }
-
-    }
-
-  }
-
-}
 
 
 
-.patterns {
-    .right {
-        width: 50%;
-        float: right;
+@media (max-width: 1024px) {
+    html {
+        font-size: 12px;
     }
-  .list {
-    position: relative;
-    &:before {
-      display: block;
-      content: '';
-      padding-top: 100%;
-    }
-  }
-  .circle {
-    border-radius: 50%;
-    position: absolute;
-    z-index: 400;
-    cursor: pointer;
-    transition: box-shadow .4s;
-    background-size: cover;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    
-    &:hover {
-      box-shadow: 0 0 25px #fff;
-    }
-
-    &.circle1 {
-      width: 3.7vw;
-      height: 3.7vw;
-      left: 0.4vw;
-      top: 22.6vw;
-      background: #fff;
-    }
-    &.circle1:hover {
-      box-shadow: none;
-    }
-    &.circle2 {
-      width: 2.7vw;
-      height: 2.7vw;
-      left: 22vw;
-      top: 24.5vw;
-    }
-    &.circle2 span { bottom: -3vw; left: -4vw }
-    &.circle3 {
-      width: 3.4vw;
-      height: 3.4vw;
-      left: 16.6vw;
-      top: 24.8vw;
-    }
-    &.circle4 {
-      width: 4.1vw;
-      height: 4.1vw;
-      left: 10.6vw;
-      top: 22.8vw;
-    }
-    &.circle5 {
-      width: 4.7vw;
-      height: 4.7vw;
-      left: 6.6vw;
-      top: 17.1vw;
-    }
-    &.circle5 span {
-      left: -8vw;
-    }
-    &.circle6 {
-      width: 5.2vw;
-      height: 5.2vw;
-      left: 6.1vw;
-      top: 9.8vw;
-    }
-    &.circle6 span {
-    }
-    &.circle7 {
-      width: 6.2vw;
-      height: 6.2vw;
-      left: 10.1vw;
-      top: 3.2vw;
-    }
-    &.circle8 {
-      width: 7.2vw;
-      height: 7.2vw;
-      left: 17.8vw;
-      top: 0.7vw;
-    }
-    &.circle9 { width: 2.6vw; height: 2.6vw; left: 25.6vw; top: 21.8vw; background: #0ba1de;}
-    &.circle10 { width: 2.2vw; height: 2.2vw; left: 27.7vw; top: 18.2vw; background: #0ba1de;}
-    &.circle11 { width: 1.8vw; height: 1.8vw; left: 28.3vw; top: 14.2vw; background: #0ba1de; }
-    &.circle12 { width: 1.1vw; height: 1.1vw; left: 27.4vw; top: 11.2vw; background: #0ba1de; }
-  }
 }

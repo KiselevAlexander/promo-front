@@ -9,6 +9,10 @@
 	background: $color-text;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 
 html {
 	overflow-y: auto;
@@ -1716,4 +1720,32 @@ hr {
 
 .right {
 	float: right !important;
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+
+.flex-middle-content {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+}
+
+@include phablet {
+	.flex-middle-content {
+		display: block;
+	}
+}
+
+@include phone {
+	.flex-middle-content {
+		display: block;
+	}
 }
