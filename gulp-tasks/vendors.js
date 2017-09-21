@@ -32,6 +32,7 @@ const libs = [
     'react-html5video',
     'react-circular-progressbar',
     'react-nouislider',
+    'react-konva',
     'promise-file-reader'
 ];
 
