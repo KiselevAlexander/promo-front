@@ -21,10 +21,6 @@ class Main extends React.Component {
         };
     }
 
-    componentDidMount() {
-        this.getProggressStatus();
-    }
-
     doCreateVideo = () => {
 
         this.setState({

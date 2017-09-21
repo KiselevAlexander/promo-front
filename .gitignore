@@ -2,6 +2,8 @@
 /logs
 /public/video
 /public/images
+/public/static/js
+/public/static/css
 /.idea
 
 ~*
