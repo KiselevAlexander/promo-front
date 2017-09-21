@@ -1,12 +1,16 @@
 .imageCroper {
   width: 100%;
-  min-height: 30px;
+  min-height: 0;
   opacity: 0;
-  height: 1px;
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
 
   &.is-visible {
-    height: auto;
+    max-height: 100%;
+    min-height: 1.875em;
     opacity: 1;
+    overflow: visible;
   }
 
   .konvajs-content {
@@ -16,10 +20,10 @@
   .canvas {
     width: 100%;
     overflow: hidden;
+    box-shadow: 0 0 .938em rgba(0, 0, 0, .2);
   }
 
   canvas {
-    border: 1px solid #fff !important;
     cursor: grab;
 
     &:active {
@@ -27,5 +31,9 @@
     }
 
   }
+}
 
+.imageHolder {
+  padding:  1.875em 1em;
+  background-color: rgba(255,255,255,0.3);
 }

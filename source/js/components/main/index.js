@@ -71,6 +71,13 @@ class Main extends React.Component {
     };
 
     getProggressStatus = (session) => {
+
+        this.setState((state) => ({
+            percent: (state.percent) ? state.percent + 10 : 0
+        }));
+
+        return;
+
         request.post(API_BASE_URL + '/getstatus', {session})
             .then((res) => res.json())
             .then((data) => {
@@ -80,6 +87,12 @@ class Main extends React.Component {
                 this.setState({
                     percent: data.perc
                 });
+
+                setTimeout(() => {
+                    this.getProggressStatus(session);
+                }, 500);
+
+                return;
 
                 switch (data.status) {
                     case 2:

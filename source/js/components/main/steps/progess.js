@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import CircularProgressbar from 'react-circular-progressbar';
 
 class Progress extends React.Component {
     render() {
@@ -9,6 +10,8 @@ class Progress extends React.Component {
         return (
             <div className="progess">
                 Создание видео: {percent} %
+
+                <CircularProgressbar percentage={percent} />
 
                 {session &&
                     <div>

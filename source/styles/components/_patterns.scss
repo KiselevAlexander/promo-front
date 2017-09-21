@@ -11,11 +11,14 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translateY(-5%) translateX(-15%);
+            transform: translateY(-5%) translateX(-25%);
         }
     }
 
     .list {
+        display:block;
+        margin: 0;
+        padding: 0;
         position: relative;
         left: 5vw;
         &:before {
@@ -144,6 +147,7 @@
 
         .list {
             text-align: center;
+            left: 0;
 
             &:before {
                 display: none;
@@ -185,6 +189,7 @@
     .patterns {
         .list {
             text-align: center;
+            left: 0;
 
             &:before {
                 display: none;

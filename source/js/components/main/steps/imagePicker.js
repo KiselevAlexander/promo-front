@@ -61,7 +61,7 @@ class ImagePicker extends React.Component {
 
             this.setState({
                 width: $('.imageCroper').width() * 2,
-                height: 1080 / (1920 / $('.imageCroper').width()) * 2
+                canvasHeight: 1080 / (1920 / $('.imageCroper').width()) * 2
             });
 
         }, 150);
@@ -90,6 +90,7 @@ class ImagePicker extends React.Component {
                         imageSrc: imageData,
                         width: imageCroper.width() * 2,
                         height: image.height / (image.width / imageCroper.width()) * 2,
+                        canvasHeight: 1080 / (1920 / $('.imageCroper').width()) * 2,
                         iX: 0,
                         iY: 0,
                         scale: 100
@@ -111,7 +112,7 @@ class ImagePicker extends React.Component {
 
         const dataURL = canvas.toDataURL('image/jpeg');
 
-        const w = window.open(dataURL);
+        //const w = window.open(dataURL);
 
         this.props.onSelect(dataURL);
 
@@ -168,7 +169,7 @@ class ImagePicker extends React.Component {
 
     render() {
 
-        const {image, imageSrc, status, width, height, scale, rotate, text, iX, iY} = this.state;
+        const {image, imageSrc, status, width, height, canvasHeight, scale, rotate, text, iX, iY} = this.state;
 
         const iW = (image) ? image.width : 0;
         const iH = (image) ? image.height : 0;
@@ -196,77 +197,84 @@ class ImagePicker extends React.Component {
                     }
                 </div>
                 <div className="col right">
-                    <div className={classNames('imageCroper', 'mt-30', {'is-visible': (image)})}>
-                        <div className="canvas" style={{height: height / 2}}>
+                    <div className="imageHolder">
+                        {!image &&
+                            <img src="/static/img/pic011.jpg" alt="" className="bordered" />
+                        }
+                        <div className={classNames('imageCroper', {'is-visible': (image)})}>
+                            <div className="canvas" style={{height: canvasHeight / 2}}>
 
-                            <Stage
-                                width={width}
-                                height={height}
-                            >
-                                <Layer
-                                    reg={this.setEditorRef}
+                                <Stage
+                                    width={width}
+                                    height={canvasHeight}
                                 >
-                                    <Image
-                                        ref={(elem) => { this.image = elem; }}
-                                        image={image}
-                                        scale={{x: scale * 0.01, y: scale * 0.01}}
-                                        width={(iH < iW && iW < width) ? iW / (iH / height) : width}
-                                        height={(iH > iW && iH > height) ? iH / (iW / width) : height}
-                                        x={iX}
-                                        y={iY}
-                                        draggable
-                                        dragBoundFunc={function(pos) {
+                                    <Layer
+                                        reg={this.setEditorRef}
+                                    >
+                                        <Image
+                                            ref={(elem) => { this.image = elem; }}
+                                            image={image}
+                                            scale={{x: scale * 0.01, y: scale * 0.01}}
+                                            width={(iH < iW && iW < width) ? iW / (iH / height) : width}
+                                            height={(iH > iW && iH > height) ? iH / (iW / width) : height}
+                                            x={iX}
+                                            y={iY}
+                                            draggable
+                                            dragBoundFunc={function(pos) {
 
-                                            const cS = scale * 0.01;
+                                                const cS = scale * 0.01;
 
 
-                                            let _x = pos.x;
-                                            let _y = pos.y;
+                                                let _x = pos.x;
+                                                let _y = pos.y;
 
-                                            if (height - (this.getHeight() * cS) < pos.y) {
-                                                _y = (pos.y < 0) ? pos.y : 0;
-                                            } else {
-                                                _y = height - (this.getHeight() * cS);
-                                            }
+                                                if (canvasHeight - (this.getHeight() * cS) < pos.y) {
+                                                    _y = (pos.y < 0) ? pos.y : 0;
+                                                } else {
+                                                    _y = canvasHeight - (this.getHeight() * cS);
+                                                }
 
-                                            if (width - (this.getWidth() * cS) < pos.x) {
-                                                _x = (pos.x < 0) ? pos.x : 0;
-                                            } else {
-                                                _x = width - (this.getWidth() * cS);
-                                            }
+                                                if (width - (this.getWidth() * cS) < pos.x) {
+                                                    _x = (pos.x < 0) ? pos.x : 0;
+                                                } else {
+                                                    _x = width - (this.getWidth() * cS);
+                                                }
 
-                                            _this.setState({
-                                                iX: _x,
-                                                iY: _y
-                                            });
+                                                _this.setState({
+                                                    iX: _x,
+                                                    iY: _y
+                                                });
 
-                                            return {
-                                                x: _x,
-                                                y: _y
-                                            };
-                                        }}
-                                    />
+                                                return {
+                                                    x: _x,
+                                                    y: _y
+                                                };
+                                            }}
+                                        />
 
-                                    <Text
-                                        y={(height / 100) * 80}
-                                        x={50}
-                                        fontSize="36"
-                                        fill="#fff"
-                                        text={text}
-                                    />
+                                        <Text
+                                            y={(canvasHeight / 100) * 80}
+                                            x={50}
+                                            fontSize="36"
+                                            fill="#fff"
+                                            text={text}
+                                        />
 
-                                </Layer>
-                            </Stage>
+                                    </Layer>
+                                </Stage>
+                            </div>
+
+                            <Nouislider
+                                range={{min: 100, max: 200}}
+                                start={[scale]}
+                                onChange={this.scaleChangeHandler}
+                            />
+                            {/*<button className="left" onClick={this.rotateLeft}>left</button>
+                             <button className="right" onClick={this.rotateRight}>right</button>*/}
                         </div>
-
-                        <Nouislider
-                            range={{min: 100, max: 200}}
-                            start={[scale]}
-                            onChange={this.scaleChangeHandler}
-                        />
-                        {/*<button className="left" onClick={this.rotateLeft}>left</button>
-                         <button className="right" onClick={this.rotateRight}>right</button>*/}
                     </div>
+
+
 
                 </div>
 
