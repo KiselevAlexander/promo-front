@@ -3,12 +3,9 @@ import $ from 'jquery';
 import classNames from 'classnames';
 import Dropzone from 'react-dropzone';
 import {readAsDataURL} from 'promise-file-reader';
-import AvatarEditor from 'react-avatar-editor';
 import Nouislider from 'react-nouislider';
 
-var AvatarCropper = require("react-avatar-cropper");
-
-import {Layer, Rect, Stage, Group, Text, Image} from 'react-konva';
+import {Layer, Stage, Text, Image} from 'react-konva';
 
 class ImagePicker extends React.Component {
 

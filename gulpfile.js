@@ -6,11 +6,11 @@ requireDir('./gulp-tasks');
 
 
 // Production build
-gulp.task('default', ['clean', 'apply-prod-environment', 'vendor', 'javascript', 'sass']);
+// gulp.task('default', ['clean', 'apply-prod-environment', 'vendor', 'javascript', 'sass']);
 
 
 // Production build
-// gulp.task('default', ['clean', 'apply-prod-environment', 'vendor', 'javascript', 'sass', 'images', 'fonts', 'icons']);
+gulp.task('default', ['clean', 'apply-prod-environment', 'vendor', 'javascript', 'sass', 'images', 'fonts', 'icons']);
 
 
 // Development build

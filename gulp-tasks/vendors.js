@@ -30,6 +30,7 @@ const libs = [
     'react-input-mask',
     'react-dropzone',
     'react-html5video',
+    'react-circular-progressbar',
     'promise-file-reader'
 ];
 
