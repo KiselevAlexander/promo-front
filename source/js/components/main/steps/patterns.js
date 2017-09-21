@@ -83,7 +83,7 @@ class Patterns extends React.Component {
 
                 </div>
 
-                <div className="col flex-middle-content">
+                <div className="col right-side flex-middle-content">
                     <div className="videoHolder">
                         {currentPatternId === 0 &&
                             <img src="/static/img/pic011.jpg" alt="" />

@@ -154,8 +154,14 @@
             }
         }
 
+        .right-side {
+            order: 1;
+        }
+
+
         .left-side {
             text-align: center;
+            order: 2;
 
             button.action {
                 position: relative;
@@ -195,9 +201,14 @@
                 display: none;
             }
         }
+        
+        .right-side {
+            order: 1;
+        }
 
         .left-side {
             text-align: center;
+            order: 2;
 
             button.action {
                 position: relative;
