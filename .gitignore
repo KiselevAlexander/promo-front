@@ -1,6 +1,9 @@
 /node_modules/*
 /logs
+/public/video
+/public/images
 /.idea
+
 ~*
 .directory
 *.orig

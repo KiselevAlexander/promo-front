@@ -1,4 +1,5 @@
 import React from 'react';
+import {STATIC_URL} from 'consts';
 import {DefaultPlayer as Video} from 'react-html5video';
 
 class Player extends React.Component {
@@ -19,12 +20,12 @@ class Player extends React.Component {
                 <Video
                     autoPlay={false}
                     controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                    poster={`/images/${videoID}.jpg`}
+                    poster={`${STATIC_URL}/images/${videoID}.jpg`}
                     onCanPlayThrough={() => {
                         // Do stuff
                     }}
                 >
-                    <source src={`/video/${videoID}.mp4`} type="video/mp4" />
+                    <source src={`${STATIC_URL}/video/${videoID}.mp4`} type="video/mp4" />
                 </Video>
             </div>
         );

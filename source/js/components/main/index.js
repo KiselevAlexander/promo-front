@@ -21,6 +21,10 @@ class Main extends React.Component {
         };
     }
 
+    componentDidMount() {
+        this.getProggressStatus();
+    }
+
     doCreateVideo = () => {
 
         this.setState({
@@ -72,27 +76,15 @@ class Main extends React.Component {
 
     getProggressStatus = (session) => {
 
-        this.setState((state) => ({
-            percent: (state.percent) ? state.percent + 10 : 0
-        }));
-
-        return;
-
         request.post(API_BASE_URL + '/getstatus', {session})
             .then((res) => res.json())
             .then((data) => {
 
                 console.log(data);
 
-                this.setState({
+                this.setState((state) => ({
                     percent: data.perc
-                });
-
-                setTimeout(() => {
-                    this.getProggressStatus(session);
-                }, 500);
-
-                return;
+                }));
 
                 switch (data.status) {
                     case 2:
@@ -105,8 +97,6 @@ class Main extends React.Component {
                         this.setState({
                             sessionLinkID: session
                         });
-
-                        alert('видео успешно создано');
 
                         break;
                     default:
