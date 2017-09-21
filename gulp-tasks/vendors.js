@@ -31,6 +31,7 @@ const libs = [
     'react-dropzone',
     'react-html5video',
     'react-circular-progressbar',
+    'react-nouislider',
     'promise-file-reader'
 ];
 
