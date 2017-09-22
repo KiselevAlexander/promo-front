@@ -8,19 +8,19 @@ class Progress extends React.Component {
         const {percent, session} = this.props;
 
         return (
-            <div className="progess">
-                {!session &&
+            <div className="progress">
+                {session &&
                     <div className="progress-status">
                         <CircularProgressbar
                             percentage={percent}
                         />
                     </div>
                 }
-                {session &&
+                {!session &&
                     <div>
                         <div className="success">
 
-                            <h1>ВАШЕ ВИДЕО ГОТОВО!</h1>
+                            <h3>ВАШЕ ВИДЕО ГОТОВО!</h3>
                             <ol>
                                 <li>Поделитесь вашим видео в социальных сетях.</li>
                                 <li>Собирайте лайки.</li>

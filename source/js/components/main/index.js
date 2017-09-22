@@ -11,7 +11,7 @@ class Main extends React.Component {
         super(props);
 
         this.state = {
-            step: 0,
+            step: 2,
             image: '',
             status: '',
             result: {},
@@ -136,6 +136,7 @@ class Main extends React.Component {
 
         return (
             <main>
+                <input type="number" onChange={(e) => this.setState({step: parseInt(e.target.value, 10)})} defaultValue={1} value={this.state.step}/>
                 {step === 0 &&
                     <Patterns
                         onChange={(patternID) => {
