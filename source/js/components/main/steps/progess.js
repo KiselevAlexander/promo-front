@@ -19,7 +19,7 @@ class Progress extends React.Component {
                     </div>
                 }
                 {session &&
-                    <div className="grid-2 flex">
+                    <div className="grid-2 phablet-1 phone-1 flex">
                         <div className="col success">
 
                             <h3>ВАШЕ ВИДЕО ГОТОВО!</h3>
@@ -36,7 +36,7 @@ class Progress extends React.Component {
                             <div className="videoHolder">
                                 <div id="player">
                                     <Video
-                                        autoPlay={false}
+                                        autoPlay={true}
                                         controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                                         poster={`${STATIC_URL}/images/${session}.jpg`}
                                         onCanPlayThrough={() => {

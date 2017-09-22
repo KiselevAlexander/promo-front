@@ -48,6 +48,10 @@ class ImagePicker extends React.Component {
 
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.resizeHandler);
+    }
+
     resizeHandler = () => {
 
         clearTimeout(this.timer);

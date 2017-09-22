@@ -90,7 +90,7 @@ class Patterns extends React.Component {
                         }
                         {currentPatternId === 1 &&
                             <Video
-                                autoPlay={false}
+                                autoPlay={true}
                                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                                 // poster={`/public/images/${currentPatternId}.jpg`}
                                 onCanPlayThrough={() => {
@@ -103,7 +103,7 @@ class Patterns extends React.Component {
 
                             {currentPatternId === 2 &&
                             <Video
-                                autoPlay={false}
+                                autoPlay={true}
                                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                                 // poster={`/public/images/${currentPatternId}.jpg`}
                                 onCanPlayThrough={() => {
@@ -115,7 +115,7 @@ class Patterns extends React.Component {
                             }
                             {currentPatternId === 3 &&
                             <Video
-                                autoPlay={false}
+                                autoPlay={true}
                                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                                 // poster={`/public/images/${currentPatternId}.jpg`}
                                 onCanPlayThrough={() => {
