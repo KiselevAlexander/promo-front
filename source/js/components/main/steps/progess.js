@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
 import CircularProgressbar from 'react-circular-progressbar';
+import {STATIC_URL} from 'consts';
+import {DefaultPlayer as Video} from 'react-html5video';
 
 class Progress extends React.Component {
     render() {
@@ -9,16 +11,16 @@ class Progress extends React.Component {
 
         return (
             <div className="progress">
-                {session &&
-                    <div className="progress-status">
+                {!session &&
+                    <div className="flex progress-status">
                         <CircularProgressbar
-                            percentage={percent}
+                            percentage={percent || 0}
                         />
                     </div>
                 }
-                {!session &&
-                    <div>
-                        <div className="success">
+                {session &&
+                    <div className="grid-2 flex">
+                        <div className="col success">
 
                             <h3>ВАШЕ ВИДЕО ГОТОВО!</h3>
                             <ol>
@@ -26,9 +28,26 @@ class Progress extends React.Component {
                                 <li>Собирайте лайки.</li>
                                 <li>Выигрывайте пакет страховых услуг для осуществления вашей мечты!</li>
                             </ol>
+
+                            Ссылка на видео: <br />
+                            <Link to={`/player/${session}`}>{`${location.origin}/player/${session}`}</Link>
                         </div>
-                        Ссылка на видео: <br />
-                        <Link to={`/player/${session}`}>{`${location.origin}/player/${session}`}</Link>
+                        <div className="col">
+                            <div className="videoHolder">
+                                <div id="player">
+                                    <Video
+                                        autoPlay={false}
+                                        controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+                                        poster={`${STATIC_URL}/images/${session}.jpg`}
+                                        onCanPlayThrough={() => {
+                                            // Do stuff
+                                        }}
+                                    >
+                                        <source src={`${STATIC_URL}/video/${session}.mp4`} type="video/mp4" />
+                                    </Video>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 }
             </div>
