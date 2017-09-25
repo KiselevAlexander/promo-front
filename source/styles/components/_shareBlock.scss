@@ -1,0 +1,41 @@
+.shareBlock {
+    display: block;
+    vertical-align: top;
+    margin: 1em 0;
+    padding: 0;
+    text-align: center;
+
+    li {
+        display: inline-block;
+        list-style-type: none;
+        vertical-align: top;
+        margin: 0 .5em;
+        color: #fff;
+        text-align: center;
+
+        .SocialMediaShareButton {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: .313em;
+            width: 2.813em;
+            height: 2.813em;
+            transition: background .4s;
+
+            cursor: pointer;
+            padding: .313em;
+
+            &:hover {
+                background-color: #022879;
+            }
+
+            &>div {
+                display: inline-block;
+            }
+        }
+        .count {
+            font-size: .675em;
+        }
+
+    }
+}
