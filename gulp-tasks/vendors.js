@@ -33,6 +33,7 @@ const libs = [
     'react-circular-progressbar',
     'react-nouislider',
     'react-konva',
+    'react-share',
     'promise-file-reader'
 ];
 
