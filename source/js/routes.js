@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route, IndexRoute} from 'react-router';
-import {vk} from 'utils/social-auth/vk';
+// import {vk} from 'utils/social-auth/vk';
 
 import Root from 'components/root';
 import Main from 'components/main';
@@ -8,7 +8,7 @@ import Player from 'components/player';
 import Editor from 'components/editor';
 
 const onEnterSuccess = () => {
-    vk.watcher();
+    // vk.watcher();
 };
 
 // TODO: remove Redirect from index route
