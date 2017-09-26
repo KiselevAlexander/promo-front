@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import CircularProgressbar from 'react-circular-progressbar';
 import {STATIC_URL} from 'consts';
+import Share from 'common/share';
 import {DefaultPlayer as Video} from 'react-html5video';
 
 class Progress extends React.Component {
@@ -28,7 +29,7 @@ class Progress extends React.Component {
                                 <li>Собирайте лайки.</li>
                                 <li>Выигрывайте пакет страховых услуг для осуществления вашей мечты!</li>
                             </ol>
-
+                            <Share count={false} />
                             Ссылка на видео: <br />
                             <Link to={`/player/${session}`}>{`${location.origin}/player/${session}`}</Link>
                         </div>

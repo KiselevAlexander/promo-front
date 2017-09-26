@@ -6,6 +6,7 @@ import Root from 'components/root';
 import Main from 'components/main';
 import Player from 'components/player';
 import Editor from 'components/editor';
+import Admin from 'components/admin';
 
 const onEnterSuccess = () => {
     // vk.watcher();
@@ -20,6 +21,7 @@ const routes = () => (
             <Route path="/player/:videoID" component={Player} />
             <Route path="/editor" component={Editor} />
             <Route path="/success" onEnter={onEnterSuccess} />
+            <Route path="/admin"component={Admin} />
         </Route>
     </Route>
 );
