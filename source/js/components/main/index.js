@@ -136,7 +136,7 @@ class Main extends React.Component {
 
         return (
             <main>
-                <input type="number" onChange={(e) => this.setState({step: parseInt(e.target.value, 10)})} defaultValue={1} value={this.state.step} />
+               {/* <input type="number" onChange={(e) => this.setState({step: parseInt(e.target.value, 10)})} defaultValue={1} value={this.state.step} />*/}
                 {step === 0 &&
                     <Patterns
                         onChange={(patternID) => {
