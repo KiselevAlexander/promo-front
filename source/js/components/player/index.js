@@ -2,8 +2,6 @@ import React from 'react';
 import {STATIC_URL} from 'consts';
 import {DefaultPlayer as Video} from 'react-html5video';
 import {Icon} from 'common/icon';
-import {vk} from 'utils/social-auth/vk';
-
 import {
     ShareButtons,
     ShareCounts
@@ -51,8 +49,6 @@ class Player extends React.Component {
             OKShareCount
         } = ShareCounts;
 
-        const shareUrl = location.href;
-
         return (
             <div id="player">
                 <Video
@@ -70,7 +66,7 @@ class Player extends React.Component {
                         <FacebookShareButton {...SHARE}>
                             <Icon xlink="fb" style={Style.icon} />
                         </FacebookShareButton>
-                        <FacebookShareCount url={shareUrl}>
+                        <FacebookShareCount url={SHARE.url}>
                             {(shareCount) => (
                                 <span className="count">{shareCount}</span>
                             )}
@@ -80,7 +76,7 @@ class Player extends React.Component {
                         <VKShareButton {...SHARE}>
                             <Icon xlink="vk" style={Style.icon} />
                         </VKShareButton>
-                        <VKShareCount url={shareUrl}>
+                        <VKShareCount url={SHARE.url}>
                             {(shareCount) => (
                                 <span className="count">{shareCount}</span>
                             )}
@@ -90,26 +86,20 @@ class Player extends React.Component {
                         <OKShareButton {...SHARE}>
                             <Icon xlink="ok" style={Style.icon} />
                         </OKShareButton>
-                        <OKShareCount url={shareUrl}>
+                        <OKShareCount url={SHARE.url}>
                             {(shareCount) => (
                                 <span className="count">{shareCount}</span>
                             )}
                         </OKShareCount>
                     </li>
                     <li>
-                        <TwitterShareButton {...SHARE}>
+                        <TwitterShareButton
+                            {...SHARE}
+                            via="ингосстрах"
+                            hashtags={['ингосстрах', 'psychologies', 'mydream']}
+                        >
                             <Icon xlink="twitter" style={Style.icon} />
                         </TwitterShareButton>
-                    </li>
-                    <li>
-                        <GooglePlusShareButton {...SHARE}>
-                            <Icon xlink="google-plus" style={Style.icon} />
-                        </GooglePlusShareButton>
-                        <GooglePlusShareCount url={shareUrl}>
-                            {(shareCount) => (
-                                <span className="count">{shareCount}</span>
-                            )}
-                        </GooglePlusShareCount>
                     </li>
                 </ul>
             </div>

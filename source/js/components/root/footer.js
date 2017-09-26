@@ -1,7 +1,45 @@
 import React from 'react';
+import {STATIC_URL} from 'consts';
+import {Icon} from 'common/icon';
+
+import {
+    ShareButtons,
+    ShareCounts
+} from 'react-share';
+
+const Style = {
+    icon: {
+        width: '1.5em',
+        height: '1.5em'
+    }
+};
+
+const SHARE = {
+    url: location.origin,
+    title: 'Создай свою мечту\n',
+    description: '#ингосстрах#psychologies#mydream',
+    image: `${STATIC_URL}/static/img/pic011.jpg`
+};
+
 
 class Footer extends React.Component {
     render() {
+
+        const {
+            FacebookShareButton,
+            GooglePlusShareButton,
+            VKShareButton,
+            OKShareButton,
+            TwitterShareButton
+        } = ShareButtons;
+
+        const {
+            FacebookShareCount,
+            GooglePlusShareCount,
+            VKShareCount,
+            OKShareCount
+        } = ShareCounts;
+
         return (
             <footer>
                 <div className="wrapper">
@@ -16,16 +54,28 @@ class Footer extends React.Component {
                             <div className="share">
                                 <ul>
                                     <li>
-                                        <span className="ok" />
+                                        <FacebookShareButton {...SHARE}>
+                                            <Icon xlink="fb" style={Style.icon} />
+                                        </FacebookShareButton>
                                     </li>
                                     <li>
-                                        <span className="vk" />
+                                        <VKShareButton {...SHARE}>
+                                            <Icon xlink="vk" style={Style.icon} />
+                                        </VKShareButton>
                                     </li>
                                     <li>
-                                        <span className="fb" />
+                                        <OKShareButton {...SHARE}>
+                                            <Icon xlink="ok" style={Style.icon} />
+                                        </OKShareButton>
                                     </li>
                                     <li>
-                                        <span className="tw" />
+                                        <TwitterShareButton
+                                            {...SHARE}
+                                            via="ингосстрах"
+                                            hashtags={['ингосстрах', 'psychologies', 'mydream']}
+                                        >
+                                            <Icon xlink="twitter" style={Style.icon} />
+                                        </TwitterShareButton>
                                     </li>
                                 </ul>
                             </div>
