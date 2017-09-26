@@ -21,7 +21,7 @@ const routes = () => (
             <Route path="/player/:videoID" component={Player} />
             <Route path="/editor" component={Editor} />
             <Route path="/success" onEnter={onEnterSuccess} />
-            <Route path="/admin"component={Admin} />
+            <Route path="/moderator"component={Admin} />
         </Route>
     </Route>
 );
