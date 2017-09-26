@@ -56,7 +56,7 @@ class Player extends React.Component {
                         // Do stuff
                     }}
                 >
-                    <source src={`${STATIC_URL}/video/${videoID}.mp4`} type="video/mp" />
+                    <source src={`${STATIC_URL}/video/${videoID}.mp4`} type="video/mp4" />
                 </Video>
                 <ul className="shareBlock">
                     <li>

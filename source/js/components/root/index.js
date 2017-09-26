@@ -1,9 +1,7 @@
 import React from 'react';
-import classNames from 'classnames';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import Footer from './footer';
-
 
 
 class Root extends React.Component {
@@ -22,9 +20,9 @@ class Root extends React.Component {
                 <header className="site-header">
                     <div className="wrapper">
                         <div className="logo">
-                            <a href="#">
+                            <Link to="/">
                                 <img src="/static/img/logo.png" alt="" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </header>
