@@ -2,11 +2,11 @@ import React from 'react';
 import {STATIC_URL} from 'consts';
 import {DefaultPlayer as Video} from 'react-html5video';
 import {Icon} from 'common/icon';
+import {vk} from 'utils/social-auth/vk';
 
 import {
     ShareButtons,
-    ShareCounts,
-    generateShareIcon
+    ShareCounts
 } from 'react-share';
 
 const Style = {
@@ -14,6 +14,13 @@ const Style = {
         width: '1.5em',
         height: '1.5em'
     }
+};
+
+const SHARE = {
+    url: location.href,
+    title: 'Создай свою мечту',
+    description: '#ингосстрах#psychologies#mydream',
+    image: `${STATIC_URL}/static/img/pic011.jpg`
 };
 
 class Player extends React.Component {
@@ -60,7 +67,7 @@ class Player extends React.Component {
                 </Video>
                 <ul className="shareBlock">
                     <li>
-                        <FacebookShareButton url={shareUrl}>
+                        <FacebookShareButton {...SHARE}>
                             <Icon xlink="fb" style={Style.icon} />
                         </FacebookShareButton>
                         <FacebookShareCount url={shareUrl}>
@@ -70,7 +77,7 @@ class Player extends React.Component {
                         </FacebookShareCount>
                     </li>
                     <li>
-                        <VKShareButton url={shareUrl}>
+                        <VKShareButton {...SHARE}>
                             <Icon xlink="vk" style={Style.icon} />
                         </VKShareButton>
                         <VKShareCount url={shareUrl}>
@@ -80,7 +87,7 @@ class Player extends React.Component {
                         </VKShareCount>
                     </li>
                     <li>
-                        <OKShareButton url={shareUrl}>
+                        <OKShareButton {...SHARE}>
                             <Icon xlink="ok" style={Style.icon} />
                         </OKShareButton>
                         <OKShareCount url={shareUrl}>
@@ -90,12 +97,12 @@ class Player extends React.Component {
                         </OKShareCount>
                     </li>
                     <li>
-                        <TwitterShareButton url={shareUrl}>
+                        <TwitterShareButton {...SHARE}>
                             <Icon xlink="twitter" style={Style.icon} />
                         </TwitterShareButton>
                     </li>
                     <li>
-                        <GooglePlusShareButton url={shareUrl}>
+                        <GooglePlusShareButton {...SHARE}>
                             <Icon xlink="google-plus" style={Style.icon} />
                         </GooglePlusShareButton>
                         <GooglePlusShareCount url={shareUrl}>
