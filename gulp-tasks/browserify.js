@@ -42,4 +42,4 @@ const buildAppTask = (dest) => () => {
 
 
 // Browserify build task
-gulp.task('javascript', buildAppTask(distJS));
+gulp.task('javascript', ['apply-prod-environment'], buildAppTask(distJS));
