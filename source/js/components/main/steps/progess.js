@@ -8,18 +8,21 @@ import {DefaultPlayer as Video} from 'react-html5video';
 class Progress extends React.Component {
     render() {
 
-        const {percent, session} = this.props;
+        const {status, percent, session} = this.props;
+
+        console.log(this.props);
+
 
         return (
             <div className="progress">
-                {!session &&
+                {status !== 3 &&
                     <div className="flex progress-status">
                         <CircularProgressbar
                             percentage={percent || 0}
                         />
                     </div>
                 }
-                {session &&
+                {status === 3 &&
                     <div className="grid-2 phablet-1 phone-1 flex">
                         <div className="col success">
 
