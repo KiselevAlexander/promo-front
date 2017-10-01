@@ -15,7 +15,7 @@ const Style = {
 };
 
 const SHARE = {
-    url: location.href,
+    url: location.origin + location.pathname,
     title: 'Создай свою мечту',
     description: '#ингосстрах#psychologies#mydream',
     image: `${STATIC_URL}/static/img/pic011.jpg`

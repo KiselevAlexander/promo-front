@@ -32,7 +32,7 @@ class Progress extends React.Component {
                                 <li>Собирайте лайки.</li>
                                 <li>Выигрывайте пакет страховых услуг для осуществления вашей мечты!</li>
                             </ol>
-                            <Share count={false} />
+                            <Share count={false} session="session" />
                             Ссылка на видео: <br />
                             <Link to={`/player/${session}`}>{`${location.origin}/player/${session}`}</Link>
                         </div>
