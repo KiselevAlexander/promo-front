@@ -14,12 +14,6 @@ const Style = {
     }
 };
 
-const SHARE = {
-    url: location.href,
-    title: 'Создай свою мечту',
-    description: '#ингосстрах#psychologies#mydream',
-    image: `${STATIC_URL}/static/img/pic011.jpg`
-};
 
 
 class Share extends React.Component {
@@ -34,7 +28,15 @@ class Share extends React.Component {
 
     render() {
 
-        const {count} = this.props;
+        const {count, session} = this.props;
+
+
+        const SHARE = {
+            url: location.origin + `/player/${session}`,
+            title: 'Создай свою мечту',
+            description: '#ингосстрах#psychologies#mydream',
+            image: `${STATIC_URL}/static/img/pic011.jpg`
+        };
 
         const {
             FacebookShareButton,
