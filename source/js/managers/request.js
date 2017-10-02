@@ -1,10 +1,6 @@
-import _ from 'lodash';
 import Url from 'url';
-import CryptoJS from 'crypto-js';
-import fetch, {parseBody, parseError} from 'utils/fetch';
+import fetch, {parseError} from 'utils/fetch';
 import {cacheManager} from 'utils/cache-manager';
-
-import {CLIENT_SECRET} from 'consts';
 
 
 /**
