@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FirstScreen = ({onNextClick}) => (
+const FirstScreen = ({onClickNext}) => (
     <div className="welcomeScreen">
         <div className="grid-2 phablet-1 phone-1">
             <div className="col">
@@ -15,8 +15,8 @@ const FirstScreen = ({onNextClick}) => (
                     делитесь им в социальных сетях,
                     собирайте лайки и выигрывайте приз.
                 </p>
-                <button className="btn">Создать своё видео</button>
-                <a href="#!rules">Правила конкурса</a>
+                <button className="btn" onClick={onClickNext}>создать видео</button>
+                <a href="#!">Правила конкурса</a>
             </div>
             <div className="col">
                 <div className="videoHolder">
@@ -28,4 +28,3 @@ const FirstScreen = ({onNextClick}) => (
 );
 
 export default FirstScreen;
-

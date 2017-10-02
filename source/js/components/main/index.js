@@ -56,7 +56,7 @@ class Main extends React.Component {
 
                 console.log(data);
 
-                this.getProggressStatus(data.session);
+                this.getProgressStatus(data.session);
 
             })
             .catch((error) => {
@@ -71,7 +71,7 @@ class Main extends React.Component {
 
     };
 
-    getProggressStatus = (session) => {
+    getProgressStatus = (session) => {
 
         request.post(API_BASE_URL + '/getstatus', {session})
             .then((res) => res.json())
@@ -86,12 +86,13 @@ class Main extends React.Component {
                 switch (data.status) {
                     case 2:
                         setTimeout(() => {
-                            this.getProggressStatus(session);
+                            this.getProgressStatus(session);
                         }, 500);
                         break;
                     case 3:
 
                         this.setState({
+                            status: data.status,
                             sessionLinkID: session
                         });
 
@@ -133,44 +134,35 @@ class Main extends React.Component {
 
     render() {
 
-        const {step, percent, sessionLinkID} = this.state;
+        const {step, percent, sessionLinkID, status} = this.state;
 
         return (
             <main>
-               {/* <input type="number" onChange={(e) => this.setState({step: parseInt(e.target.value, 10)})} defaultValue={1} value={this.state.step} />*/}
+                {/* <input type="number" onChange={(e) => this.setState({step: parseInt(e.target.value, 10)})} defaultValue={1} value={this.state.step} />*/}
                 {step === 0 &&
-                    <FirstScreen
-                        onChange={(patternID) => {
-                            this.setState({
-                                step: 1,
-                                pattern: patternID
-                            });
-                        }}
-                    />
+                <Patterns
+                    onChange={(patternID) => {
+                        this.setState({
+                            step: 1,
+                            pattern: patternID
+                        });
+                    }}
+                />
                 }
+
                 {step === 1 &&
-                    <Patterns
-                        onChange={(patternID) => {
-                            this.setState({
-                                step: 1,
-                                pattern: patternID
-                            });
-                        }}
-                    />
+                <ImagePicker
+                    onSelect={this.onImageSelect}
+                    onStepBackClick={this.stepBackClickHandler}
+                />
                 }
 
                 {step === 2 &&
-                    <ImagePicker
-                        onSelect={this.onImageSelect}
-                        onStepBackClick={this.stepBackClickHandler}
-                    />
-                }
-
-                {step === 3 &&
-                    <Progress
-                        percent={percent}
-                        session={sessionLinkID}
-                    />
+                <Progress
+                    percent={percent}
+                    status={status}
+                    session={sessionLinkID}
+                />
                 }
             </main>
         );
