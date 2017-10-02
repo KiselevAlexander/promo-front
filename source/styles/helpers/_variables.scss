@@ -4,8 +4,12 @@ $path2: '../img/';
 $color-text:           #000;        	// Цвет основного текста
 $color-white:          #fff;
 
-$color-blue: #034ea2;
-$color-red: #fb0000;
+$color-blue:           #034ea2;
+$color-red:            #fb0000;
+$color-gray-light:     #eef2f7;
+$color-gray-darken:    #8090a6;
+$color-modal-bg:       rgba($color-gray-light, .8);
+$color-bg:             $color-white;	// Цвет фона
 
 
 $p-1:  .06em;    // 1px

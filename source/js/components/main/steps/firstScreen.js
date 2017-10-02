@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'common/modal';
 
 const FirstScreen = ({onClickNext}) => (
     <div className="welcomeScreen">
@@ -24,6 +25,16 @@ const FirstScreen = ({onClickNext}) => (
                 </div>
             </div>
         </div>
+        <Modal
+            open={true}
+            title="Правила конкурса"
+        >
+            <ul>
+                <li>1. </li>
+                <li>2. </li>
+                <li>3. </li>
+            </ul>
+        </Modal>
     </div>
 );
 

@@ -18,22 +18,54 @@
     transform-origin: 0 0;
   }
   .canvas {
+    position: relative;
     width: 100%;
     overflow: hidden;
     box-shadow: 0 0 .938em rgba(0, 0, 0, .2);
-  }
 
-  canvas {
-    cursor: grab;
+    .rotateRight {
+      position: absolute;
+      bottom: 10px;
+      right: 5px;
+      z-index: 99;
+      background-color: rgba(0, 0, 0, .05);
+      background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDIxNC4zNjcgMjE0LjM2NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjE0LjM2NyAyMTQuMzY3OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCI+CjxwYXRoIGQ9Ik0yMDIuNDAzLDk1LjIyYzAsNDYuMzEyLTMzLjIzNyw4NS4wMDItNzcuMTA5LDkzLjQ4NHYyNS42NjNsLTY5Ljc2LTQwbDY5Ljc2LTQwdjIzLjQ5NCAgYzI3LjE3Ni03Ljg3LDQ3LjEwOS0zMi45NjQsNDcuMTA5LTYyLjY0MmMwLTM1Ljk2Mi0yOS4yNTgtNjUuMjItNjUuMjItNjUuMjJzLTY1LjIyLDI5LjI1OC02NS4yMiw2NS4yMiAgYzAsOS42ODYsMi4wNjgsMTkuMDAxLDYuMTQ4LDI3LjY4OGwtMjcuMTU0LDEyLjc1NGMtNS45NjgtMTIuNzA3LTguOTk0LTI2LjMxMy04Ljk5NC00MC40NDFDMTEuOTY0LDQyLjcxNiw1NC42OCwwLDEwNy4xODQsMCAgUzIwMi40MDMsNDIuNzE2LDIwMi40MDMsOTUuMjJ6IiBmaWxsPSIjRkZGRkZGIi8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+      background-size: 50%;
+      background-position: 50%;
+      background-repeat: no-repeat;
+      width: 40px;
+      height: 40px;
+      border: 1px solid #fff;
+      border-radius: 3px;
+      outline: 0;
 
-    &:active {
-      cursor: grabbing;
+      &:hover {
+        background-color: rgba(0, 0, 0, .2);
+      }
+    }
+
+    canvas {
+      cursor: grab;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+      margin: 0;
+
+
+      &:active {
+        cursor: grabbing;
+      }
+
     }
 
   }
+
 }
 
 .imageHolder {
   padding:  1.875em 1em;
   background-color: rgba(255,255,255,0.3);
+}
+
+#user-image {
+  transform-origin: 50% 50%;
 }

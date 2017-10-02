@@ -1,10 +1,9 @@
 
 
-input {
+input, textarea {
   display: block;
   max-width: 27.875em;
   width: 100%;
-
   background-color: transparent;
   outline: 0;
   padding: .75em;
@@ -13,7 +12,44 @@ input {
   border-bottom: 2px solid #fff;
   margin-right: 20px;
   margin-bottom: 2em;
+  resize: none;
+  overflow: hidden;
+
   &:focus {
 
   }
+
+  &::-webkit-input-placeholder {color:#fff;}
+  &::-moz-placeholder          {color:#fff;}
+  &:-moz-placeholder           {color:#fff;}
+  &:-ms-input-placeholder      {color:#fff;}
+
+
+}
+
+.inputCover {
+  position: relative;
+  margin-bottom: 2em;
+
+  input, textarea {
+    margin-bottom: 0;
+  }
+
+  .error {
+    margin-top: 0.5em;
+  }
+
+  &.is-error {
+
+    input, textarea {
+      border-color: $color-red;
+
+      &::-webkit-input-placeholder {color: $color-red;}
+      &::-moz-placeholder          {color: $color-red;}
+      &:-moz-placeholder           {color: $color-red;}
+      &:-ms-input-placeholder      {color: $color-red;}
+    }
+
+  }
+
 }

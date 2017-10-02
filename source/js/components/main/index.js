@@ -132,6 +132,12 @@ class Main extends React.Component {
         }));
     };
 
+    stepNextClickHandler = () => {
+        this.setState((state, props) => ({
+            step: state.step + 1
+        }));
+    };
+
     render() {
 
         const {step, percent, sessionLinkID, status} = this.state;
@@ -140,24 +146,27 @@ class Main extends React.Component {
             <main>
                 {/* <input type="number" onChange={(e) => this.setState({step: parseInt(e.target.value, 10)})} defaultValue={1} value={this.state.step} />*/}
                 {step === 0 &&
+                    <FirstScreen onClickNext={this.stepNextClickHandler} />
+                }
+                {step === 1 &&
                 <Patterns
                     onChange={(patternID) => {
                         this.setState({
-                            step: 1,
+                            step: 2,
                             pattern: patternID
                         });
                     }}
                 />
                 }
 
-                {step === 1 &&
-                <ImagePicker
-                    onSelect={this.onImageSelect}
-                    onStepBackClick={this.stepBackClickHandler}
-                />
+                {step === 2 &&
+                    <ImagePicker
+                        onSelect={this.onImageSelect}
+                        onStepBackClick={this.stepBackClickHandler}
+                    />
                 }
 
-                {step === 2 &&
+                {step === 3 &&
                 <Progress
                     percent={percent}
                     status={status}

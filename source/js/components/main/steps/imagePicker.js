@@ -4,8 +4,7 @@ import classNames from 'classnames';
 import Dropzone from 'react-dropzone';
 import {readAsDataURL} from 'promise-file-reader';
 import Nouislider from 'react-nouislider';
-
-import {Layer, Stage, Text, Image} from 'react-konva';
+import AvatarEditor from 'react-avatar-editor';
 
 class ImagePicker extends React.Component {
 
@@ -19,16 +18,14 @@ class ImagePicker extends React.Component {
             currentPatternId: 1,
             width: 100,
             height: 100,
-            scale: 100,
+            scale: 1,
             rotate: 0,
-
-            text: 'Some text',
-            image: null,
-            iX: 0,
-            iY: 0
+            text: '',
+            error: ''
         };
 
         this.timer = 0;
+        this.fontSize = 48;
 
     }
 
@@ -41,8 +38,8 @@ class ImagePicker extends React.Component {
         console.log(imageCroper.width());
 
         this.setState({
-            width: imageCroper.width(),
-            height: 1080 / (1920 / imageCroper.width())
+            width: imageCroper.width() * 2,
+            height: (1080 / (1920 / imageCroper.width())) * 2
         });
 
 
@@ -58,11 +55,11 @@ class ImagePicker extends React.Component {
 
         this.timer = setTimeout(() => {
 
-            console.log('resize');
+            const imageCroper = $('.imageCroper');
 
             this.setState({
-                width: $('.imageCroper').width() * 2,
-                canvasHeight: 1080 / (1920 / $('.imageCroper').width()) * 2
+                width: imageCroper.width() * 2,
+                height: (1080 / (1920 / imageCroper.width())) * 2
             });
 
         }, 150);
@@ -84,17 +81,15 @@ class ImagePicker extends React.Component {
                 image.src = imageData;
                 image.onload = () => {
 
-                    const imageCroper = $('.imageCroper');
-
                     this.setState({
-                        image,
                         imageSrc: imageData,
-                        width: imageCroper.width() * 2,
-                        height: image.height / (image.width / imageCroper.width()) * 2,
-                        canvasHeight: 1080 / (1920 / $('.imageCroper').width()) * 2,
-                        iX: 0,
-                        iY: 0,
-                        scale: 100
+                        scale: 1
+                    }, () => {
+
+                        setTimeout(() => {
+                            this.addText();
+                        }, 10);
+
                     });
 
 
@@ -108,43 +103,35 @@ class ImagePicker extends React.Component {
     };
 
     nextStep = () => {
+        const {text} = this.state;
+
+        if (!text) {
+            this.setState({
+                error: 'Пожалуйста укажите текст'
+            }, () => {
+
+                setTimeout(() => {
+                    this.addText();
+                }, 10);
+
+            });
+
+            return;
+        }
 
         const canvas = $('canvas')[0];
-
         const dataURL = canvas.toDataURL('image/jpeg');
 
-        //const w = window.open(dataURL);
-
         this.props.onSelect(dataURL);
-
-        // const canvas = this.editor.getImage();
-
-        // console.log(canvas.toDataURL('image/jpeg'));
-        // window.open(canvas.toDataURL('image/jpeg'), '_blank');
+        // window.open(dataURL, '_blank');
 
     };
 
     scaleChangeHandler = (e) => {
-        console.log(e);
 
         this.setState((state) => ({
-            scale: e[0],
-            iX: 0,
-            iY: 0
-        }));
-
-        console.log(this.image);
-    };
-
-    rotateLeft = () => {
-
-        const rotate = this.state.rotate - 90;
-
-        this.setState((state) => ({
-            rotate: (Math.abs(rotate) === 360) ? 0 : rotate,
-            width: state.height,
-            height: state.width
-        }));
+            scale: e[0] * 0.01
+        }), this.setStateAddText);
 
     };
 
@@ -154,31 +141,95 @@ class ImagePicker extends React.Component {
 
         this.setState((state) => ({
             rotate: (Math.abs(rotate) === 360) ? 0 : rotate,
-            iX: 0,
-            iY: 0
-        }));
+            width: state.height,
+            height: state.width
+        }), this.setStateAddText);
 
     };
 
-    setEditorRef = (editor) => { this.editor = editor };
+    setEditorRef = (editor) => { this.editor = editor; };
 
-    textChangeHandler = (e) => {
-        this.setState({
-            text: e.target.value
-        });
+    textChangeHandler = (event) => {
+
+        const {value} = event.target;
+
+        const lines = value.split('\n');
+
+        if (value.length < 85 && lines.length < 4) {
+            this.setState({
+                text: value,
+                error: ''
+            }, this.setStateAddText);
+        }
+
     };
+
+    getLines = (context, text, maxWidth) => {
+        const lines = text.split('\n');
+        const fittingLines = [];
+        for (let i = 0; i < lines.length; i++) {
+            if (context.measureText(lines[i]).width <= maxWidth) {
+                fittingLines.push(lines[i]);
+            } else {
+                let tmp = lines[i];
+                while (context.measureText(tmp).width > maxWidth) {
+                    tmp = tmp.slice(0, tmp.length - 1);
+                }
+                if (tmp.length >= 1) {
+                    const regex = new RegExp('.{1,' + tmp.length + '}', 'g');
+                    const thisLineSplitted = lines[i].match(regex);
+                    for (let j = 0; j < thisLineSplitted.length; j++) {
+                        fittingLines.push(thisLineSplitted[j]);
+                    }
+                }
+            }
+        }
+        return fittingLines;
+    };
+
+    setStateAddText = () => {
+
+        setTimeout(() => {
+            this.addText();
+        }, 10);
+
+    };
+
+    addText = () => {
+
+        const {text, height, rotate, width} = this.state;
+        const {canvas} = this.editor;
+
+        const cText = (!text) ? 'Ваша мечта' : text;
+
+        const context = canvas.getContext('2d');
+
+        context.font = `bold ${this.fontSize}px Verdana`;
+        context.fillStyle = 'white';
+
+        const cWidth = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? width : height;
+        const cHeight = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? height : width;
+
+        const y = cHeight - (this.fontSize);
+
+        const x = 50;
+
+        const lineheight = this.fontSize * 1.2;
+
+        const lines = this.getLines(context, cText, cWidth - 100);
+
+        for (let i = 0; i < lines.length; i++) {
+            context.fillText(lines[i], x, ((y + (i * lineheight)) - (lines.length * lineheight)));
+        }
+
+    };
+
 
     render() {
 
-        const {image, imageSrc, status, width, height, canvasHeight, scale, rotate, text, iX, iY} = this.state;
+        const {imageSrc, status, width, height, scale, rotate, text, error} = this.state;
 
-        const iW = (image) ? image.width : 0;
-        const iH = (image) ? image.height : 0;
-
-        const _this = this;
-
-
-        const calcHeight = width
+        const canvasWrapperHeight = ((Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? height : width) / 2;
 
         return (
             <div className="grid-2 tablet-1 phablet-1 phone-1 float">
@@ -189,8 +240,9 @@ class ImagePicker extends React.Component {
                         className="btn"
                         onDrop={this.onImagePick}
                         disabled={status === 'Pending'}
+                        accept="image/*"
                     >
-                        Загрузить фото
+                        {(!imageSrc) ? 'Загрузить фото' : 'Загрузить другое фото'}
                     </Dropzone>
 
                     {status &&
@@ -199,109 +251,61 @@ class ImagePicker extends React.Component {
                 </div>
                 <div className="col right">
                     <div className="imageHolder">
-                        {!image &&
+                        {!imageSrc &&
                             <img src="/static/img/pic011.jpg" alt="" className="bordered" />
                         }
-                        <div className={classNames('imageCroper', {'is-visible': (image)})}>
-                            <div className="canvas" style={{height: canvasHeight / 2}}>
-
-                                <Stage
+                        <div className={classNames('imageCroper', {'is-visible': (imageSrc)})}>
+                            <div className="canvas" style={{height: canvasWrapperHeight}}>
+                                <AvatarEditor
+                                    ref={this.setEditorRef}
+                                    image={imageSrc}
                                     width={width}
-                                    height={canvasHeight}
-                                >
-                                    <Layer
-                                        reg={this.setEditorRef}
-                                    >
-                                        <Image
-                                            ref={(elem) => { this.image = elem; }}
-                                            image={image}
-                                            scale={{x: scale * 0.01, y: scale * 0.01}}
-                                            width={(iH < iW && iW < width) ? iW / (iH / height) : width}
-                                            height={(iH > iW && iH > height) ? iH / (iW / width) : height}
-                                            x={iX}
-                                            y={iY}
-                                            draggable
-                                            dragBoundFunc={function(pos) {
-
-                                                const cS = scale * 0.01;
-
-
-                                                let _x = pos.x;
-                                                let _y = pos.y;
-
-                                                if (canvasHeight - (this.getHeight() * cS) < pos.y) {
-                                                    _y = (pos.y < 0) ? pos.y : 0;
-                                                } else {
-                                                    _y = canvasHeight - (this.getHeight() * cS);
-                                                }
-
-                                                if (width - (this.getWidth() * cS) < pos.x) {
-                                                    _x = (pos.x < 0) ? pos.x : 0;
-                                                } else {
-                                                    _x = width - (this.getWidth() * cS);
-                                                }
-
-                                                _this.setState({
-                                                    iX: _x,
-                                                    iY: _y
-                                                });
-
-                                                return {
-                                                    x: _x,
-                                                    y: _y
-                                                };
-                                            }}
-                                        />
-
-                                        <Text
-                                            y={(canvasHeight / 100) * 80}
-                                            x={50}
-                                            fontSize="36"
-                                            fill="#fff"
-                                            text={text}
-                                        />
-
-                                    </Layer>
-                                </Stage>
+                                    height={height}
+                                    border={0}
+                                    scale={scale}
+                                    rotate={rotate}
+                                    onMouseUp={this.addText}
+                                    onPositionChange={this.addText}
+                                />
+                                <button className="rotateRight" onClick={this.rotateRight}></button>
                             </div>
 
                             <Nouislider
                                 range={{min: 100, max: 200}}
-                                start={[scale]}
+                                start={[scale * 100]}
                                 onChange={this.scaleChangeHandler}
                             />
-                            {/*<button className="left" onClick={this.rotateLeft}>left</button>
-                             <button className="right" onClick={this.rotateRight}>right</button>*/}
                         </div>
                     </div>
 
-
-
                 </div>
 
-                {image &&
-                <div className="col imageSettings">
+                {imageSrc &&
+                    <div className="col imageSettings">
 
-                    <h3 className="mt-30">НАПИШИТЕ ВАШУ МЕЧТУ</h3>
-                    <input
-                        type="text"
-                        placeholder="Image text"
-                        onChange={this.textChangeHandler}
-                        value={text}
-                    />
-                    <button
-                        className="btn"
-                        onClick={this.props.onStepBackClick}
-                    >Вернуться</button>
-                    <button
-                        className="btn ml-15"
-                        onClick={this.nextStep}
-                        disabled={status === 'Pending'}
-                    >
-                        Продолжить
-                    </button>
+                        <h3 className="mt-30">НАПИШИТЕ ВАШУ МЕЧТУ</h3>
+                        <div className={classNames('inputCover', {'is-error': error})}>
+                            <textarea
+                                type="text"
+                                placeholder="Текст вашей мечты"
+                                onChange={this.textChangeHandler}
+                                value={text}
+                            />
+                            <div className="error">{error}</div>
+                        </div>
+                        <button
+                            className="btn"
+                            onClick={this.props.onStepBackClick}
+                        >Вернуться</button>
+                        <button
+                            className="btn ml-15"
+                            onClick={this.nextStep}
+                            disabled={status === 'Pending'}
+                        >
+                            Продолжить
+                        </button>
 
-                </div>
+                    </div>
                 }
             </div>
         );
