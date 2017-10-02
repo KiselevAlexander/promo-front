@@ -32,7 +32,7 @@ const libs = [
     'react-html5video',
     'react-circular-progressbar',
     'react-nouislider',
-    'react-konva',
+    'react-avatar-editor',
     'react-share',
     'promise-file-reader'
 ];
