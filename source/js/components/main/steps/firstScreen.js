@@ -15,6 +15,8 @@ const FirstScreen = ({onNextClick}) => (
                     делитесь им в социальных сетях,
                     собирайте лайки и выигрывайте приз.
                 </p>
+                <button className="btn">Создать своё видео</button>
+                <a href="#!rules">Правила конкурса</a>
             </div>
             <div className="col">
                 <div className="videoHolder">
@@ -26,3 +28,4 @@ const FirstScreen = ({onNextClick}) => (
 );
 
 export default FirstScreen;
+

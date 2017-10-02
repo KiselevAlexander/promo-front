@@ -4,6 +4,7 @@ import {API_BASE_URL} from 'consts';
 import Patterns from './steps/patterns';
 import ImagePicker from './steps/imagePicker';
 import Progress from './steps/progess';
+import FirstScreen from './steps/firstScreen';
 
 class Main extends React.Component {
 
@@ -116,7 +117,7 @@ class Main extends React.Component {
         console.log(image);
 
         this.setState({
-            step: 2,
+            step: 3,
             image
         }, () => {
             this.doCreateVideo();
@@ -138,6 +139,16 @@ class Main extends React.Component {
             <main>
                {/* <input type="number" onChange={(e) => this.setState({step: parseInt(e.target.value, 10)})} defaultValue={1} value={this.state.step} />*/}
                 {step === 0 &&
+                    <FirstScreen
+                        onChange={(patternID) => {
+                            this.setState({
+                                step: 1,
+                                pattern: patternID
+                            });
+                        }}
+                    />
+                }
+                {step === 1 &&
                     <Patterns
                         onChange={(patternID) => {
                             this.setState({
@@ -148,14 +159,14 @@ class Main extends React.Component {
                     />
                 }
 
-                {step === 1 &&
+                {step === 2 &&
                     <ImagePicker
                         onSelect={this.onImageSelect}
                         onStepBackClick={this.stepBackClickHandler}
                     />
                 }
 
-                {step === 2 &&
+                {step === 3 &&
                     <Progress
                         percent={percent}
                         session={sessionLinkID}
