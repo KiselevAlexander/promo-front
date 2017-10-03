@@ -61,8 +61,9 @@ class Share extends React.Component {
                             const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${SHARE.url}&picture=${STATIC_URL}/images/${session}-1200x675.jpg&display=popup`;
 
 
-                            $.ajax(fbLink)
-                                .success(() => {
+                            $.ajax({
+                                url: fbLink,
+                                success: () => {
 
                                     const width = 550;
                                     const height = 400;
@@ -88,7 +89,8 @@ class Share extends React.Component {
                                         return key + '=' + config[key];
                                     }).join(', '));
 
-                                });
+                                }
+                            });
                         }}
                     >
                         <Icon xlink="fb" style={Style.icon} />
