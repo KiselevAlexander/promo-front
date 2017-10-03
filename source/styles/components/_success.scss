@@ -1,0 +1,14 @@
+.success {
+    color: #fff;
+
+    a {
+        display: inline-block;
+        color: #fff;
+        border-bottom: 1px solid transparent;
+        transition: border .4s;
+
+        &:hover {
+            border-color: #fff;
+        }
+    }
+}
