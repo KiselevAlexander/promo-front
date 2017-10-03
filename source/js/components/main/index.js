@@ -1,6 +1,8 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {request} from 'managers/request';
 import {API_BASE_URL} from 'consts';
+import {setSuccess} from 'actions/global';
 import Patterns from './steps/patterns';
 import ImagePicker from './steps/imagePicker';
 import Progress from './steps/progess';
@@ -96,6 +98,10 @@ class Main extends React.Component {
                             sessionLinkID: session
                         });
 
+                        this.props.setSuccess();
+
+                        this.props.router.push(`/player/${session}`);
+
                         break;
                     default:
                         alert('Error');
@@ -178,4 +184,15 @@ class Main extends React.Component {
     }
 }
 
-export default Main;
+const mapStateToProps = (state) => ({
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    setSuccess: () => dispatch(setSuccess())
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Main);
