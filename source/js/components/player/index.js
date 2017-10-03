@@ -3,37 +3,9 @@ import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {STATIC_URL} from 'consts';
 import {DefaultPlayer as Video} from 'react-html5video';
-import {Icon} from 'common/icon';
 import Share from 'common/share';
 
 import {getSuccessState} from 'selectors/global';
-
-import {
-    ShareButtons,
-    ShareCounts
-} from 'react-share';
-
-
-
-const {
-    FacebookShareButton,
-    VKShareButton,
-    OKShareButton,
-    TwitterShareButton
-} = ShareButtons;
-
-const {
-    FacebookShareCount,
-    VKShareCount,
-    OKShareCount
-} = ShareCounts;
-
-const Style = {
-    icon: {
-        width: '1.5em',
-        height: '1.5em'
-    }
-};
 
 const SuccessScreen = ({videoID}) => (
     <div className="grid-2 phablet-1 phone-1 flex">
@@ -53,7 +25,7 @@ const SuccessScreen = ({videoID}) => (
             <div className="videoHolder">
                 <div id="player">
                     <Video
-                        autoPlay={true}
+                        autoPlay={false}
                         controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                         poster={`${STATIC_URL}/images/${videoID}.jpg`}
                         onCanPlayThrough={() => {
@@ -82,49 +54,9 @@ const PlayerScreen = ({SHARE, videoID}) => (
                 <source src={`${STATIC_URL}/video/${videoID}.mp4`} type="video/mp4" />
             </Video>
         </div>
-        <ul className="shareBlock">
-            <li>
-                <FacebookShareButton {...SHARE}>
-                    <Icon xlink="fb" style={Style.icon} />
-                </FacebookShareButton>
-                <FacebookShareCount url={SHARE.url}>
-                    {(shareCount) => (
-                        <span className="count">{shareCount}</span>
-                    )}
-                </FacebookShareCount>
-            </li>
-            <li>
-                <VKShareButton {...SHARE}>
-                    <Icon xlink="vk" style={Style.icon} />
-                </VKShareButton>
-                <VKShareCount url={SHARE.url}>
-                    {(shareCount) => (
-                        <span className="count">{shareCount}</span>
-                    )}
-                </VKShareCount>
-            </li>
-            <li>
-                <OKShareButton {...SHARE}>
-                    <Icon xlink="ok" style={Style.icon} />
-                </OKShareButton>
-                <OKShareCount url={SHARE.url}>
-                    {(shareCount) => (
-                        <span className="count">{shareCount}</span>
-                    )}
-                </OKShareCount>
-            </li>
-            <li>
-                <TwitterShareButton
-                    {...SHARE}
-                    via="ингосстрах"
-                    hashtags={['ингосстрах', 'psychologies', 'mydream']}
-                >
-                    <Icon xlink="twitter" style={Style.icon} />
-                </TwitterShareButton>
-            </li>
-        </ul>
+        <Share count={false} session={videoID} />
     </div>
-)
+);
 
 
 class Player extends React.Component {
@@ -147,7 +79,7 @@ class Player extends React.Component {
             title: 'Создай свою мечту',
             description: '#ингосстрах#psychologies#mydream',
             image: `${STATIC_URL}/images/${videoID}.jpg`,
-            description: `${STATIC_URL}/images/${videoID}.jpg`
+            picture: `${STATIC_URL}/images/${videoID}.jpg`
         };
 
         if (success) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 import {STATIC_URL} from 'consts';
 import {Icon} from 'common/icon';
 
@@ -13,8 +14,6 @@ const Style = {
         height: '1.5em'
     }
 };
-
-
 
 class Share extends React.Component {
 
@@ -55,9 +54,40 @@ class Share extends React.Component {
         return (
             <ul className="shareBlock">
                 <li>
-                    <FacebookShareButton {...SHARE}>
+                    <div
+                        role="button"
+                        tabIndex="0"
+                        className="SocialMediaShareButton SocialMediaShareButton--facebook"
+                        onClick={() => {
+                            const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${SHARE.url}&picture=${STATIC_URL}/images/${session}.jpg&display=popup`;
+
+                            const width = 550;
+                            const height = 400;
+                            const left = window.outerWidth / 2 + (window.screenX || window.screenLeft || 0) - width / 2;
+                            const top = window.outerHeight / 2 + (window.screenY || window.screenTop || 0) - height / 2;
+
+                            const config = {
+                                height,
+                                width,
+                                left,
+                                top,
+                                location: 'no',
+                                toolbar: 'no',
+                                status: 'no',
+                                directories: 'no',
+                                menubar: 'no',
+                                scrollbars: 'yes',
+                                resizable: 'no',
+                                centerscreen: 'yes',
+                                chrome: 'yes'
+                            };
+                            window.open(fbLink, 'fbShareWindow', Object.keys(config).map((key) => {
+                                return key + '=' + config[key];
+                            }).join(', '));
+                        }}
+                    >
                         <Icon xlink="fb" style={Style.icon} />
-                    </FacebookShareButton>
+                    </div>
                     {count &&
                         <FacebookShareCount url={SHARE.url}>
                             {(shareCount) => (
