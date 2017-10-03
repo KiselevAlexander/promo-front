@@ -34,12 +34,11 @@ class Share extends React.Component {
             url: `${STATIC_URL}/player/${session}`,
             title: 'Создай свою мечту',
             description: '#ингосстрах#psychologies#mydream',
-            image: `${STATIC_URL}/images/${session}-1000x563.jpg`,
-            picture: `${STATIC_URL}/images/${session}-1000x563.jpg`
+            image: `${STATIC_URL}/images/${session}-1200x675.jpg`,
+            picture: `${STATIC_URL}/images/${session}-1200x675.jpg`
         };
 
         const {
-            FacebookShareButton,
             VKShareButton,
             OKShareButton,
             TwitterShareButton
@@ -59,7 +58,7 @@ class Share extends React.Component {
                         tabIndex="0"
                         className="SocialMediaShareButton SocialMediaShareButton--facebook"
                         onClick={() => {
-                            const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${SHARE.url}&picture=${STATIC_URL}/images/${session}-1000x563.jpg&display=popup`;
+                            const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${SHARE.url}&picture=${STATIC_URL}/images/${session}-1200x675.jpg&display=popup`;
 
                             const width = 550;
                             const height = 400;
