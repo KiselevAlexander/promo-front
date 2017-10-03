@@ -146,7 +146,8 @@ class Player extends React.Component {
             url: `${STATIC_URL}/player/${videoID}`,
             title: 'Создай свою мечту',
             description: '#ингосстрах#psychologies#mydream',
-            image: `${STATIC_URL}/images/${videoID}.jpg`
+            image: `${STATIC_URL}/images/${videoID}.jpg`,
+            description: `${STATIC_URL}/images/${videoID}.jpg`
         };
 
         if (success) {
