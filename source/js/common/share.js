@@ -59,7 +59,7 @@ class Share extends React.Component {
                         tabIndex="0"
                         className="SocialMediaShareButton SocialMediaShareButton--facebook"
                         onClick={() => {
-                            const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${SHARE.url}&picture=${STATIC_URL}/images/${session}-1000x563.jpg.jpg&display=popup`;
+                            const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${SHARE.url}&picture=${STATIC_URL}/images/${session}-1000x563.jpg&display=popup`;
 
                             const width = 550;
                             const height = 400;
