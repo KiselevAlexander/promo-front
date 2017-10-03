@@ -32,10 +32,10 @@ class Share extends React.Component {
 
 
         const SHARE = {
-            url: location.origin + `/player/${session}`,
+            url: `${STATIC_URL}/player/${session}`,
             title: 'Создай свою мечту',
             description: '#ингосстрах#psychologies#mydream',
-            image: `${STATIC_URL}/static/img/pic011.jpg`
+            image: `${STATIC_URL}/images/${session}`
         };
 
         const {
