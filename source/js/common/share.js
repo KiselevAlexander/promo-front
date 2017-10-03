@@ -59,38 +59,29 @@ class Share extends React.Component {
                         className="SocialMediaShareButton SocialMediaShareButton--facebook"
                         onClick={() => {
                             const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${SHARE.url}&picture=${STATIC_URL}/images/${session}-600x338.jpg&display=popup`;
+                            const width = 550;
+                            const height = 400;
+                            const left = window.outerWidth / 2 + (window.screenX || window.screenLeft || 0) - width / 2;
+                            const top = window.outerHeight / 2 + (window.screenY || window.screenTop || 0) - height / 2;
 
-
-                            $.ajax({
-                                url: fbLink,
-                                success: () => {
-
-                                    const width = 550;
-                                    const height = 400;
-                                    const left = window.outerWidth / 2 + (window.screenX || window.screenLeft || 0) - width / 2;
-                                    const top = window.outerHeight / 2 + (window.screenY || window.screenTop || 0) - height / 2;
-
-                                    const config = {
-                                        height,
-                                        width,
-                                        left,
-                                        top,
-                                        location: 'no',
-                                        toolbar: 'no',
-                                        status: 'no',
-                                        directories: 'no',
-                                        menubar: 'no',
-                                        scrollbars: 'yes',
-                                        resizable: 'no',
-                                        centerscreen: 'yes',
-                                        chrome: 'yes'
-                                    };
-                                    window.open(fbLink, 'fbShareWindow', Object.keys(config).map((key) => {
-                                        return key + '=' + config[key];
-                                    }).join(', '));
-
-                                }
-                            });
+                            const config = {
+                                height,
+                                width,
+                                left,
+                                top,
+                                location: 'no',
+                                toolbar: 'no',
+                                status: 'no',
+                                directories: 'no',
+                                menubar: 'no',
+                                scrollbars: 'yes',
+                                resizable: 'no',
+                                centerscreen: 'yes',
+                                chrome: 'yes'
+                            };
+                            window.open(fbLink, 'fbShareWindow', Object.keys(config).map((key) => {
+                                return key + '=' + config[key];
+                            }).join(', '));
                         }}
                     >
                         <Icon xlink="fb" style={Style.icon} />
