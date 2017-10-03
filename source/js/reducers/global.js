@@ -1,7 +1,7 @@
 import {SET_SUCCESS} from 'actions/global';
 
 const INITIAL_STATE = {
-    success: true
+    success: false
 };
 
 const global = (state = INITIAL_STATE, {type, payload}) => {
