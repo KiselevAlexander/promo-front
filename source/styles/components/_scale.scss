@@ -1,0 +1,22 @@
+.scale {
+    label {
+        color: #ffffff;
+        font-size: .875em;
+    }
+
+    .rc-slider {
+        box-sizing: border-box;
+        margin: 10px auto;
+        max-width: 100%;
+        width: 96%;
+    }
+    .rc-slider-rail {
+        height: 2px;
+    }
+
+    .rc-slider-handle {
+        margin-top: -8px;
+        width: 17px;
+        height: 17px;
+    }
+}

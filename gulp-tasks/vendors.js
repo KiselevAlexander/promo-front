@@ -28,7 +28,7 @@ const libs = [
     'react-dropzone',
     'react-html5video',
     'react-circular-progressbar',
-    'react-nouislider',
+    'rc-slider',
     'react-avatar-editor',
     'react-share',
     'promise-file-reader'

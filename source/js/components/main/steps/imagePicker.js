@@ -3,7 +3,7 @@ import $ from 'jquery';
 import classNames from 'classnames';
 import Dropzone from 'react-dropzone';
 import {readAsDataURL} from 'promise-file-reader';
-import Nouislider from 'react-nouislider';
+import Slider from 'rc-slider';
 import AvatarEditor from 'react-avatar-editor';
 
 class ImagePicker extends React.Component {
@@ -128,9 +128,9 @@ class ImagePicker extends React.Component {
     };
 
     scaleChangeHandler = (e) => {
-
+        console.log(e);
         this.setState((state) => ({
-            scale: e[0] * 0.01
+            scale: e * 0.01
         }), this.setStateAddText);
 
     };
@@ -270,11 +270,17 @@ class ImagePicker extends React.Component {
                                 <button className="rotateRight" onClick={this.rotateRight}></button>
                             </div>
 
-                            <Nouislider
-                                range={{min: 100, max: 200}}
-                                start={[scale * 100]}
-                                onChange={this.scaleChangeHandler}
-                            />
+                            <div className="scale mt-20">
+                                <label htmlFor="scale">Размер изображения:</label>
+                                <Slider
+                                    id="scale"
+                                    min={100}
+                                    max={200}
+                                    onChange={this.scaleChangeHandler}
+                                    value={scale * 100}
+                                />
+                            </div>
+
                         </div>
                     </div>
 

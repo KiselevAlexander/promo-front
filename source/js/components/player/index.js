@@ -14,13 +14,6 @@ const Style = {
     }
 };
 
-const SHARE = {
-    url: location.origin + location.pathname,
-    title: 'Создай свою мечту',
-    description: '#ингосстрах#psychologies#mydream',
-    image: `${STATIC_URL}/static/img/pic011.jpg`
-};
-
 class Player extends React.Component {
 
     constructor(props) {
@@ -36,7 +29,6 @@ class Player extends React.Component {
 
         const {
             FacebookShareButton,
-            GooglePlusShareButton,
             VKShareButton,
             OKShareButton,
             TwitterShareButton
@@ -44,23 +36,32 @@ class Player extends React.Component {
 
         const {
             FacebookShareCount,
-            GooglePlusShareCount,
             VKShareCount,
             OKShareCount
         } = ShareCounts;
 
+
+        const SHARE = {
+            url: `${STATIC_URL}/player/${videoID}`,
+            title: 'Создай свою мечту',
+            description: '#ингосстрах#psychologies#mydream',
+            image: `${STATIC_URL}/images/${videoID}`
+        };
+
         return (
             <div id="player">
-                <Video
-                    autoPlay={false}
-                    controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                    poster={`${STATIC_URL}/images/${videoID}.jpg`}
-                    onCanPlayThrough={() => {
-                        // Do stuff
-                    }}
-                >
-                    <source src={`${STATIC_URL}/video/${videoID}.mp4`} type="video/mp4" />
-                </Video>
+                <div className="videoHolder">
+                    <Video
+                        autoPlay={false}
+                        controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+                        poster={`${STATIC_URL}/images/${videoID}.jpg`}
+                        onCanPlayThrough={() => {
+                            // Do stuff
+                        }}
+                    >
+                        <source src={`${STATIC_URL}/video/${videoID}.mp4`} type="video/mp4" />
+                    </Video>
+                </div>
                 <ul className="shareBlock">
                     <li>
                         <FacebookShareButton {...SHARE}>

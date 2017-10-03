@@ -1,0 +1,23 @@
+.firstScreen {
+    h3 {
+        text-transform: uppercase;
+    }
+
+    a {
+        display: inline-block;
+        color: #fff;
+        margin-left: 2.5em;
+        border-bottom: 1px solid transparent;
+        transition: border .4s;
+
+        &:hover {
+            border-color: #fff;
+        }
+    }
+
+    p {
+        color: #fff;
+        margin-bottom: 1.875em;
+        margin-top: 1.875em;
+    }
+}
