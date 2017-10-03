@@ -35,7 +35,8 @@ class Share extends React.Component {
             url: `${STATIC_URL}/player/${session}`,
             title: 'Создай свою мечту',
             description: '#ингосстрах#psychologies#mydream',
-            image: `${STATIC_URL}/images/${session}.jpg`
+            image: `${STATIC_URL}/images/${session}.jpg`,
+            picture: `${STATIC_URL}/images/${session}.jpg`
         };
 
         const {
