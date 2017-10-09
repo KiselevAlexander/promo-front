@@ -5,7 +5,7 @@ import {Route, IndexRoute} from 'react-router';
 import Root from 'components/root';
 import Main from 'components/main';
 import Player from 'components/player';
-import Editor from 'components/editor';
+import FirstScreen from 'components/main/steps/firstScreen';
 import Admin from 'components/admin';
 
 const onEnterSuccess = () => {
@@ -16,10 +16,10 @@ const onEnterSuccess = () => {
 const routes = () => (
     <Route path="" component={Root}>
         <Route path="/">
-            <IndexRoute component={Main} />
+            <IndexRoute component={FirstScreen} />
             <Route path="/player" component={Player} />
             <Route path="/player/:videoID" component={Player} />
-            <Route path="/editor" component={Editor} />
+            <Route path="/main" component={Main} />
             <Route path="/success" onEnter={onEnterSuccess} />
             <Route path="/moderator"component={Admin} />
         </Route>

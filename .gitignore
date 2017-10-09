@@ -16,3 +16,5 @@ Dockerfile
 docker-compose.yml
 tasks.sh
 package-lock.json
+
+*.mp4

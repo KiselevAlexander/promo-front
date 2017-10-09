@@ -124,7 +124,7 @@ class Main extends React.Component {
         console.log(image);
 
         this.setState({
-            step: 3,
+            step: 2,
             image
         }, () => {
             this.doCreateVideo();
@@ -150,29 +150,25 @@ class Main extends React.Component {
 
         return (
             <main>
-                {/* <input type="number" onChange={(e) => this.setState({step: parseInt(e.target.value, 10)})} defaultValue={1} value={this.state.step} />*/}
                 {step === 0 &&
-                    <FirstScreen onClickNext={this.stepNextClickHandler} />
-                }
-                {step === 1 &&
                 <Patterns
                     onChange={(patternID) => {
                         this.setState({
-                            step: 2,
+                            step: 1,
                             pattern: patternID
                         });
                     }}
                 />
                 }
 
-                {step === 2 &&
+                {step === 1 &&
                     <ImagePicker
                         onSelect={this.onImageSelect}
                         onStepBackClick={this.stepBackClickHandler}
                     />
                 }
 
-                {step === 3 &&
+                {step === 2 &&
                 <Progress
                     percent={percent}
                     status={status}

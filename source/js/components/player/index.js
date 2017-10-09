@@ -54,6 +54,7 @@ const PlayerScreen = ({SHARE, videoID}) => (
                 <source src={`${STATIC_URL}/video/${videoID}.mp4`} type="video/mp4" />
             </Video>
         </div>
+        <Link to="/main" className="btn right mt-20">Создать видео</Link>
         <Share count={false} session={videoID} />
     </div>
 );
