@@ -47,10 +47,10 @@
             background: rgba(3, 78, 162, .7);
             padding: 4px;
             white-space: pre-wrap;
-            width: 150px;
+            width: 9.375em;
             transform: translateX(-50%);
             opacity: 0;
-            margin-left: 10px;
+            margin-left: $p-10;
             transition: transform .4s, opacity .4s;
             pointer-events: none;
             font-size: $p-14;
@@ -238,6 +238,10 @@
             height: 5.625em;
             margin: 0 1em;
 
+            &:before {
+                display: none;
+            }
+
             &.phablet-hide {
                 display: none;
             }
@@ -285,6 +289,10 @@
             width: 5.625em;
             height: 5.625em;
             margin: 0 1em;
+
+            &:before {
+                display: none;
+            }
 
             &.phablet-hide {
                 display: none;
