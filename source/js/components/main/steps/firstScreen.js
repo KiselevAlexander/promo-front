@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import Modal from 'common/modal';
 
 class FirstScreen extends React.Component {
@@ -18,7 +19,6 @@ class FirstScreen extends React.Component {
     render() {
 
         const {rulesOpen} = this.state;
-        const {onClickNext} = this.props;
 
         return (
             <div className="firstScreen">
@@ -35,8 +35,8 @@ class FirstScreen extends React.Component {
                             делитесь им в социальных сетях,
                             собирайте лайки и выигрывайте приз.
                         </p>
-                        <button className="btn" onClick={onClickNext}>создать видео</button>
-                        <a href="#!" onClick={this.rulesClickHandler}>Правила конкурса</a>
+                        <Link to="/main" className="btn">создать видео</Link>
+                        <a className="rules" href="#!" onClick={this.rulesClickHandler}>Правила конкурса</a>
                     </div>
                     <div className="col">
                         <div className="videoHolder">

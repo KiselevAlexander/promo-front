@@ -37,9 +37,33 @@
         background-size: cover;
         background-position: 50%;
         background-repeat: no-repeat;
+        
+        &:before {
+            content: attr(data-text);
+            position: absolute;
+            color: #fff;
+            left: 100%;
+            top: 33.3333%;
+            background: rgba(3, 78, 162, .7);
+            padding: 4px;
+            white-space: pre-wrap;
+            width: 150px;
+            transform: translateX(-50%);
+            opacity: 0;
+            margin-left: 10px;
+            transition: transform .4s, opacity .4s;
+            pointer-events: none;
+            font-size: $p-14;
+        }
 
         &:hover {
             box-shadow: 0 0 15px #fff;
+
+            &:before {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
         }
 
         &.active {
@@ -52,6 +76,7 @@
             left: 0;
             top: 29.375em;
             background: #fff;
+            z-index: 90;
         }
         &.circle1:hover {
             box-shadow: none;
@@ -61,6 +86,7 @@
             height: 3.188em;
             left: 19.188em;
             top: 29.375em;
+            z-index: 91;
 
             span {
                 bottom: -3vw;
@@ -74,18 +100,21 @@
             height: 4.063em;
             left: 12.688em;
             top: 29.75em;
+            z-index: 92;
         }
         &.circle4 {
             width: 4.875em;
             height: 4.875em;
             left: 5.5em;
             top: 27.313em;
+            z-index: 93;
         }
         &.circle5 {
             width: 5.625em;
             height: 5.625em;
             left: .688em;
             top: 20.500em;
+            z-index: 94;
         }
         &.circle5 span {
             left: -8vw;
@@ -95,6 +124,7 @@
             height: 6.25em;
             left: 0;
             top: 11.75em;
+            z-index: 95;
         }
         &.circle6 span {
         }
@@ -103,12 +133,14 @@
             height: 7.5em;
             left: 4.875em;
             top: 3.813em;
+            z-index: 97;
         }
         &.circle8 {
             width: 8.625em;
             height: 8.625em;
             left: 14.125em;
             top: .813em;
+            z-index: 96;
         }
         &.circle9  {
             width: 3.125em;
@@ -116,28 +148,52 @@
             left: 23.5em;
             top: 25.938em;
             background: #0ba1de;
+
+            &:before {
+                display: none;
+            }
+
         }
+
         &.circle10 {
             width: 2.625em;
             height: 2.625em;
             left: 26em;
             top: 21.875em;
             background: #0ba1de;
+
+            &:before {
+                display: none;
+            }
+
         }
+
         &.circle11 {
             width: 2.125em;
             height: 2.125em;
             left: 26.75em;
             top: 17em;
             background: #0ba1de;
+
+            &:before {
+                display: none;
+            }
+
         }
+
         &.circle12 {
             width: 1.313em;
             height: 1.313em;
             left: 25.625em;
             top: 13.438em;
             background: #0ba1de;
+
+            &:before {
+                display: none;
+            }
+
         }
+
     }
 }
 

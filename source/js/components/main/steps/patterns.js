@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import {DefaultPlayer as Video} from 'react-html5video';
 
 const PATTERNS = [
-    {id: 1, image: '/static/img/photo001.jpg'},
-    {id: 2, image: '/static/img/photo001.jpg'},
-    {id: 3, image: '/static/img/photo001.jpg'},
-    {id: 1, image: '/static/img/photo001.jpg'},
-    {id: 2, image: '/static/img/photo001.jpg'},
-    {id: 3, image: '/static/img/photo001.jpg'},
-    {id: 1, image: '/static/img/photo001.jpg'}
+    {id: 1, image: '/static/img/patterns/pattern-1.jpg', text: 'Some description\nof video pattern'},
+    {id: 2, image: '/static/img/patterns/pattern-2.jpg', text: 'Some description\nof video pattern'},
+    {id: 3, image: '/static/img/patterns/pattern-3.jpg', text: 'Some description\nof video pattern'},
+    {id: 4, image: '/static/img/patterns/pattern-4.jpg', text: 'Some description\nof video pattern'},
+    {id: 5, image: '/static/img/patterns/pattern-5.jpg', text: 'Some description\nof video pattern'},
+    {id: 1, image: '/static/img/patterns/pattern-6.jpg', text: 'Some description\nof video pattern'},
+    {id: 2, image: '/static/img/patterns/pattern-7.jpg', text: 'Some description\nof video pattern'}
 ];
 
 class Patterns extends React.Component {
@@ -56,6 +56,7 @@ class Patterns extends React.Component {
                                 className={classNames(`circle circle${key + 2}`, {active: item.active})}
                                 style={{backgroundImage: `url('${item.image}')`}}
                                 onClick={() => { this.patternClickHandler(key); }}
+                                data-text={item.text}
                             >
                             </li>
                         ))}
@@ -86,45 +87,49 @@ class Patterns extends React.Component {
                 <div className="col right-side flex-middle-content">
                     <div className="videoHolder">
                         {currentPatternId === 0 &&
-                            <img src="/static/img/pic011.jpg" alt="" />
+                        <img src="/static/img/pic011.jpg" alt="" />
                         }
                         {currentPatternId === 1 &&
-                            <Video
-                                autoPlay={true}
-                                controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                                // poster={`/public/images/${currentPatternId}.jpg`}
-                                onCanPlayThrough={() => {
-                                    // Do stuff
-                                }}
-                            >
-                                <source src={`/patterns/pattern-1.mp4`} type="video/mp4"/>
-                            </Video>
-                            }
+                        <Video
+                            autoPlay={true}
+                            controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+                        >
+                            <source src={'/patterns/pattern-1.mp4'} type="video/mp4" />
+                        </Video>
+                        }
 
-                            {currentPatternId === 2 &&
+                        {currentPatternId === 2 &&
+                        <Video
+                            autoPlay={true}
+                            controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+                        >
+                            <source src={'/patterns/pattern-2.mp4'} type="video/mp4" />
+                        </Video>
+                        }
+                        {currentPatternId === 3 &&
                             <Video
                                 autoPlay={true}
                                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                                // poster={`/public/images/${currentPatternId}.jpg`}
-                                onCanPlayThrough={() => {
-                                    // Do stuff
-                                }}
                             >
-                                <source src={`/patterns/pattern-2.mp4`} type="video/mp4"/>
+                                <source src={'/patterns/pattern-3.mp4'} type="video/mp4" />
                             </Video>
-                            }
-                            {currentPatternId === 3 &&
+                        }
+                        {currentPatternId === 4 &&
                             <Video
                                 autoPlay={true}
                                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                                // poster={`/public/images/${currentPatternId}.jpg`}
-                                onCanPlayThrough={() => {
-                                    // Do stuff
-                                }}
                             >
-                                <source src={`/patterns/pattern-3.mp4`} type="video/mp4"/>
+                                <source src={'/patterns/pattern-4.mp4'} type="video/mp4" />
                             </Video>
-                            }
+                        }
+                        {currentPatternId === 5 &&
+                            <Video
+                                autoPlay={true}
+                                controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+                            >
+                                <source src={'/patterns/pattern-5.mp4'} type="video/mp4" />
+                            </Video>
+                        }
                     </div>
 
                 </div>
