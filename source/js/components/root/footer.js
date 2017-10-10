@@ -27,18 +27,10 @@ class Footer extends React.Component {
 
         const {
             FacebookShareButton,
-            GooglePlusShareButton,
             VKShareButton,
             OKShareButton,
             TwitterShareButton
         } = ShareButtons;
-
-        const {
-            FacebookShareCount,
-            GooglePlusShareCount,
-            VKShareCount,
-            OKShareCount
-        } = ShareCounts;
 
         return (
             <footer>
