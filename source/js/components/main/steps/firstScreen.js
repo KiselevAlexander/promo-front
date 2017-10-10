@@ -35,7 +35,7 @@ class FirstScreen extends React.Component {
                             делитесь им в социальных сетях,
                             собирайте лайки и выигрывайте приз.
                         </p>
-                        <Link to="/main" className="btn">создать видео</Link>
+                        <Link to="/video/main" className="btn">создать видео</Link>
                         <a className="rules" href="#!" onClick={this.rulesClickHandler}>Правила конкурса</a>
                     </div>
                     <div className="col">
