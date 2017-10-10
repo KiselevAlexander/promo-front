@@ -15,7 +15,7 @@ const onEnterSuccess = () => {
 // TODO: remove Redirect from index route
 const routes = () => (
     <Route path="" component={Root}>
-        <Route path="/">
+        <Route path="/video">
             <IndexRoute component={FirstScreen} />
             <Route path="/player" component={Player} />
             <Route path="/player/:videoID" component={Player} />
