@@ -100,7 +100,7 @@ class Main extends React.Component {
 
                         this.props.setSuccess();
 
-                        this.props.router.push(`/player/${session}`);
+                        this.props.router.push(`/video/player/${session}`);
 
                         break;
                     default:
