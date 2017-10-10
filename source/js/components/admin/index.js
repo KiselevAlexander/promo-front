@@ -123,7 +123,7 @@ class Admin extends React.Component {
                                     ID: {row.id}&nbsp;&nbsp;&nbsp;
                                     Статус: {row.blocked ? 'Заблокирована' : 'Активна'}
                                 </div>
-                                <img src={`${STATIC_URL}/images/${row.session}.jpg`} alt="" />
+                                <img src={`${STATIC_URL}/static/images/${row.session}.jpg`} alt="" />
                                 <div className="controls">
                                     <button onClick={() => { this.blockVideo(row.id, !row.blocked); }}>block</button>
                                     <button onClick={() => { this.deleteVideo(row.id); }}>delete</button>

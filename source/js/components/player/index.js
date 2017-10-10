@@ -27,12 +27,12 @@ const SuccessScreen = ({videoID}) => (
                     <Video
                         autoPlay={false}
                         controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                        poster={`${STATIC_URL}/static/images/${videoID}.jpg`}
+                        poster={`${STATIC_URL}static/images/${videoID}.jpg`}
                         onCanPlayThrough={() => {
                             // Do stuff
                         }}
                     >
-                        <source src={`${STATIC_URL}/static/video/${videoID}.mp4`} type="video/mp4" />
+                        <source src={`${STATIC_URL}static/video/${videoID}.mp4`} type="video/mp4" />
                     </Video>
                 </div>
             </div>
@@ -46,12 +46,12 @@ const PlayerScreen = ({SHARE, videoID}) => (
             <Video
                 autoPlay={false}
                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                poster={`${STATIC_URL}/static/images/${videoID}.jpg`}
+                poster={`${STATIC_URL}static/images/${videoID}.jpg`}
                 onCanPlayThrough={() => {
                     // Do stuff
                 }}
             >
-                <source src={`${STATIC_URL}/static/video/${videoID}.mp4`} type="video/mp4" />
+                <source src={`${STATIC_URL}static/video/${videoID}.mp4`} type="video/mp4" />
             </Video>
         </div>
         <Link to="/main" className="btn right mt-20">Создать видео</Link>
