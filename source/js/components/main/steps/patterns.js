@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import {DefaultPlayer as Video} from 'react-html5video';
 
 const PATTERNS = [
-    {id: 1, image: '/static/img/patterns/pattern-1.jpg', text: 'Some description\nof video pattern'},
-    {id: 2, image: '/static/img/patterns/pattern-2.jpg', text: 'Some description\nof video pattern'},
-    {id: 3, image: '/static/img/patterns/pattern-3.jpg', text: 'Some description\nof video pattern'},
-    {id: 4, image: '/static/img/patterns/pattern-4.jpg', text: 'Some description\nof video pattern'},
-    {id: 5, image: '/static/img/patterns/pattern-5.jpg', text: 'Some description\nof video pattern'},
-    {id: 1, image: '/static/img/patterns/pattern-6.jpg', text: 'Some description\nof video pattern'},
-    {id: 2, image: '/static/img/patterns/pattern-7.jpg', text: 'Some description\nof video pattern'}
+    {id: 1, image: '/static/img/static/patterns/pattern-1.jpg', text: 'Some description\nof video pattern'},
+    {id: 2, image: '/static/img/static/patterns/pattern-2.jpg', text: 'Some description\nof video pattern'},
+    {id: 3, image: '/static/img/static/patterns/pattern-3.jpg', text: 'Some description\nof video pattern'},
+    {id: 4, image: '/static/img/static/patterns/pattern-4.jpg', text: 'Some description\nof video pattern'},
+    {id: 5, image: '/static/img/static/patterns/pattern-5.jpg', text: 'Some description\nof video pattern'},
+    {id: 1, image: '/static/img/static/patterns/pattern-6.jpg', text: 'Some description\nof video pattern'},
+    {id: 2, image: '/static/img/static/patterns/pattern-7.jpg', text: 'Some description\nof video pattern'}
 ];
 
 class Patterns extends React.Component {
@@ -94,7 +94,7 @@ class Patterns extends React.Component {
                             autoPlay={true}
                             controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                         >
-                            <source src={'/patterns/pattern-1.mp4'} type="video/mp4" />
+                            <source src={'/static/patterns/pattern-1.mp4'} type="video/mp4" />
                         </Video>
                         }
 
@@ -103,7 +103,7 @@ class Patterns extends React.Component {
                             autoPlay={true}
                             controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                         >
-                            <source src={'/patterns/pattern-2.mp4'} type="video/mp4" />
+                            <source src={'/static/patterns/pattern-2.mp4'} type="video/mp4" />
                         </Video>
                         }
                         {currentPatternId === 3 &&
@@ -111,7 +111,7 @@ class Patterns extends React.Component {
                                 autoPlay={true}
                                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                             >
-                                <source src={'/patterns/pattern-3.mp4'} type="video/mp4" />
+                                <source src={'/static/patterns/pattern-3.mp4'} type="video/mp4" />
                             </Video>
                         }
                         {currentPatternId === 4 &&
@@ -119,7 +119,7 @@ class Patterns extends React.Component {
                                 autoPlay={true}
                                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                             >
-                                <source src={'/patterns/pattern-4.mp4'} type="video/mp4" />
+                                <source src={'/static/patterns/pattern-4.mp4'} type="video/mp4" />
                             </Video>
                         }
                         {currentPatternId === 5 &&
@@ -127,7 +127,7 @@ class Patterns extends React.Component {
                                 autoPlay={true}
                                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                             >
-                                <source src={'/patterns/pattern-5.mp4'} type="video/mp4" />
+                                <source src={'/static/patterns/pattern-5.mp4'} type="video/mp4" />
                             </Video>
                         }
                     </div>
