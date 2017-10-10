@@ -20,9 +20,9 @@ class Root extends React.Component {
                 <header className="site-header">
                     <div className="wrapper">
                         <div className="logo">
-                            <Link to="/">
+                            <a href="/">
                                 <img src="/static/img/logo.png" alt="" />
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </header>
