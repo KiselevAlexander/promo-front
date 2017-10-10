@@ -19,7 +19,7 @@ const SuccessScreen = ({videoID}) => (
             </ol>
             <Share count={false} session={videoID} />
             Ссылка на видео: <br />
-            <Link to={`/player/${videoID}`}>{`${location.origin}/player/${videoID}`}</Link>
+            <Link to={`/video/player/${videoID}`}>{`${location.origin}/video/player/${videoID}`}</Link>
         </div>
         <div className="col">
             <div className="videoHolder">
@@ -27,12 +27,12 @@ const SuccessScreen = ({videoID}) => (
                     <Video
                         autoPlay={false}
                         controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                        poster={`${STATIC_URL}/images/${videoID}.jpg`}
+                        poster={`${STATIC_URL}/static/images/${videoID}.jpg`}
                         onCanPlayThrough={() => {
                             // Do stuff
                         }}
                     >
-                        <source src={`${STATIC_URL}/video/${videoID}.mp4`} type="video/mp4" />
+                        <source src={`${STATIC_URL}/static/video/${videoID}.mp4`} type="video/mp4" />
                     </Video>
                 </div>
             </div>
@@ -46,12 +46,12 @@ const PlayerScreen = ({SHARE, videoID}) => (
             <Video
                 autoPlay={false}
                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                poster={`${STATIC_URL}/images/${videoID}.jpg`}
+                poster={`${STATIC_URL}/static/images/${videoID}.jpg`}
                 onCanPlayThrough={() => {
                     // Do stuff
                 }}
             >
-                <source src={`${STATIC_URL}/video/${videoID}.mp4`} type="video/mp4" />
+                <source src={`${STATIC_URL}/static/video/${videoID}.mp4`} type="video/mp4" />
             </Video>
         </div>
         <Link to="/main" className="btn right mt-20">Создать видео</Link>
