@@ -17,11 +17,11 @@ const routes = () => (
     <Route path="" component={Root}>
         <Route path="/video">
             <IndexRoute component={FirstScreen} />
-            <Route path="/player" component={Player} />
-            <Route path="/player/:videoID" component={Player} />
-            <Route path="/main" component={Main} />
-            <Route path="/success" onEnter={onEnterSuccess} />
-            <Route path="/moderator"component={Admin} />
+            <Route path="/video/player" component={Player} />
+            <Route path="/video/player/:videoID" component={Player} />
+            <Route path="/video/main" component={Main} />
+            <Route path="/video/success" onEnter={onEnterSuccess} />
+            <Route path="/video/moderator"component={Admin} />
         </Route>
     </Route>
 );
