@@ -68,7 +68,14 @@ class Admin extends React.Component {
         })
             .then((res) => res.json())
             .then((data) => {
-                this.getList();
+                this.setState((state) => ({
+                    rows: state.rows.map((item) => {
+                        if (item.id === id) {
+                            item.blocked = true;
+                        }
+                        return item;
+                    })
+                }));
             })
             .catch(() => {
                 this.setState({
@@ -82,7 +89,9 @@ class Admin extends React.Component {
         request.delete(`${API_BASE_URL}/admin/rows/delete?pass=${pass}&id=${id}`, null)
             .then((res) => res.json())
             .then((data) => {
-                this.getList();
+                this.setState((state) => ({
+                    rows: state.rows.filter((item) => item.id !== id)
+                }));
             })
             .catch(() => {
                 this.setState({
