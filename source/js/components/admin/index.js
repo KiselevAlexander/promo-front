@@ -71,7 +71,7 @@ class Admin extends React.Component {
                 this.setState((state) => ({
                     rows: state.rows.map((item) => {
                         if (item.id === id) {
-                            item.blocked = true;
+                            item.blocked = !item.blocked;
                         }
                         return item;
                     })
