@@ -1,6 +1,6 @@
 /node_modules/*
 /logs
-/public/video
+/public/static/video
 /public/images
 /public/static/js
 /public/static/css

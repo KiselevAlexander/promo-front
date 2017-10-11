@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import {DefaultPlayer as Video} from 'react-html5video';
 
 const PATTERNS = [
-    {id: 1, image: '/static/img/patterns/pattern-1.jpg', text: 'Some description\nof video pattern'},
-    {id: 2, image: '/static/img/patterns/pattern-2.jpg', text: 'Some description\nof video pattern'},
-    {id: 3, image: '/static/img/patterns/pattern-3.jpg', text: 'Some description\nof video pattern'},
+    {id: 7, image: '/static/img/patterns/pattern-5.jpg', text: 'Some description\nof video pattern'},
+    {id: 6, image: '/static/img/patterns/pattern-6.jpg', text: 'Some description\nof video pattern'},
+    {id: 5, image: '/static/img/patterns/pattern-7.jpg', text: 'Some description\nof video pattern'},
     {id: 4, image: '/static/img/patterns/pattern-4.jpg', text: 'Some description\nof video pattern'},
-    {id: 5, image: '/static/img/patterns/pattern-5.jpg', text: 'Some description\nof video pattern'},
-    {id: 1, image: '/static/img/patterns/pattern-6.jpg', text: 'Some description\nof video pattern'},
-    {id: 2, image: '/static/img/patterns/pattern-7.jpg', text: 'Some description\nof video pattern'}
+    {id: 3, image: '/static/img/patterns/pattern-2.jpg', text: 'Some description\nof video pattern'},
+    {id: 2, image: '/static/img/patterns/pattern-3.jpg', text: 'Some description\nof video pattern'},
+    {id: 1, image: '/static/img/patterns/pattern-1.jpg', text: 'Some description\nof video pattern'}
 ];
 
 class Patterns extends React.Component {
@@ -128,6 +128,22 @@ class Patterns extends React.Component {
                                 controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
                             >
                                 <source src={'/static/patterns/pattern-5.mp4'} type="video/mp4" />
+                            </Video>
+                        }
+                        {currentPatternId === 6 &&
+                            <Video
+                                autoPlay={true}
+                                controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+                            >
+                                <source src={'/static/patterns/pattern-6.mp4'} type="video/mp4" />
+                            </Video>
+                        }
+                        {currentPatternId === 7 &&
+                            <Video
+                                autoPlay={true}
+                                controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+                            >
+                                <source src={'/static/patterns/pattern-7.mp4'} type="video/mp4" />
                             </Video>
                         }
                     </div>
