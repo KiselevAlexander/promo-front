@@ -155,7 +155,7 @@ class ImagePicker extends React.Component {
 
         const lines = value.split('\n');
 
-        if (value.length < 75) {
+        if (value.length < 60) {
             this.setState({
                 text: value,
                 error: ''
@@ -210,21 +210,21 @@ class ImagePicker extends React.Component {
         baseImage.onload = () => {
             context.drawImage(baseImage, 0, 0, cWidth, cHeight);
 
-            const cText = (!text) ? 'Ваша мечта' : text;
+            const cText = (!text) ? 'Текст\nвашей\nмечты' : text;
 
             context.font = `bold ${this.fontSize}px Verdana`;
             context.fillStyle = 'white';
 
-            const y = cHeight / 100 * 30;
+            const y = cHeight / 100 * 60;
 
             const x = cWidth / 100 * 70;
 
             const lineheight = this.fontSize * 1.2;
 
-            const lines = this.getLines(context, cText, cWidth - 100);
+            const lines = this.getLines(context, cText, (cWidth / 100 * 29.7));
 
             for (let i = 0; i < lines.length; i++) {
-                context.fillText(lines[i], x, ((y + (i * lineheight))));
+                context.fillText(lines[i], x, ((y + (i * lineheight)) - ((lines.length * lineheight) / 2)));
             }
 
         };
