@@ -126,6 +126,7 @@ class Admin extends React.Component {
                 }
                 {(isAuth && rows) &&
                     <div className="rows">
+                        <p><b>Всего видео: {rows.length}</b></p>
                         {rows.map((row, key) => (
                             <div key={key} className="row">
                                 <div className="data">
