@@ -25,7 +25,7 @@ class ImagePicker extends React.Component {
         };
 
         this.timer = 0;
-        this.fontSize = 48;
+        this.fontSize = 42;
 
     }
 
