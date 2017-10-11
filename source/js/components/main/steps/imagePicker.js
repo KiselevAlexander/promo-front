@@ -155,7 +155,7 @@ class ImagePicker extends React.Component {
 
         const lines = value.split('\n');
 
-        if (value.length < 85 && lines.length < 4) {
+        if (value.length < 75) {
             this.setState({
                 text: value,
                 error: ''
@@ -197,30 +197,37 @@ class ImagePicker extends React.Component {
 
     addText = () => {
 
-        const {text, height, rotate, width} = this.state;
+        const {text, rotate, height, width} = this.state;
         const {canvas} = this.editor;
 
-        const cText = (!text) ? 'Ваша мечта' : text;
-
         const context = canvas.getContext('2d');
-
-        context.font = `bold ${this.fontSize}px Verdana`;
-        context.fillStyle = 'white';
 
         const cWidth = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? width : height;
         const cHeight = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? height : width;
 
-        const y = cHeight - (this.fontSize);
+        const baseImage = new Image();
+        baseImage.src = '/static/img/text_overlay.png';
+        baseImage.onload = () => {
+            context.drawImage(baseImage, 0, 0, cWidth, cHeight);
 
-        const x = 50;
+            const cText = (!text) ? 'Ваша мечта' : text;
 
-        const lineheight = this.fontSize * 1.2;
+            context.font = `bold ${this.fontSize}px Verdana`;
+            context.fillStyle = 'white';
 
-        const lines = this.getLines(context, cText, cWidth - 100);
+            const y = cHeight / 100 * 30;
 
-        for (let i = 0; i < lines.length; i++) {
-            context.fillText(lines[i], x, ((y + (i * lineheight)) - (lines.length * lineheight)));
-        }
+            const x = cWidth / 100 * 70;
+
+            const lineheight = this.fontSize * 1.2;
+
+            const lines = this.getLines(context, cText, cWidth - 100);
+
+            for (let i = 0; i < lines.length; i++) {
+                context.fillText(lines[i], x, ((y + (i * lineheight))));
+            }
+
+        };
 
     };
 
