@@ -132,6 +132,7 @@ class Admin extends React.Component {
                                 <div className="data">
                                     ID: {row.id}&nbsp;&nbsp;&nbsp;
                                     Статус: {row.blocked ? 'Заблокирована' : 'Активна'}
+                                    <a href={`/video/player/${row.session}`} target="_blank" className="inlineBlock ml-10">Просмотр</a>
                                 </div>
                                 <img src={`${STATIC_URL}/static/images/${row.session}.jpg`} alt="" />
                                 <div className="controls">
