@@ -1,11 +1,22 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
-import {STATIC_URL} from 'consts';
+import {STATIC_URL, API_BASE_URL} from 'consts';
 import {DefaultPlayer as Video} from 'react-html5video';
 import Share from 'common/share';
+import {request} from 'managers/request';
 
 import {getSuccessState} from 'selectors/global';
+
+const BlockMessage = () => (
+    <div className="blocked text-center color-white">
+        <h1>К сожалению данное видео недоступно!</h1>
+        Вы можете создать другое видео <br />
+        <p className="mt-30">
+            <Link to="/video/main" className="btn">Создать видео</Link>
+        </p>
+    </div>
+);
 
 const SuccessScreen = ({videoID}) => (
     <div className="grid-2 phablet-1 phone-1 flex">
@@ -66,13 +77,32 @@ class Player extends React.Component {
         super(props);
 
         this.state = {
+
         };
+    }
+
+    componentDidMount() {
+
+        const {videoID} = this.props.params;
+
+        request.get(`${API_BASE_URL}/getvideo/${videoID}`, null)
+            .then((res) => res.json())
+            .then((data) => {
+                if (data) {
+                    if (data.blocked) {
+                        this.setState({
+                            blocked: true
+                        });
+                    }
+                }
+            });
     }
 
     render() {
 
         const {videoID} = this.props.params;
         const {success} = this.props;
+        const {blocked} = this.state;
 
 
         const SHARE = {
@@ -88,6 +118,12 @@ class Player extends React.Component {
                 <SuccessScreen
                     videoID={videoID}
                 />
+            );
+        }
+
+        if (blocked) {
+            return (
+                <BlockMessage />
             );
         }
 
