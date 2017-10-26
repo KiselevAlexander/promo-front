@@ -32,8 +32,8 @@ class Share extends React.Component {
 
         const SHARE = {
             url: `${STATIC_URL}/player/${session}`,
-            title: 'Создай свою мечту',
-            description: '#ингосстрах#psychologies#mydream',
+            title: 'Создайте ваше персональное видео и осуществляйте ваши мечты!',
+            description: 'Вдохновляйтесь историями людей, изменивших свою жизнь, делитесь своей мечтой и получите возможность ее осуществить. #Ингосстрах70 #ingos70',
             image: `${STATIC_URL}/images/${session}-600x338.jpg`,
             picture: `${STATIC_URL}/images/${session}-600x338.jpg`
         };
@@ -121,8 +121,9 @@ class Share extends React.Component {
                 <li>
                     <TwitterShareButton
                         {...SHARE}
-                        via="ингосстрах"
-                        hashtags={['ингосстрах', 'psychologies', 'mydream']}
+                        via="Ингосстрах"
+                        description="Вдохновитесь историями людей, делитесь мечтой и получите возможность ее осуществить"
+                        hashtags={['Ингосстрах70', 'ingos70']}
                     >
                         <Icon xlink="twitter" style={Style.icon} />
                     </TwitterShareButton>
