@@ -3,13 +3,13 @@ import classNames from 'classnames';
 import {DefaultPlayer as Video} from 'react-html5video';
 
 const PATTERNS = [
-    {id: 7, image: '/static/img/patterns/pattern-5.jpg', text: 'Some description\nof video pattern'},
-    {id: 6, image: '/static/img/patterns/pattern-6.jpg', text: 'Some description\nof video pattern'},
-    {id: 5, image: '/static/img/patterns/pattern-7.jpg', text: 'Some description\nof video pattern'},
-    {id: 4, image: '/static/img/patterns/pattern-4.jpg', text: 'Some description\nof video pattern'},
-    {id: 3, image: '/static/img/patterns/pattern-2.jpg', text: 'Some description\nof video pattern'},
-    {id: 2, image: '/static/img/patterns/pattern-3.jpg', text: 'Some description\nof video pattern'},
-    {id: 1, image: '/static/img/patterns/pattern-1.jpg', text: 'Some description\nof video pattern'}
+    {id: 7, image: '/static/img/patterns/pattern-5.jpg', text: 'Любимая работа'},
+    {id: 6, image: '/static/img/patterns/pattern-6.jpg', text: 'Не бояться стареть'},
+    {id: 5, image: '/static/img/patterns/pattern-7.jpg', text: 'Стать капитаном'},
+    {id: 4, image: '/static/img/patterns/pattern-4.jpg', text: 'Стать путешественником'},
+    {id: 3, image: '/static/img/patterns/pattern-2.jpg', text: 'Идеальная мать'},
+    {id: 2, image: '/static/img/patterns/pattern-3.jpg', text: 'Покупка квартиры'},
+    {id: 1, image: '/static/img/patterns/pattern-1.jpg', text: 'Семья и бизнес', active: true}
 ];
 
 class Patterns extends React.Component {
@@ -18,8 +18,9 @@ class Patterns extends React.Component {
         super(props);
 
         this.state = {
-            currentPatternId: 0,
-            patterns: PATTERNS
+            currentPatternId: 1,
+            patterns: PATTERNS,
+            defaultVideoChanged: false
         };
 
     }
@@ -31,7 +32,8 @@ class Patterns extends React.Component {
             pattens: state.patterns.map((item, key) => {
                 item.active = (key === id);
                 return item;
-            })
+            }),
+            defaultVideoChanged: true
         }));
 
     };
@@ -42,9 +44,19 @@ class Patterns extends React.Component {
 
     };
 
+    setInitVolume = ({target}) => {
+        target.volume = 0.25;
+    };
+
     render() {
 
-        const {patterns, currentPatternId} = this.state;
+        const {patterns, currentPatternId, defaultVideoChanged} = this.state;
+
+        const videoProps = {
+            autoPlay: true,
+            controls: ['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen'],
+            onCanPlay: this.setInitVolume
+        };
 
         return (
             <div className="patterns grid-2 tablet-2 phablet-1 phone-1 flex">
@@ -90,59 +102,38 @@ class Patterns extends React.Component {
                         <img src="/static/img/pic011.jpg" alt="" />
                         }
                         {currentPatternId === 1 &&
-                        <Video
-                            autoPlay={true}
-                            controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                        >
+                        <Video {...videoProps} autoPlay={defaultVideoChanged}>
                             <source src={'/static/patterns/pattern-1.mp4'} type="video/mp4" />
                         </Video>
                         }
 
                         {currentPatternId === 2 &&
-                        <Video
-                            autoPlay={true}
-                            controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                        >
+                        <Video {...videoProps}>
                             <source src={'/static/patterns/pattern-2.mp4'} type="video/mp4" />
                         </Video>
                         }
                         {currentPatternId === 3 &&
-                            <Video
-                                autoPlay={true}
-                                controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                            >
+                            <Video {...videoProps}>
                                 <source src={'/static/patterns/pattern-3.mp4'} type="video/mp4" />
                             </Video>
                         }
                         {currentPatternId === 4 &&
-                            <Video
-                                autoPlay={true}
-                                controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                            >
+                            <Video {...videoProps}>
                                 <source src={'/static/patterns/pattern-4.mp4'} type="video/mp4" />
                             </Video>
                         }
                         {currentPatternId === 5 &&
-                            <Video
-                                autoPlay={true}
-                                controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                            >
+                            <Video {...videoProps}>
                                 <source src={'/static/patterns/pattern-5.mp4'} type="video/mp4" />
                             </Video>
                         }
                         {currentPatternId === 6 &&
-                            <Video
-                                autoPlay={true}
-                                controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                            >
+                            <Video {...videoProps}>
                                 <source src={'/static/patterns/pattern-6.mp4'} type="video/mp4" />
                             </Video>
                         }
                         {currentPatternId === 7 &&
-                            <Video
-                                autoPlay={true}
-                                controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
-                            >
+                            <Video {...videoProps}>
                                 <source src={'/static/patterns/pattern-7.mp4'} type="video/mp4" />
                             </Video>
                         }

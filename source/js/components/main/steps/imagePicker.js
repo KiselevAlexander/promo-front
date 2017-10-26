@@ -259,7 +259,7 @@ class ImagePicker extends React.Component {
                 <div className="col right">
                     <div className="imageHolder">
                         {!imageSrc &&
-                            <img src="/static/img/pic011.jpg" alt="" className="bordered" />
+                            <img src="/static/img/image_picker.png" alt="" className="bordered" />
                         }
                         <div className={classNames('imageCroper', {'is-visible': (imageSrc)})}>
                             <div className="canvas" style={{height: canvasWrapperHeight}}>
