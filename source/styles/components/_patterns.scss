@@ -45,15 +45,16 @@
             left: 100%;
             top: 33.3333%;
             background: rgba(3, 78, 162, .7);
-            padding: 4px;
+            padding: 4px 8px;
             white-space: pre-wrap;
-            width: 9.375em;
+            width: 10em;
             transform: translateX(-50%);
             opacity: 0;
             margin-left: $p-10;
             transition: transform .4s, opacity .4s;
             pointer-events: none;
             font-size: $p-14;
+            border-radius: 4px;
         }
 
         &:hover {
@@ -192,6 +193,15 @@
                 display: none;
             }
 
+        }
+
+        &.circle9,
+        &.circle10,
+        &.circle11,
+        &.circle12 {
+            &:hover {
+                box-shadow: none !important;
+            }
         }
 
     }

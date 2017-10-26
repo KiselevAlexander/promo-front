@@ -24,12 +24,19 @@ const SuccessScreen = ({videoID}) => (
 
             <h3>ВАШЕ ВИДЕО ГОТОВО!</h3>
             <ol>
-                <li>Поделитесь вашим видео в социальных сетях.</li>
-                <li>Собирайте лайки.</li>
-                <li>Выигрывайте пакет страховых услуг для осуществления вашей мечты!</li>
+                <li>Поделитесь вашим видео в социальных сетях с хэштегом #Ингосстрах70 и #ingos70.</li>
+                <li>Призывайте ваших друзей вас поддержать и собирайте лайки.</li>
+                <li>
+                    Авторы семи самых интересных роликов получат подарочную карту на осуществление своей мечты <br />
+                    <small>
+                        <a href="http://vpodarok.ru/vpodarokKart" style={{borderColor: '#fff'}} target="_blank">
+                            Подробнее о карте
+                        </a>
+                    </small>
+                </li>
             </ol>
             <Share count={false} session={videoID} />
-            Ссылка на видео: <br />
+            Ссылка на ваше видео: <br />
             <Link to={`/video/player/${videoID}`}>{`${location.origin}/video/player/${videoID}`}</Link>
         </div>
         <div className="col">

@@ -12,6 +12,14 @@
         color: #fff;
         text-align: center;
 
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+
         .SocialMediaShareButton {
             display: flex;
             align-items: center;
@@ -20,7 +28,7 @@
             width: 2.813em;
             height: 2.813em;
             transition: background .4s;
-
+            outline: 0;
             cursor: pointer;
             padding: .313em;
 
