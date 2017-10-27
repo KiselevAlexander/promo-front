@@ -31,7 +31,8 @@ const libs = [
     'rc-slider',
     'react-avatar-editor',
     'react-share',
-    'promise-file-reader'
+    'promise-file-reader',
+    'react-swipeable'
 ];
 
 const vendorTask = (dest) => () => {
