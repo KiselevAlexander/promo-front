@@ -18,12 +18,13 @@ class Root extends React.Component {
         return (
             <div className="main-container">
                 <header className="site-header">
-                    <div className="wrapper">
+                    <div className="wrapper relative">
                         <div className="logo">
-                            <a href="/">
+                            <a href="http://www.psychologies.ru/">
                                 <img src="/static/img/logo.png" alt="" />
                             </a>
                         </div>
+                        <a href="/" className="main-page-link">Главная страница</a>
                     </div>
                 </header>
                 <div className="main-block flex-middle-content">
