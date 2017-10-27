@@ -2,7 +2,7 @@
 /logs
 /public/static/video
 /public/images
-/public/static/*
+/public/static
 /.idea
 
 ~*
