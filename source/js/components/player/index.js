@@ -1,4 +1,7 @@
 import React from 'react';
+import $ from 'jquery';
+import classNames from 'classnames';
+import Swipeable from 'react-swipeable';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {STATIC_URL, API_BASE_URL} from 'consts';
@@ -7,6 +10,7 @@ import Share from 'common/share';
 import {request} from 'managers/request';
 
 import {getSuccessState} from 'selectors/global';
+import {Stories} from './stories';
 
 const BlockMessage = () => (
     <div className="blocked text-center color-white">
@@ -58,7 +62,7 @@ const SuccessScreen = ({videoID}) => (
     </div>
 );
 
-const PlayerScreen = ({SHARE, videoID}) => (
+const PlayerScreen = ({SHARE, videoID, success}) => (
     <div id="player">
         <div className="videoHolder">
             <Video
@@ -72,7 +76,12 @@ const PlayerScreen = ({SHARE, videoID}) => (
                 <source src={`${STATIC_URL}static/video/${videoID}.mp4`} type="video/mp4" />
             </Video>
         </div>
-        <Link to="/main" className="btn right mt-20">Создать видео</Link>
+        {success &&
+            <Link to="/main" className="btn right mt-20">Создать ещё видео</Link>
+        }
+        {!success &&
+            <Link to="/main" className="btn right mt-20">Создать своё видео</Link>
+        }
         <Share count={false} session={videoID} />
     </div>
 );
@@ -84,7 +93,7 @@ class Player extends React.Component {
         super(props);
 
         this.state = {
-
+            storiesShowed: false
         };
     }
 
@@ -103,13 +112,58 @@ class Player extends React.Component {
                     }
                 }
             });
+
+        $('body').addClass('ovh');
     }
+
+    componentWillUnmount() {
+        $('body').removeClass('ovh');
+    }
+
+    showStories = () => {
+        this.setState({
+            storiesShowed: true
+        });
+    };
+
+    hideStories = () => {
+        this.setState({
+            storiesShowed: false
+        });
+    };
+
+    showStoriesClickHandler = (event) => {
+        event.preventDefault();
+        this.showStories();
+    };
+
+    wheelHandler = (event) => {
+        if (event.deltaY < 0) {
+            console.log('scrolling up');
+            this.hideStories();
+        }
+        if (event.deltaY > 0) {
+            console.log('scrolling down');
+            this.showStories();
+        }
+    };
+
+    swipingEndHandler = (event, deltaX, deltaY) => {
+        if (deltaY < 0) {
+            console.log('swipe up');
+            this.hideStories();
+        }
+        if (deltaY > 0) {
+            console.log('swipe down');
+            this.showStories();
+        }
+    };
 
     render() {
 
         const {videoID} = this.props.params;
         const {success} = this.props;
-        const {blocked} = this.state;
+        const {blocked, storiesShowed} = this.state;
 
 
         const SHARE = {
@@ -120,26 +174,43 @@ class Player extends React.Component {
             picture: `${STATIC_URL}/images/${videoID}.jpg`
         };
 
-        if (success) {
-            return (
-                <SuccessScreen
-                    videoID={videoID}
-                />
-            );
-        }
-
-        if (blocked) {
-            return (
-                <BlockMessage />
-            );
-        }
 
         return (
-            <PlayerScreen
-                SHARE={SHARE}
-                videoID={videoID}
-            />
+            <Swipeable
+                onSwiped={this.swipingEndHandler}
+            >
+                <div className="playerScreen" onWheel={this.wheelHandler}>
+                    <div className={classNames('firstSlide', {hidden: storiesShowed})}>
+                        {success &&
+                        <SuccessScreen
+                            videoID={videoID}
+                        />
+                        }
+
+                        {blocked &&
+                        <BlockMessage />
+                        }
+
+                        {!blocked && !success &&
+                        <PlayerScreen
+                            SHARE={SHARE}
+                            videoID={videoID}
+                            success={success}
+                        />
+                        }
+                    </div>
+
+                    <div className="historiesLink">
+                        <a href="" onClick={this.showStoriesClickHandler}>Читать истории изменившие жизнь</a>
+                    </div>
+
+                    <div className={classNames('secondSlide', 'stories', {showed: storiesShowed})}>
+                        <Stories />
+                    </div>
+                </div>
+            </Swipeable>
         );
+
     }
 }
 
