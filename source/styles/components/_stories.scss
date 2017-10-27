@@ -1,0 +1,62 @@
+.stories {
+
+    .section2 {filter: saturate(300%); width: 100vw; height: 100vh; background: url(http://144.76.16.119/i/bgs/bg008.jpg) no-repeat 50% 0%;  background-size: cover; position: relative;}
+    .section2 .fade { position: absolute; left: 0; top: 0; width: 100vw; height: 100vh; background: #097ac0; opacity: 0.7; z-index: 500; filter: brightness(50%);}
+
+    .section2 .video-text { position: absolute; left: 12.5vw; top: 0; z-index: 700}
+    .section2 .video-text .cont {width: 33vw;height: 100vh; display: table-cell; vertical-align: middle; text-align: left; }
+    .section2 .video-text .cont  h2 { font-weight: normal; color: #fff; font-size: 3vw; line-height: 3vw; position: relative; color: #fff !important}
+    .section2 .video-text .cont  p { color: #fff; font-size: 1.5vw; padding: 2vw 0 0 0 ; position: relative; }
+
+
+    .section2 .seven2 { display: block; }
+
+
+
+    .section2 .menu .circle { display: block; background: #fff; border-radius: 50%; position: absolute;  z-index: 400; transition: 0.15s;  }
+
+
+    @media screen and (max-width: 905px) {
+        .section2 .down { bottom:25vw; }
+        .section2 .video-text .cont {width: 80vw;}
+        .section2 .video-text .cont  h2 {  font-size: 6vw; line-height: 7vw; margin: -30vw 0 0 0;}
+        .section2 .video-text .cont  p { font-size: 4vw; padding: 5vw 0 0 0 ; }
+    }
+
+
+
+    .menu { position: absolute; right:0; top: 50%; margin: -17vw 0 0 0; width:25.4vw; height: 28.4vw; z-index: 650; }
+    .menu .circle { display: block; background: #fff; border-radius: 50%; position: absolute;  z-index: 400; transition: 0.15s; display: none;  }
+    .menu .circle i { width: 100%; height: 100%; border: 1px solid #000; display: block;; position: absolute; left: -0.5%; top: -0.5%; background: #000; opacity: 0.8; z-index: 200; border-radius: 50%; display: none; }
+    .menu .circle img { border-radius: 50%; width: 100%; height: 100% }
+    .menu .circle span { visibility: hidden; position: absolute; left: -7vw; top: -1vw; color: #fff; text-decoration: none; ; transition: 0.15s ; display: block; text-align: left; font-size: 0.8vw; line-height: 0.8vw; padding: 0 2vw 0 0 }
+    .menu .circle span.rot {  left: -6vw; top: auto; bottom: -2vw;  }
+    .menu .circle:hover { box-shadow: 0 0 25px #fff }
+    .menu .circle:hover span {  visibility: visible; }
+    .menu .circle span:after { content: ''; display: block; width: 1.6vw; height: 0.5vw; background: url('http://144.76.16.119/i/bullets/bul001.png'); background-size: cover; margin: 0 0 0 10px; position: absolute; right: 0; top: 0.5vw }
+    .menu .circle span.rot:after { transform: rotate(130deg); top: 0}
+    .menu .circle.circle1 { width: 3.7vw; height: 3.7vw; left: 0.4vw; top: 22.6vw}
+    .menu .circle.circle1:hover { box-shadow: none;}
+    .menu .circle.circle2 { width: 2.7vw; height: 2.7vw; right:1vw; bottom: 1vw; }
+    .menu .circle.circle2 span { bottom: -3vw; left: -4vw }
+    .menu .circle.circle3 { width: 3.4vw; height: 3.4vw; right:5.7vw; bottom: 0; }
+    .menu .circle.circle4 { width: 4.1vw; height: 4.1vw; right:11.3vw; bottom: 1.7vw; }
+    .menu .circle.circle5 { width: 4.7vw; height: 4.7vw; right:15vw; bottom: 6.7vw; }
+    .menu .circle.circle5 span { left: -8vw;}
+    .menu .circle.circle6 { width: 5.2vw; height: 5.2vw; right:15vw; bottom: 14vw; }
+    .menu .circle.circle6 span { left: -6vw; top: -2vw}
+    .menu .circle.circle7 { width: 6.2vw; height: 6.2vw; right:10vw; bottom: 19.7vw; }
+    .menu .circle.circle8 { width: 7.2vw; height: 7.2vw; right:0.8vw; bottom: 21.7vw; }
+    .menu .circle.active { border: 5px solid #034ea2; box-shadow: 0 0 25px #fff  }
+
+
+    .menu .circle i { position: absolute; left: 0; top: 0; width: 100%; height: 100%; border-radius: 50%; background: rgba(0,0,0,0.7); display: none; }
+
+    .seven2 { width: 17.7vw; position: absolute; right: 24.5vw; top: 50%; margin: -13vw 0 0 0; z-index: 600; display: none; }
+    .seven2 img { width: 100% }
+
+    @media screen and (max-width: 905px) {
+        .seven2 {display: none !important;}
+        .menu {display: none;}
+    }
+}
