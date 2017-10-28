@@ -6,6 +6,23 @@ import {readAsDataURL} from 'promise-file-reader';
 import Slider from 'rc-slider';
 import AvatarEditor from 'react-avatar-editor';
 
+const getDevicePixelRatio = function () {
+    let ratio = 1;
+    // To account for zoom, change to use deviceXDPI instead of systemXDPI
+    if (
+        window.screen.systemXDPI !== undefined
+        && window.screen.logicalXDPI !== undefined
+        && window.screen.systemXDPI > window.screen.logicalXDPI
+    ) {
+        // Only allow for values > 1
+        ratio = window.screen.systemXDPI / window.screen.logicalXDPI;
+    }
+    else if (window.devicePixelRatio !== undefined) {
+        ratio = window.devicePixelRatio;
+    }
+    return ratio;
+};
+
 class ImagePicker extends React.Component {
 
     static defaultProps = {
@@ -36,12 +53,12 @@ class ImagePicker extends React.Component {
         const imageCroper = $('.imageCroper');
 
         console.log(imageCroper.width());
-
-        this.setState({
-            width: imageCroper.width() * 2,
-            height: (1080 / (1920 / imageCroper.width())) * 2
-        });
-
+        setTimeout(() => {
+            this.setState({
+                width: imageCroper.width() * 2,
+                height: (1080 / (1920 / imageCroper.width())) * 2
+            });
+        }, 100);
 
     }
 
@@ -153,8 +170,6 @@ class ImagePicker extends React.Component {
 
         const {value} = event.target;
 
-        const lines = value.split('\n');
-
         if (value.length < 60) {
             this.setState({
                 text: value,
@@ -202,26 +217,46 @@ class ImagePicker extends React.Component {
 
         const context = canvas.getContext('2d');
 
-        const cWidth = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? width : height;
-        const cHeight = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? height : width;
+        let cWidth = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? width : height;
+        let cHeight = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? height : width;
+
+        const isMobile = ($(window).width() < 1024);
+
+        console.log(height, width);
+        //
+        // if (isMobile) {
+        //     cWidth = cWidth * 2;
+        //     cHeight = cHeight * 2;
+        // }
 
         const baseImage = new Image();
+
+        const $cnv = $('.canvas canvas');
+
+        const imgSize = {
+            w: $cnv.width() * getDevicePixelRatio(),
+            h: $cnv.height() * getDevicePixelRatio()
+        };
+
+
         baseImage.src = '/static/img/text_overlay.png';
+
         baseImage.onload = () => {
-            context.drawImage(baseImage, 0, 0, cWidth, cHeight);
+            context.drawImage(baseImage, 0, 0, imgSize.w, imgSize.h);
 
             const cText = (!text) ? 'Текст\nвашей\nмечты' : text;
+            const fz = (isMobile) ? this.fontSize * (getDevicePixelRatio() / 1.4) : this.fontSize * getDevicePixelRatio();
 
-            context.font = `bold ${this.fontSize}px Verdana`;
+            context.font = `bold ${fz}px Verdana`;
             context.fillStyle = 'white';
 
-            const y = cHeight / 100 * 60;
+            const y = imgSize.h / 100 * 60;
 
-            const x = cWidth / 100 * 70;
+            const x = imgSize.w / 100 * 70;
 
-            const lineheight = this.fontSize * 1.2;
+            const lineheight = fz * 1.2;
 
-            const lines = this.getLines(context, cText, (cWidth / 100 * 29.7));
+            const lines = this.getLines(context, cText, (imgSize.w / 100 * 29.7));
 
             for (let i = 0; i < lines.length; i++) {
                 context.fillText(lines[i], x, ((y + (i * lineheight)) - ((lines.length * lineheight) / 2)));
@@ -272,7 +307,6 @@ class ImagePicker extends React.Component {
                                     scale={scale}
                                     rotate={rotate}
                                     onMouseUp={this.addText}
-                                    onPositionChange={this.addText}
                                 />
                                 <button className="rotateRight" onClick={this.rotateRight}></button>
                             </div>
