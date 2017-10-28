@@ -307,6 +307,7 @@ class ImagePicker extends React.Component {
                                     scale={scale}
                                     rotate={rotate}
                                     onMouseUp={this.addText}
+                                    onPositionChange={this.addText}
                                 />
                                 <button className="rotateRight" onClick={this.rotateRight}></button>
                             </div>
