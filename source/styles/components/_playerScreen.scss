@@ -10,7 +10,7 @@
         max-height: 100%;
 
         &.hidden {
-            transition: transform .6s .1s, max-height .6s .4s;
+            transition: transform .6s .1s, max-height .3s;
             transform: translateY(-100%);
             max-height: 0;
         }
@@ -33,5 +33,27 @@
             position: absolute;
         }
 
+    }
+    
+    .playerlink {
+        color: #fff;
+        margin-top: $p-20;
+        margin-bottom: $p-10;
+        a {
+            color: #fff;
+            border-bottom: 1px solid transparent;
+
+            &:hover {
+                border-color: #fff;
+            }
+        }
+    }
+
+    .createAnotherVideo {
+        margin-top: $p-20;
+
+        @media (max-width: $tablet-width) {
+            margin-top: $p-5;
+        }
     }
 }

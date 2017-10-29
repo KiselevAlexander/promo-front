@@ -75,11 +75,18 @@ const PlayerScreen = ({SHARE, videoID, success}) => (
                 <source src={`${STATIC_URL}static/video/${videoID}.mp4`} type="video/mp4" />
             </Video>
         </div>
+
+        <div className="playerlink">
+            Ссылка на ваше видео: <a href={`/video/player/${videoID}`}>
+            {`${location.origin}/video/player/${videoID}`}
+            </a>
+        </div>
+
         {success &&
-            <Link to="/main" className="btn right mt-20">Создать ещё видео</Link>
+            <Link to="/main" className="btn right createAnotherVideo">Создать ещё видео</Link>
         }
         {!success &&
-            <Link to="/main" className="btn right mt-20">Создать своё видео</Link>
+            <Link to="/main" className="btn right createAnotherVideo">Создать своё видео</Link>
         }
         <Share count={false} session={videoID} />
     </div>
@@ -114,7 +121,10 @@ class Player extends React.Component {
 
     }
 
-    componentWillUnmount() {
+    componentWillReceiveProps() {
+        this.setState({
+            storiesShowed: false
+        });
     }
 
     showStories = () => {
@@ -182,7 +192,7 @@ class Player extends React.Component {
                 </div>
 
                 <div className={classNames('historiesLink', {hidden: storiesShowed})}>
-                    <a href="" onClick={this.showStoriesClickHandler}>Читать истории изменившие жизнь</a>
+                    <a href="#!read-histories" onClick={this.showStoriesClickHandler}>Читать истории изменившие жизнь</a>
                 </div>
 
                 <div className={classNames('secondSlide', 'stories', {showed: storiesShowed})}>
