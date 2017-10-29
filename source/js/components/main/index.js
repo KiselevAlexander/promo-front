@@ -14,7 +14,7 @@ class Main extends React.Component {
         super(props);
 
         this.state = {
-            step: 2,
+            step: 0,
             image: '',
             status: '',
             result: {},
