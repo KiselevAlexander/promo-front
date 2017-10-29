@@ -309,7 +309,7 @@ class ImagePicker extends React.Component {
                             </div>
                         }
                         <div className={classNames('imageCroper', {'is-visible': (imageSrc)})}>
-                            <div className="canvas" style={{height: canvasWrapperHeight}}>
+                            <div className="canvas" style={{height: canvasWrapperHeight}} onTouchMove={(e) => {e.preventDefault(); e.stopPropagation();}}>
                                 <AvatarEditor
                                     ref={this.setEditorRef}
                                     image={imageSrc}
@@ -320,9 +320,7 @@ class ImagePicker extends React.Component {
                                     rotate={rotate}
                                     onMouseUp={this.addText}
                                     onPositionChange={() => {
-                                        setTimeout(() => {
-                                            this.addText()
-                                        }, 10);
+                                        this.addText();
                                     }}
                                 />
                                 <button className="rotateRight" onClick={this.rotateRight} />
@@ -354,6 +352,13 @@ class ImagePicker extends React.Component {
                                 placeholder="Текст вашей мечты"
                                 onChange={this.textChangeHandler}
                                 value={text}
+                                // onFocus={() => {
+                                //     setTimeout(() => {
+                                //         $('body').animate({
+                                //             scrollTop: $('.imageHolder').offset().top
+                                //         }, 300);
+                                //     }, 300);
+                                // }}
                             />
                             <div className="error">{error}</div>
                         </div>

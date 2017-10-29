@@ -61,6 +61,15 @@ class Patterns extends React.Component {
         return (
             <div className="patterns grid-2 tablet-2 phablet-1 phone-1 flex">
                 <div className="col left-side relative">
+
+                    <button
+                        className="btn action"
+                        onClick={this.doneClickHandler}
+                        disabled={(currentPatternId === 0)}
+                    >
+                        {(currentPatternId === 0) ? 'Выберите стиль видео' : 'Продолжить'}
+                    </button>
+
                     <ul className="list relative">
                         {patterns.map((item, key) => (
                             <li
@@ -85,14 +94,6 @@ class Patterns extends React.Component {
                             className="circle circle12 phablet-hide"
                         />
                     </ul>
-
-                    <button
-                        className="btn action"
-                        onClick={this.doneClickHandler}
-                        disabled={(currentPatternId === 0)}
-                    >
-                        {(currentPatternId === 0) ? 'Выберите стиль видео' : 'Продолжить'}
-                    </button>
 
                 </div>
 
