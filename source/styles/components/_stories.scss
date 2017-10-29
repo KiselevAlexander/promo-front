@@ -1,7 +1,24 @@
 .stories {
 
-    .section2 {filter: saturate(300%); width: 100vw; height: 100vh; background: url(http://144.76.16.119/i/bgs/bg008.jpg) no-repeat 50% 0%;  background-size: cover; position: relative;}
-    .section2 .fade { position: absolute; left: 0; top: 0; width: 100vw; height: 100vh; background: #097ac0; opacity: 0.7; z-index: 500; filter: brightness(50%);}
+    .section2 {
+        filter: saturate(300%);
+        width: 100vw;
+        height: 100%;
+        background: url(http://144.76.16.119/i/bgs/bg008.jpg) no-repeat 50% 0%;
+        background-size: cover;
+        position: relative;
+    }
+    .section2 .fade {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100%;
+        background: #097ac0;
+        opacity: 0.7;
+        z-index: 500;
+        filter: brightness(50%);
+    }
 
     .section2 .video-text { position: absolute; left: 12.5vw; top: 0; z-index: 700}
     .section2 .video-text .cont {width: 33vw;height: 100vh; display: table-cell; vertical-align: middle; text-align: left; }

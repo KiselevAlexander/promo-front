@@ -1,22 +1,26 @@
 .playerScreen {
     overflow: hidden;
-    @media (max-width: 768px) {
+    @media (max-width: $tablet-width) {
         padding-top: 2em;
     }
 
+
     .firstSlide {
-        transition: transform .3s;
+        transition: transform .3s, max-height .3s;
+        max-height: 100%;
 
         &.hidden {
-            transition: transform .6s .1s;
+            transition: transform .6s .1s, max-height .6s .4s;
             transform: translateY(-100%);
+            max-height: 0;
         }
+
     }
 
     .secondSlide {
         height: 100%;
         width: 100%;
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         z-index: 99;
@@ -26,6 +30,8 @@
 
         &.showed {
             transform: translateY(0);
+            position: absolute;
         }
+
     }
 }

@@ -60,6 +60,11 @@ class ImagePicker extends React.Component {
             });
         }, 100);
 
+        $('body').css({
+            height: '100vh',
+            width: '100vw',
+            overflow: 'auto'
+        });
     }
 
     componentWillUnmount() {
@@ -233,7 +238,7 @@ class ImagePicker extends React.Component {
 
         const $cnv = $('.canvas canvas');
 
-        const imgSize = {
+        const cnvSize = {
             w: $cnv.width() * getDevicePixelRatio(),
             h: $cnv.height() * getDevicePixelRatio()
         };
@@ -242,7 +247,7 @@ class ImagePicker extends React.Component {
         baseImage.src = '/static/img/text_overlay.png';
 
         baseImage.onload = () => {
-            context.drawImage(baseImage, 0, 0, imgSize.w, imgSize.h);
+            context.drawImage(baseImage, 0, 0, cnvSize.w, cnvSize.h);
 
             const cText = (!text) ? 'Текст\nвашей\nмечты' : text;
             const fz = (isMobile) ? this.fontSize * (getDevicePixelRatio() / 1.4) : this.fontSize * getDevicePixelRatio();
@@ -250,13 +255,13 @@ class ImagePicker extends React.Component {
             context.font = `bold ${fz}px Verdana`;
             context.fillStyle = 'white';
 
-            const y = imgSize.h / 100 * 60;
+            const y = cnvSize.h / 100 * 60;
 
-            const x = imgSize.w / 100 * 70;
+            const x = cnvSize.w / 100 * 70;
 
             const lineheight = fz * 1.2;
 
-            const lines = this.getLines(context, cText, (imgSize.w / 100 * 29.7));
+            const lines = this.getLines(context, cText, (cnvSize.w / 100 * 29.7));
 
             for (let i = 0; i < lines.length; i++) {
                 context.fillText(lines[i], x, ((y + (i * lineheight)) - ((lines.length * lineheight) / 2)));
@@ -279,7 +284,7 @@ class ImagePicker extends React.Component {
                 <div className="col">
                     <h3 className="mt-30">ЗАГРУЗИТЕ ВАШЕ ФОТО</h3>
                     <Dropzone
-                        className="btn"
+                        className="btn js-dropzone"
                         onDrop={this.onImagePick}
                         disabled={status === 'Pending'}
                         accept="image/*"
@@ -294,7 +299,14 @@ class ImagePicker extends React.Component {
                 <div className="col right">
                     <div className="imageHolder">
                         {!imageSrc &&
-                            <img src="/static/img/image_picker.png" alt="" className="bordered" />
+                            <div
+                                className="cursor-pointer"
+                                onClick={() => {
+                                    $('.js-dropzone').click();
+                                }}
+                            >
+                                <img src="/static/img/image_picker.jpg" alt="" className="bordered" />
+                            </div>
                         }
                         <div className={classNames('imageCroper', {'is-visible': (imageSrc)})}>
                             <div className="canvas" style={{height: canvasWrapperHeight}}>
@@ -307,9 +319,13 @@ class ImagePicker extends React.Component {
                                     scale={scale}
                                     rotate={rotate}
                                     onMouseUp={this.addText}
-                                    onPositionChange={this.addText}
+                                    onPositionChange={() => {
+                                        setTimeout(() => {
+                                            this.addText()
+                                        }, 10);
+                                    }}
                                 />
-                                <button className="rotateRight" onClick={this.rotateRight}></button>
+                                <button className="rotateRight" onClick={this.rotateRight} />
                             </div>
 
                             <div className="scale mt-20">

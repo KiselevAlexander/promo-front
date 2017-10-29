@@ -1,7 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
 import classNames from 'classnames';
-import Swipeable from 'react-swipeable';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {STATIC_URL, API_BASE_URL} from 'consts';
@@ -113,23 +112,23 @@ class Player extends React.Component {
                 }
             });
 
-        $('body').addClass('ovh');
     }
 
     componentWillUnmount() {
-        $('body').removeClass('ovh');
     }
 
     showStories = () => {
         this.setState({
             storiesShowed: true
         });
+        $('body').addClass('ovh');
     };
 
     hideStories = () => {
         this.setState({
             storiesShowed: false
         });
+        $('body').removeClass('ovh');
     };
 
     showStoriesClickHandler = (event) => {
@@ -139,24 +138,9 @@ class Player extends React.Component {
 
     wheelHandler = (event) => {
         if (event.deltaY < 0) {
-            console.log('scrolling up');
             this.hideStories();
         }
-        if (event.deltaY > 0) {
-            console.log('scrolling down');
-            this.showStories();
-        }
-    };
 
-    swipingEndHandler = (event, deltaX, deltaY) => {
-        if (deltaY < 0) {
-            console.log('swipe up');
-            this.hideStories();
-        }
-        if (deltaY > 0) {
-            console.log('swipe down');
-            this.showStories();
-        }
     };
 
     render() {
@@ -176,39 +160,35 @@ class Player extends React.Component {
 
 
         return (
-            <Swipeable
-                onSwiped={this.swipingEndHandler}
-            >
-                <div className="playerScreen" onWheel={this.wheelHandler}>
-                    <div className={classNames('firstSlide', {hidden: storiesShowed})}>
-                        {success &&
+            <div className="playerScreen" onWheel={this.wheelHandler}>
+                <div className={classNames('firstSlide', {hidden: storiesShowed})}>
+                    {success &&
                         <SuccessScreen
                             videoID={videoID}
                         />
-                        }
+                    }
 
-                        {blocked &&
+                    {blocked &&
                         <BlockMessage />
-                        }
+                    }
 
-                        {!blocked && !success &&
+                    {!blocked && !success &&
                         <PlayerScreen
                             SHARE={SHARE}
                             videoID={videoID}
                             success={success}
                         />
-                        }
-                    </div>
-
-                    <div className="historiesLink">
-                        <a href="" onClick={this.showStoriesClickHandler}>Читать истории изменившие жизнь</a>
-                    </div>
-
-                    <div className={classNames('secondSlide', 'stories', {showed: storiesShowed})}>
-                        <Stories />
-                    </div>
+                    }
                 </div>
-            </Swipeable>
+
+                <div className={classNames('historiesLink', {hidden: storiesShowed})}>
+                    <a href="" onClick={this.showStoriesClickHandler}>Читать истории изменившие жизнь</a>
+                </div>
+
+                <div className={classNames('secondSlide', 'stories', {showed: storiesShowed})}>
+                    <Stories />
+                </div>
+            </div>
         );
 
     }
