@@ -8,6 +8,10 @@ footer {
     display: flex;
     flex-direction: column;
 
+    @media (max-width: $tablet-width) {
+        margin-top: 0;
+    }
+
     .logo {
         display: inline-block;
         max-height: 2.75em;

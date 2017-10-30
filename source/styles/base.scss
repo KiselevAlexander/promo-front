@@ -75,6 +75,16 @@ body {
 .main-block {
     width: 100%;
     flex: 1;
+
+    @media (max-width: $tablet-width) {
+        display: flex !important;
+        justify-content: center;
+        .wrapper {
+            height: 100%;
+            flex: 1;
+        }
+    }
+
 }
 
 .main-page-link {

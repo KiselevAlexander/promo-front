@@ -43,16 +43,14 @@ class ImagePicker extends React.Component {
 
         this.timer = 0;
         this.fontSize = 42;
-
+        this.lastTouchY = 0;
     }
 
     componentDidMount() {
 
-        window.addEventListener('resize', this.resizeHandler);
 
         const imageCroper = $('.imageCroper');
 
-        console.log(imageCroper.width());
         setTimeout(() => {
             this.setState({
                 width: imageCroper.width() * 2,
@@ -65,10 +63,24 @@ class ImagePicker extends React.Component {
             width: '100vw',
             overflow: 'auto'
         });
+
+        window.addEventListener('resize', this.resizeHandler);
+        document.addEventListener('touchmove', this.touchmoveHandler, {passive: false});
     }
+
+    touchmoveHandler = (e) => {
+
+        if (e.target.nodeName === 'CANVAS') {
+
+            e.preventDefault();
+            return;
+        }
+
+    };
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.resizeHandler);
+        document.removeEventListener('touchmove', this.touchmoveHandler, {passive: false});
     }
 
     resizeHandler = () => {
@@ -150,7 +162,6 @@ class ImagePicker extends React.Component {
     };
 
     scaleChangeHandler = (e) => {
-        console.log(e);
         this.setState((state) => ({
             scale: e * 0.01
         }), this.setStateAddText);
@@ -227,7 +238,6 @@ class ImagePicker extends React.Component {
 
         const isMobile = ($(window).width() < 1024);
 
-        console.log(height, width);
         //
         // if (isMobile) {
         //     cWidth = cWidth * 2;
@@ -279,7 +289,7 @@ class ImagePicker extends React.Component {
         const canvasWrapperHeight = ((Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? height : width) / 2;
 
         return (
-            <div className="grid-2 tablet-1 phablet-1 phone-1 float">
+            <div className="grid-2 tablet-1 phablet-1 phone-1 float pb-20">
 
                 <div className="col">
                     <h3 className="mt-30">ЗАГРУЗИТЕ ВАШЕ ФОТО</h3>

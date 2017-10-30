@@ -83,10 +83,10 @@ const PlayerScreen = ({SHARE, videoID, success}) => (
         </div>
 
         {success &&
-            <Link to="/main" className="btn right createAnotherVideo">Создать ещё видео</Link>
+            <Link to="/video/main" className="btn right createAnotherVideo">Создать ещё видео</Link>
         }
         {!success &&
-            <Link to="/main" className="btn right createAnotherVideo">Создать своё видео</Link>
+            <Link to="/video/main" className="btn right createAnotherVideo">Создать своё видео</Link>
         }
         <Share count={false} session={videoID} />
     </div>
