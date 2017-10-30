@@ -1,6 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
-import classNames from 'classnames';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
 import {STATIC_URL, API_BASE_URL} from 'consts';
@@ -9,7 +7,6 @@ import Share from 'common/share';
 import {request} from 'managers/request';
 
 import {getSuccessState} from 'selectors/global';
-import {Stories} from './stories';
 
 const BlockMessage = () => (
     <div className="blocked text-center color-white">
@@ -95,13 +92,9 @@ const PlayerScreen = ({SHARE, videoID, success}) => (
 
 class Player extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            storiesShowed: false
-        };
-    }
+    state = {
+        blocked: false
+    };
 
     componentDidMount() {
 
@@ -121,43 +114,11 @@ class Player extends React.Component {
 
     }
 
-    componentWillReceiveProps() {
-        this.setState({
-            storiesShowed: false
-        });
-    }
-
-    showStories = () => {
-        this.setState({
-            storiesShowed: true
-        });
-        $('body').addClass('ovh');
-    };
-
-    hideStories = () => {
-        this.setState({
-            storiesShowed: false
-        });
-        $('body').removeClass('ovh');
-    };
-
-    showStoriesClickHandler = (event) => {
-        event.preventDefault();
-        this.showStories();
-    };
-
-    wheelHandler = (event) => {
-        if (event.deltaY < 0) {
-            this.hideStories();
-        }
-
-    };
-
     render() {
 
         const {videoID} = this.props.params;
         const {success} = this.props;
-        const {blocked, storiesShowed} = this.state;
+        const {blocked} = this.state;
 
 
         const SHARE = {
@@ -171,7 +132,7 @@ class Player extends React.Component {
 
         return (
             <div className="playerScreen" onWheel={this.wheelHandler}>
-                <div className={classNames('firstSlide', {hidden: storiesShowed})}>
+                <div className="firstSlide">
                     {success &&
                         <SuccessScreen
                             videoID={videoID}
@@ -191,13 +152,10 @@ class Player extends React.Component {
                     }
                 </div>
 
-                <div className={classNames('historiesLink', {hidden: storiesShowed})}>
-                    <a href="#!read-histories" onClick={this.showStoriesClickHandler}>Читать истории изменившие жизнь</a>
+                <div className="historiesLink">
+                    <a href="/">Читать истории изменившие жизнь</a>
                 </div>
 
-                <div className={classNames('secondSlide', 'stories', {showed: storiesShowed})}>
-                    <Stories />
-                </div>
             </div>
         );
 

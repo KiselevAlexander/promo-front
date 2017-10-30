@@ -22,7 +22,7 @@ class FirstScreen extends React.Component {
                             Создайте ваше персональное
                             видео с помощью конструктора,
                             делитесь им в социальных сетях,
-                            собирайте лайки и выигрывайте приз.
+                            собирайте лайки и выигрывайте призы.
                         </p>
                         <Link to="/video/main" className="btn">создать видео</Link>
                         <a className="rules" href="/rules.pdf" target="_blank">Правила конкурса</a>
