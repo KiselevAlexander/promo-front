@@ -48,6 +48,7 @@ class Share extends React.Component {
             VKShareCount,
             OKShareCount
         } = ShareCounts;
+
         const build_url = (url, params) => {
             let result = url;
             for (const name in params) {
@@ -67,7 +68,7 @@ class Share extends React.Component {
                         onClick={() => {
                             const fbLink = build_url('https://www.facebook.com/sharer.php', {
                                 u: SHARE.url,
-                                title: 'Готовимся к лету: пошаговая инструкция по летнему макияжу от Глюк’оZы.',
+                                title: SHARE.title,
                                 description: '',
                                 pic: `${STATIC_URL}/static/images/${session}-600x338.jpg`,
                             });
