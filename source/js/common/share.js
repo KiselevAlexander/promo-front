@@ -1,5 +1,4 @@
 import React from 'react';
-import $ from 'jquery';
 import {STATIC_URL} from 'consts';
 import {Icon} from 'common/icon';
 
@@ -49,6 +48,14 @@ class Share extends React.Component {
             VKShareCount,
             OKShareCount
         } = ShareCounts;
+        const build_url = (url, params) => {
+            let result = url;
+            for (const name in params) {
+                result += ~result.indexOf('?') ? '&' : '?';
+                result += name + '=' + encodeURIComponent(params[name]);
+            }
+            return result;
+        };
 
         return (
             <ul className="shareBlock">
@@ -58,7 +65,12 @@ class Share extends React.Component {
                         tabIndex="0"
                         className="SocialMediaShareButton SocialMediaShareButton--facebook"
                         onClick={() => {
-                            const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${SHARE.url}&picture=${STATIC_URL}/images/${session}-600x338.jpg&display=popup`;
+                            const fbLink = build_url('https://www.facebook.com/sharer.php', {
+                                u: SHARE.url,
+                                title: 'Готовимся к лету: пошаговая инструкция по летнему макияжу от Глюк’оZы.',
+                                description: '',
+                                pic: `${STATIC_URL}/images/${session}-600x338.jpg`,
+                            });
                             const width = 550;
                             const height = 400;
                             const left = window.outerWidth / 2 + (window.screenX || window.screenLeft || 0) - width / 2;
