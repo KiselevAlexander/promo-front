@@ -30,11 +30,11 @@ class Share extends React.Component {
 
 
         const SHARE = {
-            url: `${STATIC_URL}/player/${session}`,
+            url: `${STATIC_URL}/video/player/${session}`,
             title: 'Создайте ваше персональное видео и осуществляйте ваши мечты!',
             description: 'Вдохновляйтесь историями людей, изменивших свою жизнь, делитесь своей мечтой и получите возможность ее осуществить. #Ингосстрах70 #ingos70',
-            image: `${STATIC_URL}/images/${session}-600x338.jpg`,
-            picture: `${STATIC_URL}/images/${session}-600x338.jpg`
+            image: `${STATIC_URL}/static/images/${session}-600x338.jpg`,
+            picture: `${STATIC_URL}/static/images/${session}-600x338.jpg`
         };
 
         const {
@@ -69,7 +69,7 @@ class Share extends React.Component {
                                 u: SHARE.url,
                                 title: 'Готовимся к лету: пошаговая инструкция по летнему макияжу от Глюк’оZы.',
                                 description: '',
-                                pic: `${STATIC_URL}/images/${session}-600x338.jpg`,
+                                pic: `${STATIC_URL}/static/images/${session}-600x338.jpg`,
                             });
                             const width = 550;
                             const height = 400;
