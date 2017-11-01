@@ -15,10 +15,10 @@ const Style = {
 };
 
 const SHARE = {
-    url: location.origin,
-    title: 'Создай свою мечту\n',
-    description: '#ингосстрах#psychologies#mydream',
-    image: `${STATIC_URL}/static/img/pic011.jpg`
+    url: location.origin + '/video/',
+    title: 'Создайте ваше персональное видео и осуществляйте ваши мечты!\n',
+    description: 'Вдохновляйтесь историями людей, изменивших свою жизнь, делитесь своей мечтой и получите возможность ее осуществить. ',
+    image: `${STATIC_URL}/share.jpg`
 };
 
 
