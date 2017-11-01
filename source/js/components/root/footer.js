@@ -64,7 +64,7 @@ class Footer extends React.Component {
                                         <TwitterShareButton
                                             {...SHARE}
                                             via="ингосстрах"
-                                            hashtags={['ингосстрах', 'psychologies', 'mydream']}
+                                            hashtags={['Ингосстрах70', 'ingos70']}
                                         >
                                             <Icon xlink="twitter" style={Style.icon} />
                                         </TwitterShareButton>
