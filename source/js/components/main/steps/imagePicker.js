@@ -67,11 +67,10 @@ class ImagePicker extends React.Component {
         window.addEventListener('resize', this.resizeHandler);
         document.addEventListener('touchmove', this.touchmoveHandler, {passive: false});
 
-        this.baseImage = new Image();
 
+        this.baseImage = new Image();
         this.baseImage.src = '/static/img/text_overlay.png';
 
-        this.baseImage.onload = () => {};
     }
 
     touchmoveHandler = (e) => {
@@ -95,14 +94,23 @@ class ImagePicker extends React.Component {
 
         this.timer = setTimeout(() => {
 
-            const imageCroper = $('.imageCroper');
+            const imageCroper = $('.canvas');
+
+            const {rotate} = this.state;
+
+            const cWidth = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180)
+                ? imageCroper.width() * 2
+                : (1080 / (1920 / imageCroper.width())) * 2;
+            const cHeight = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180)
+                ? (1080 / (1920 / imageCroper.width())) * 2
+                : imageCroper.width() * 2;
 
             this.setState({
-                width: imageCroper.width() * 2,
-                height: (1080 / (1920 / imageCroper.width())) * 2
-            });
+                width: cWidth,
+                height: cHeight
+            }, this.addText);
 
-        }, 150);
+        }, 50);
 
     };
 
@@ -182,12 +190,7 @@ class ImagePicker extends React.Component {
             rotate: (Math.abs(rotate) === 360) ? 0 : rotate,
             width: state.height,
             height: state.width
-        }), () => {
-
-            setTimeout(() => {
-                this.setStateAddText();
-            }, 2);
-        });
+        }), this.setStateAddText);
 
     };
 
@@ -201,7 +204,7 @@ class ImagePicker extends React.Component {
             this.setState({
                 text: value,
                 error: ''
-            }, this.setStateAddText);
+            }, this.addText);
         }
 
     };
@@ -230,7 +233,11 @@ class ImagePicker extends React.Component {
     };
 
     setStateAddText = () => {
-        this.addText();
+
+        setTimeout(() => {
+            this.addText();
+        }, 10);
+
     };
 
     addText = () => {
@@ -240,17 +247,17 @@ class ImagePicker extends React.Component {
 
         const context = canvas.getContext('2d');
 
-        const cWidth = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? width : height;
-        const cHeight = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? height : width;
+        let cWidth = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? width : height;
+        let cHeight = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? height : width;
 
         const isMobile = ($(window).width() < 1024);
-
 
 
         const cnvSize = {
             w: cWidth * getDevicePixelRatio(),
             h: cHeight * getDevicePixelRatio()
         };
+
 
 
         context.drawImage(this.baseImage, 0, 0, cnvSize.w, cnvSize.h);
@@ -272,6 +279,7 @@ class ImagePicker extends React.Component {
         for (let i = 0; i < lines.length; i++) {
             context.fillText(lines[i], x, ((y + (i * lineheight)) - ((lines.length * lineheight) / 2)));
         }
+
     };
 
 
