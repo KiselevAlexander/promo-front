@@ -66,6 +66,12 @@ class ImagePicker extends React.Component {
 
         window.addEventListener('resize', this.resizeHandler);
         document.addEventListener('touchmove', this.touchmoveHandler, {passive: false});
+
+        this.baseImage = new Image();
+
+        this.baseImage.src = '/static/img/text_overlay.png';
+
+        this.baseImage.onload = () => {};
     }
 
     touchmoveHandler = (e) => {
@@ -176,7 +182,12 @@ class ImagePicker extends React.Component {
             rotate: (Math.abs(rotate) === 360) ? 0 : rotate,
             width: state.height,
             height: state.width
-        }), this.setStateAddText);
+        }), () => {
+
+            setTimeout(() => {
+                this.setStateAddText();
+            }, 2);
+        });
 
     };
 
@@ -219,11 +230,7 @@ class ImagePicker extends React.Component {
     };
 
     setStateAddText = () => {
-
-        setTimeout(() => {
-            this.addText();
-        }, 10);
-
+        this.addText();
     };
 
     addText = () => {
@@ -233,52 +240,38 @@ class ImagePicker extends React.Component {
 
         const context = canvas.getContext('2d');
 
-        let cWidth = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? width : height;
-        let cHeight = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? height : width;
+        const cWidth = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? width : height;
+        const cHeight = (Math.abs(rotate) === 0 || Math.abs(rotate) === 180) ? height : width;
 
         const isMobile = ($(window).width() < 1024);
 
-        //
-        // if (isMobile) {
-        //     cWidth = cWidth * 2;
-        //     cHeight = cHeight * 2;
-        // }
 
-        const baseImage = new Image();
-
-        const $cnv = $('.canvas canvas');
 
         const cnvSize = {
-            w: $cnv.width() * getDevicePixelRatio(),
-            h: $cnv.height() * getDevicePixelRatio()
+            w: cWidth * getDevicePixelRatio(),
+            h: cHeight * getDevicePixelRatio()
         };
 
 
-        baseImage.src = '/static/img/text_overlay.png';
+        context.drawImage(this.baseImage, 0, 0, cnvSize.w, cnvSize.h);
 
-        baseImage.onload = () => {
-            context.drawImage(baseImage, 0, 0, cnvSize.w, cnvSize.h);
+        const cText = (!text) ? 'Текст\nвашей\nмечты' : text;
+        const fz = (isMobile) ? this.fontSize * (getDevicePixelRatio() / 1.4) : this.fontSize * getDevicePixelRatio();
 
-            const cText = (!text) ? 'Текст\nвашей\nмечты' : text;
-            const fz = (isMobile) ? this.fontSize * (getDevicePixelRatio() / 1.4) : this.fontSize * getDevicePixelRatio();
+        context.font = `bold ${fz}px Verdana`;
+        context.fillStyle = 'white';
 
-            context.font = `bold ${fz}px Verdana`;
-            context.fillStyle = 'white';
+        const y = cnvSize.h / 100 * 60;
 
-            const y = cnvSize.h / 100 * 60;
+        const x = cnvSize.w / 100 * 70;
 
-            const x = cnvSize.w / 100 * 70;
+        const lineheight = fz * 1.2;
 
-            const lineheight = fz * 1.2;
+        const lines = this.getLines(context, cText, (cnvSize.w / 100 * 29.7));
 
-            const lines = this.getLines(context, cText, (cnvSize.w / 100 * 29.7));
-
-            for (let i = 0; i < lines.length; i++) {
-                context.fillText(lines[i], x, ((y + (i * lineheight)) - ((lines.length * lineheight) / 2)));
-            }
-
-        };
-
+        for (let i = 0; i < lines.length; i++) {
+            context.fillText(lines[i], x, ((y + (i * lineheight)) - ((lines.length * lineheight) / 2)));
+        }
     };
 
 
