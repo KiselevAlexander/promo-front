@@ -5,6 +5,7 @@ import Dropzone from 'react-dropzone';
 import {readAsDataURL} from 'promise-file-reader';
 import Slider from 'rc-slider';
 import AvatarEditor from 'react-avatar-editor';
+import wordwrap from 'word-wrapper';
 
 const getDevicePixelRatio = function () {
     let ratio = 1;
@@ -42,7 +43,7 @@ class ImagePicker extends React.Component {
         };
 
         this.timer = 0;
-        this.fontSize = 42;
+        this.fontSize = 36;
         this.lastTouchY = 0;
     }
 
@@ -200,7 +201,7 @@ class ImagePicker extends React.Component {
 
         const {value} = event.target;
 
-        if (value.length < 60) {
+        if (value.length < 70) {
             this.setState({
                 text: value,
                 error: ''
@@ -274,12 +275,38 @@ class ImagePicker extends React.Component {
 
         const lineheight = fz * 1.2;
 
-        const lines = this.getLines(context, cText, (cnvSize.w / 100 * 29.7));
+        // const lines = this.getLines(context, cText, (cnvSize.w / 100 * 29.7));
+        //
+        // for (let i = 0; i < lines.length; i++) {
+        //     context.fillText(lines[i], x, ((y + (i * lineheight)) - ((lines.length * lineheight) / 2)));
+        // }
+
+        const font = `bold ${fz}px Verdana`
+
+        const measure = createMetrics(context, font);
+
+        function createMetrics(context, font) {
+            context.font = font;
+            const charWidth = context.measureText('M').width;
+
+            return function measure(text, start, end, width) {
+
+                const availableGlyphs = Math.floor(width / charWidth);
+                const totalGlyphs = Math.floor((end - start) * charWidth);
+                const glyphs = Math.min(end - start, availableGlyphs, totalGlyphs);
+                return {
+                    start,
+                    end: start + glyphs
+                };
+            };
+        }
+
+        let lines = wordwrap(cText, {measure, width: (cnvSize.w - x) + 100 });
+        lines = lines.split('\n');
 
         for (let i = 0; i < lines.length; i++) {
             context.fillText(lines[i], x, ((y + (i * lineheight)) - ((lines.length * lineheight) / 2)));
         }
-
     };
 
 
