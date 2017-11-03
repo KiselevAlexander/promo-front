@@ -32,7 +32,8 @@ const libs = [
     'react-avatar-editor',
     'react-share',
     'promise-file-reader',
-    'react-swipeable'
+    'react-swipeable',
+    'word-wrapper'
 ];
 
 const vendorTask = (dest) => () => {
