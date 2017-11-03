@@ -115,13 +115,6 @@ class ImagePicker extends React.Component {
 
     };
 
-    patternClickHandler = (id) => {
-        this.setState({
-            currentPatternId: id
-        });
-    };
-
-
     onImagePick = (file) => {
         readAsDataURL(file[0])
             .then((imageData) => {
@@ -275,13 +268,7 @@ class ImagePicker extends React.Component {
 
         const lineheight = fz * 1.2;
 
-        // const lines = this.getLines(context, cText, (cnvSize.w / 100 * 29.7));
-        //
-        // for (let i = 0; i < lines.length; i++) {
-        //     context.fillText(lines[i], x, ((y + (i * lineheight)) - ((lines.length * lineheight) / 2)));
-        // }
-
-        const font = `bold ${fz}px Verdana`
+        const font = `bold ${fz}px Verdana`;
 
         const measure = createMetrics(context, font);
 
@@ -347,7 +334,11 @@ class ImagePicker extends React.Component {
                             </div>
                         }
                         <div className={classNames('imageCroper', {'is-visible': (imageSrc)})}>
-                            <div className="canvas" style={{height: canvasWrapperHeight}} onTouchMove={(e) => {e.preventDefault(); e.stopPropagation();}}>
+                            <div
+                                className="canvas"
+                                style={{height: canvasWrapperHeight}}
+                                onTouchMove={(e) => {e.preventDefault(); e.stopPropagation();}}
+                            >
                                 <AvatarEditor
                                     ref={this.setEditorRef}
                                     image={imageSrc}
@@ -383,20 +374,13 @@ class ImagePicker extends React.Component {
                 {imageSrc &&
                     <div className="col imageSettings">
 
-                        <h3 className="mt-30">НАПИШИТЕ ВАШУ МЕЧТУ</h3>
+                        <h3 className="mt-30">ОПИШИТЕ ВАШУ МЕЧТУ</h3>
                         <div className={classNames('inputCover', {'is-error': error})}>
                             <textarea
                                 type="text"
                                 placeholder="Текст вашей мечты"
                                 onChange={this.textChangeHandler}
                                 value={text}
-                                // onFocus={() => {
-                                //     setTimeout(() => {
-                                //         $('body').animate({
-                                //             scrollTop: $('.imageHolder').offset().top
-                                //         }, 300);
-                                //     }, 300);
-                                // }}
                             />
                             <div className="error">{error}</div>
                         </div>

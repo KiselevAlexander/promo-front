@@ -108,7 +108,11 @@ class Share extends React.Component {
                     }
                 </li>
                 <li>
-                    <VKShareButton {...SHARE}>
+                    <VKShareButton
+                        url={SHARE.url}
+                        title={SHARE.title}
+                        description={SHARE.description}
+                    >
                         <Icon xlink="vk" style={Style.icon} />
                     </VKShareButton>
                     {count &&

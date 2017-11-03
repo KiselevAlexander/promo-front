@@ -153,7 +153,7 @@ class Player extends React.Component {
                 </div>
 
                 <div className="historiesLink">
-                    <a href="/">Читать истории изменившие жизнь</a>
+                    <a href="/">Читать истории, изменившие жизнь</a>
                 </div>
 
             </div>
